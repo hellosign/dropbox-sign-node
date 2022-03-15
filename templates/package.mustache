@@ -1,8 +1,8 @@
 {
-    "name": "@hellosign/openapi-javascript-sdk",
-    "version": "3.0.0",
-    "description": "NodeJS client for @hellosign/openapi-javascript-sdk",
-    "repository": "GIT_USER_ID/GIT_REPO_ID",
+    "name": "{{npmName}}",
+    "version": "{{npmVersion}}",
+    "description": "NodeJS client for {{npmName}}",
+    "repository": "{{gitUserId}}/{{gitRepoId}}",
     "main": "dist/api.js",
     "types": "dist/api.d.ts",
     "scripts": {
@@ -33,5 +33,8 @@
         "ts-jest": "^27.1.3",
         "ts-node": "^10.4.0",
         "typescript": "^3.9.5"
-    }
+    }{{#npmRepository}},
+    "publishConfig": {
+        "registry": "{{npmRepository}}"
+    }{{/npmRepository}}
 }
