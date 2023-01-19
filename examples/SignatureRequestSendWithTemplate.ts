@@ -1,40 +1,40 @@
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.SignatureRequestApi();
+const signatureRequestApi = new DropboxSign.SignatureRequestApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+signatureRequestApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// signatureRequestApi.accessToken = "YOUR_ACCESS_TOKEN";
 
-const signer1: HelloSignSDK.SubSignatureRequestTemplateSigner = {
+const signer1: DropboxSign.SubSignatureRequestTemplateSigner = {
   role: "Client",
   emailAddress: "george@example.com",
   name: "George",
 };
 
-const cc1: HelloSignSDK.SubCC = {
+const cc1: DropboxSign.SubCC = {
   role: "Accounting",
   emailAddress: "accounting@example.com",
 };
 
-const customField1: HelloSignSDK.SubCustomField = {
+const customField1: DropboxSign.SubCustomField = {
   name: "Cost",
   value: "$20,000",
   editor: "Client",
   required: true,
 };
 
-const signingOptions: HelloSignSDK.SubSigningOptions = {
+const signingOptions: DropboxSign.SubSigningOptions = {
   draw: true,
   type: true,
   upload: true,
   phone: false,
-  defaultType: HelloSignSDK.SubSigningOptions.DefaultTypeEnum.Draw,
+  defaultType: DropboxSign.SubSigningOptions.DefaultTypeEnum.Draw,
 };
 
-const data: HelloSignSDK.SignatureRequestSendWithTemplateRequest = {
+const data: DropboxSign.SignatureRequestSendWithTemplateRequest = {
   templateIds: ["c26b8a16784a872da37ea946b9ddec7c1e11dff6"],
   subject: "Purchase Order",
   message: "Glad we could come to an agreement.",
@@ -45,10 +45,10 @@ const data: HelloSignSDK.SignatureRequestSendWithTemplateRequest = {
   testMode: true,
 };
 
-const result = api.signatureRequestSendWithTemplate(data);
+const result = signatureRequestApi.signatureRequestSendWithTemplate(data);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });

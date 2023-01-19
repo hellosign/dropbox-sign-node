@@ -1,16 +1,14 @@
-# 
+# @dropbox/sign
 
 Dropbox Sign v3 API
 
 
-## ⚠ This package is not yet ready for production use ⚠
+## Migrating from legacy SDK
 
-We are working hard on getting this package ready, but it is not there, yet!
-
-You should think twice before using package on anything critical.
-
-The interfaces may change without warning. Backwards compatibility is not yet
-guaranteed nor implied!
+This SDK is generated from our officially maintained [OpenAPI spec](https://github.com/hellosign/hellosign-openapi/blob/development/openapi.yaml).
+We've made important updates that introduce new functionality and create feature parity between the Dropbox Sign API and the SDK.
+However, some of these changes are considered "breaking" in the sense that they'll require you to update your existing code in order to continue using the SDK.
+Please refer to this [migration guide](https://developers.hellosign.com/docs/sdks/node/migration-guide/) for more information.
 
 ## Contributing
 
@@ -28,17 +26,17 @@ directory that corresponds to the file you want updated.
 ### From NPM Package
 
 ```
-npm install hellosign-sdk@github:HelloFax/hellosign-nodejs-sdk#openapi
+npm install @dropbox/sign@github:hellosign/dropbox-sign-node
 ```
 
 ### From Repo
 
 * Clone this repo locally
 * Run `npm pack`
-* The generated file will be named similar to `hellosign-sdk-6.0.0.tgz`
+* The generated file will be named similar to `dropbox-sign-1.0.0-beta23.1.tgz`
 * Move this file to your project directory
 * Add the following to your project's `package.json` under `dependencies`:
-* `"hellosign-sdk": "file:hellosign-sdk-6.0.0.tgz"`
+* `"@dropbox/sign": "file:dropbox-sign-1.0.0-beta23.1.tgz"`
 * Run `npm install`
 
 ## Getting Started
@@ -49,25 +47,25 @@ Please follow the [installation procedure](#installation--usage) and then run th
 ### TypeScript Example
 
 ```typescript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.AccountApi();
+const accountApi = new DropboxSign.AccountApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+accountApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// accountApi.accessToken = "YOUR_ACCESS_TOKEN";
 
-const data: HelloSignSDK.AccountCreateRequest = {
-  emailAddress: "newuser@hellosign.com",
+const data: DropboxSign.AccountCreateRequest = {
+  emailAddress: "newuser@dropboxsign.com",
 };
 
-const result = api.accountCreate(data);
+const result = accountApi.accountCreate(data);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -77,25 +75,25 @@ result.then(response => {
 ### JavaScript Example
 
 ```javascript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.AccountApi();
+const accountApi = new DropboxSign.AccountApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+accountApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// accountApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const data = {
-  emailAddress: "newuser@hellosign.com",
+  emailAddress: "newuser@dropboxsign.com",
 };
 
-const result = api.accountCreate(data);
+const result = accountApi.accountCreate(data);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -264,6 +262,7 @@ All URIs are relative to *https://api.hellosign.com/v3*
 - [SubMergeField](./docs/model/SubMergeField.md)
 - [SubOAuth](./docs/model/SubOAuth.md)
 - [SubOptions](./docs/model/SubOptions.md)
+- [SubSignatureRequestGroupedSigners](./docs/model/SubSignatureRequestGroupedSigners.md)
 - [SubSignatureRequestSigner](./docs/model/SubSignatureRequestSigner.md)
 - [SubSignatureRequestTemplateSigner](./docs/model/SubSignatureRequestTemplateSigner.md)
 - [SubSigningOptions](./docs/model/SubSigningOptions.md)

@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  *
- * Copyright (C) 2022 hellosign.com
+ * Copyright (C) 2023 dropbox.com
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-import { RequestFile, AttributeTypeMap } from "./models";
+import { RequestFile, AttributeTypeMap, ObjectSerializer } from "./models";
 
 export class SignatureRequestUpdateRequest {
   /**
@@ -38,7 +38,7 @@ export class SignatureRequestUpdateRequest {
    */
   "name"?: string;
   /**
-   * The new time when the signature request will expire. Unsigned signatures will be moved to the expired status, and no longer signable.
+   * The new time when the signature request will expire. Unsigned signatures will be moved to the expired status, and no longer signable. See [Signature Request Expiration Date](https://developers.hellosign.com/docs/signature-request/expiration/) for details.
    */
   "expiresAt"?: number | null;
 
@@ -69,5 +69,10 @@ export class SignatureRequestUpdateRequest {
 
   static getAttributeTypeMap(): AttributeTypeMap {
     return SignatureRequestUpdateRequest.attributeTypeMap;
+  }
+
+  /** Attempt to instantiate and hydrate a new instance of this class */
+  static init(data: any): SignatureRequestUpdateRequest {
+    return ObjectSerializer.deserialize(data, "SignatureRequestUpdateRequest");
   }
 }

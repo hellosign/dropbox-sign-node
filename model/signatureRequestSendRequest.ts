@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  *
- * Copyright (C) 2022 hellosign.com
+ * Copyright (C) 2023 dropbox.com
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,29 +22,34 @@
  * SOFTWARE.
  */
 
-import { RequestFile, AttributeTypeMap } from "./models";
+import { RequestFile, AttributeTypeMap, ObjectSerializer } from "./models";
 import { SubAttachment } from "./subAttachment";
 import { SubCustomField } from "./subCustomField";
 import { SubFieldOptions } from "./subFieldOptions";
 import { SubFormFieldGroup } from "./subFormFieldGroup";
 import { SubFormFieldRule } from "./subFormFieldRule";
 import { SubFormFieldsPerDocumentBase } from "./subFormFieldsPerDocumentBase";
+import { SubSignatureRequestGroupedSigners } from "./subSignatureRequestGroupedSigners";
 import { SubSignatureRequestSigner } from "./subSignatureRequestSigner";
 import { SubSigningOptions } from "./subSigningOptions";
 
 export class SignatureRequestSendRequest {
   /**
-   * Add Signers to your Signature Request.
+   * Use `files[]` to indicate the uploaded file(s) to send for signature.  This endpoint requires either **files** or **file_urls[]**, but not both.
    */
-  "signers": Array<SubSignatureRequestSigner>;
+  "files"?: Array<RequestFile>;
   /**
-   * Use `file[]` to indicate the uploaded file(s) to send for signature.  This endpoint requires either **file** or **file_url[]**, but not both.
+   * Use `file_urls[]` to have Dropbox Sign download the file(s) to send for signature.  This endpoint requires either **files** or **file_urls[]**, but not both.
    */
-  "file"?: Array<RequestFile>;
+  "fileUrls"?: Array<string>;
   /**
-   * Use `file_url[]` to have Dropbox Sign download the file(s) to send for signature.  This endpoint requires either **file** or **file_url[]**, but not both.
+   * Add Signers to your Signature Request.  This endpoint requires either **signers** or **grouped_signers**, but not both.
    */
-  "fileUrl"?: Array<string>;
+  "signers"?: Array<SubSignatureRequestSigner>;
+  /**
+   * Add Grouped Signers to your Signature Request.  This endpoint requires either **signers** or **grouped_signers**, but not both.
+   */
+  "groupedSigners"?: Array<SubSignatureRequestGroupedSigners>;
   /**
    * Allows signers to decline to sign a document if `true`. Defaults to `false`.
    */
@@ -79,7 +84,7 @@ export class SignatureRequestSendRequest {
    */
   "formFieldRules"?: Array<SubFormFieldRule>;
   /**
-   * The fields that should appear on the document, expressed as an array of objects. (We\'re currently fixing a bug where this property only accepts a two-dimensional array. You can read about it here: <a href=\"/docs/placing-fields/form-fields-per-document\" target=\"_blank\">Using Form Fields per Document</a>.)  **NOTE**: Fields like **text**, **dropdown**, **checkbox**, **radio**, and **hyperlink** have additional required and optional parameters. Check out the list of [additional parameters](/api/reference/constants/#form-fields-per-document) for these field types.  * Text Field use `SubFormFieldsPerDocumentText` * Dropdown Field use `SubFormFieldsPerDocumentDropdown` * Hyperlink Field use `SubFormFieldsPerDocumentHyperlink` * Checkbox Field use `SubFormFieldsPerDocumentCheckbox` * Radio Field use `SubFormFieldsPerDocumentRadio` * Signature Field use `SubFormFieldsPerDocumentSignature` * Date Signed Field use `SubFormFieldsPerDocumentDateSigned` * Initials Field use `SubFormFieldsPerDocumentInitials` * Text Merge Field use `SubFormFieldsPerDocumentTextMerge` * Checkbox Merge Field use `SubFormFieldsPerDocumentCheckboxMerge`
+   * The fields that should appear on the document, expressed as an array of objects. (We\'re currently fixing a bug where this property only accepts a two-dimensional array. You can read about it here: <a href=\"/docs/openapi/form-fields-per-document\" target=\"_blank\">Using Form Fields per Document</a>.)  **NOTE**: Fields like **text**, **dropdown**, **checkbox**, **radio**, and **hyperlink** have additional required and optional parameters. Check out the list of [additional parameters](/api/reference/constants/#form-fields-per-document) for these field types.  * Text Field use `SubFormFieldsPerDocumentText` * Dropdown Field use `SubFormFieldsPerDocumentDropdown` * Hyperlink Field use `SubFormFieldsPerDocumentHyperlink` * Checkbox Field use `SubFormFieldsPerDocumentCheckbox` * Radio Field use `SubFormFieldsPerDocumentRadio` * Signature Field use `SubFormFieldsPerDocumentSignature` * Date Signed Field use `SubFormFieldsPerDocumentDateSigned` * Initials Field use `SubFormFieldsPerDocumentInitials` * Text Merge Field use `SubFormFieldsPerDocumentTextMerge` * Checkbox Merge Field use `SubFormFieldsPerDocumentCheckboxMerge`
    */
   "formFieldsPerDocument"?: Array<SubFormFieldsPerDocumentBase>;
   /**
@@ -120,7 +125,7 @@ export class SignatureRequestSendRequest {
    */
   "useTextTags"?: boolean = false;
   /**
-   * When the signature request will expire. Unsigned signatures will be moved to the expired status, and no longer signable.
+   * When the signature request will expire. Unsigned signatures will be moved to the expired status, and no longer signable. See [Signature Request Expiration Date](https://developers.hellosign.com/docs/signature-request/expiration/) for details.
    */
   "expiresAt"?: number | null;
 
@@ -128,19 +133,24 @@ export class SignatureRequestSendRequest {
 
   static attributeTypeMap: AttributeTypeMap = [
     {
+      name: "files",
+      baseName: "files",
+      type: "Array<RequestFile>",
+    },
+    {
+      name: "fileUrls",
+      baseName: "file_urls",
+      type: "Array<string>",
+    },
+    {
       name: "signers",
       baseName: "signers",
       type: "Array<SubSignatureRequestSigner>",
     },
     {
-      name: "file",
-      baseName: "file",
-      type: "Array<RequestFile>",
-    },
-    {
-      name: "fileUrl",
-      baseName: "file_url",
-      type: "Array<string>",
+      name: "groupedSigners",
+      baseName: "grouped_signers",
+      type: "Array<SubSignatureRequestGroupedSigners>",
     },
     {
       name: "allowDecline",
@@ -251,5 +261,10 @@ export class SignatureRequestSendRequest {
 
   static getAttributeTypeMap(): AttributeTypeMap {
     return SignatureRequestSendRequest.attributeTypeMap;
+  }
+
+  /** Attempt to instantiate and hydrate a new instance of this class */
+  static init(data: any): SignatureRequestSendRequest {
+    return ObjectSerializer.deserialize(data, "SignatureRequestSendRequest");
   }
 }

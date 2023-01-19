@@ -10,8 +10,8 @@ export declare class SignatureRequestCreateEmbeddedWithTemplateRequest {
     "allowDecline"?: boolean;
     "ccs"?: Array<SubCC>;
     "customFields"?: Array<SubCustomField>;
-    "file"?: Array<RequestFile>;
-    "fileUrl"?: Array<string>;
+    "files"?: Array<RequestFile>;
+    "fileUrls"?: Array<string>;
     "message"?: string;
     "metadata"?: {
         [key: string]: any;
@@ -24,4 +24,5 @@ export declare class SignatureRequestCreateEmbeddedWithTemplateRequest {
     static discriminator: string | undefined;
     static attributeTypeMap: AttributeTypeMap;
     static getAttributeTypeMap(): AttributeTypeMap;
+    static init(data: any): SignatureRequestCreateEmbeddedWithTemplateRequest;
 }

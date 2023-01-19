@@ -1,6 +1,7 @@
 import { AttributeTypeMap } from "./models";
 export declare class SignatureRequestResponseSignatures {
     "signatureId"?: string;
+    "signerGroupGuid"?: string | null;
     "signerEmailAddress"?: string;
     "signerName"?: string | null;
     "signerRole"?: string | null;
@@ -21,4 +22,5 @@ export declare class SignatureRequestResponseSignatures {
     static discriminator: string | undefined;
     static attributeTypeMap: AttributeTypeMap;
     static getAttributeTypeMap(): AttributeTypeMap;
+    static init(data: any): SignatureRequestResponseSignatures;
 }

@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  *
- * Copyright (C) 2022 hellosign.com
+ * Copyright (C) 2023 dropbox.com
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-import { RequestFile, AttributeTypeMap } from "./models";
+import { RequestFile, AttributeTypeMap, ObjectSerializer } from "./models";
 
 /**
  * An array of elements and values serialized to a string, to be used to customize the app\'s signer page. (Only applies to some API plans)  Take a look at our [white labeling guide](/api/reference/white-labeling/) to learn more.
@@ -130,6 +130,11 @@ export class SubWhiteLabelingOptions {
 
   static getAttributeTypeMap(): AttributeTypeMap {
     return SubWhiteLabelingOptions.attributeTypeMap;
+  }
+
+  /** Attempt to instantiate and hydrate a new instance of this class */
+  static init(data: any): SubWhiteLabelingOptions {
+    return ObjectSerializer.deserialize(data, "SubWhiteLabelingOptions");
   }
 }
 

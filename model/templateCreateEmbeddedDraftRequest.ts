@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  *
- * Copyright (C) 2022 hellosign.com
+ * Copyright (C) 2023 dropbox.com
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-import { RequestFile, AttributeTypeMap } from "./models";
+import { RequestFile, AttributeTypeMap, ObjectSerializer } from "./models";
 import { SubAttachment } from "./subAttachment";
 import { SubEditorOptions } from "./subEditorOptions";
 import { SubFieldOptions } from "./subFieldOptions";
@@ -38,13 +38,13 @@ export class TemplateCreateEmbeddedDraftRequest {
    */
   "clientId": string;
   /**
-   * Use `file[]` to indicate the uploaded file(s) to send for signature.  This endpoint requires either **file** or **file_url[]**, but not both.
+   * Use `files[]` to indicate the uploaded file(s) to send for signature.  This endpoint requires either **files** or **file_urls[]**, but not both.
    */
-  "file"?: Array<RequestFile>;
+  "files"?: Array<RequestFile>;
   /**
-   * Use `file_url[]` to have Dropbox Sign download the file(s) to send for signature.  This endpoint requires either **file** or **file_url[]**, but not both.
+   * Use `file_urls[]` to have Dropbox Sign download the file(s) to send for signature.  This endpoint requires either **files** or **file_urls[]**, but not both.
    */
-  "fileUrl"?: Array<string>;
+  "fileUrls"?: Array<string>;
   /**
    * This allows the requester to specify whether the user is allowed to provide email addresses to CC when creating a template.
    */
@@ -80,7 +80,7 @@ export class TemplateCreateEmbeddedDraftRequest {
    */
   "formFieldRules"?: Array<SubFormFieldRule>;
   /**
-   * The fields that should appear on the document, expressed as an array of objects. (We\'re currently fixing a bug where this property only accepts a two-dimensional array. You can read about it here: <a href=\"/docs/placing-fields/form-fields-per-document\" target=\"_blank\">Using Form Fields per Document</a>.)  **NOTE**: Fields like **text**, **dropdown**, **checkbox**, **radio**, and **hyperlink** have additional required and optional parameters. Check out the list of [additional parameters](/api/reference/constants/#form-fields-per-document) for these field types.  * Text Field use `SubFormFieldsPerDocumentText` * Dropdown Field use `SubFormFieldsPerDocumentDropdown` * Hyperlink Field use `SubFormFieldsPerDocumentHyperlink` * Checkbox Field use `SubFormFieldsPerDocumentCheckbox` * Radio Field use `SubFormFieldsPerDocumentRadio` * Signature Field use `SubFormFieldsPerDocumentSignature` * Date Signed Field use `SubFormFieldsPerDocumentDateSigned` * Initials Field use `SubFormFieldsPerDocumentInitials` * Text Merge Field use `SubFormFieldsPerDocumentTextMerge` * Checkbox Merge Field use `SubFormFieldsPerDocumentCheckboxMerge`
+   * The fields that should appear on the document, expressed as an array of objects. (We\'re currently fixing a bug where this property only accepts a two-dimensional array. You can read about it here: <a href=\"/docs/openapi/form-fields-per-document\" target=\"_blank\">Using Form Fields per Document</a>.)  **NOTE**: Fields like **text**, **dropdown**, **checkbox**, **radio**, and **hyperlink** have additional required and optional parameters. Check out the list of [additional parameters](/api/reference/constants/#form-fields-per-document) for these field types.  * Text Field use `SubFormFieldsPerDocumentText` * Dropdown Field use `SubFormFieldsPerDocumentDropdown` * Hyperlink Field use `SubFormFieldsPerDocumentHyperlink` * Checkbox Field use `SubFormFieldsPerDocumentCheckbox` * Radio Field use `SubFormFieldsPerDocumentRadio` * Signature Field use `SubFormFieldsPerDocumentSignature` * Date Signed Field use `SubFormFieldsPerDocumentDateSigned` * Initials Field use `SubFormFieldsPerDocumentInitials` * Text Merge Field use `SubFormFieldsPerDocumentTextMerge` * Checkbox Merge Field use `SubFormFieldsPerDocumentCheckboxMerge`
    */
   "formFieldsPerDocument"?: Array<SubFormFieldsPerDocumentBase>;
   /**
@@ -137,13 +137,13 @@ export class TemplateCreateEmbeddedDraftRequest {
       type: "string",
     },
     {
-      name: "file",
-      baseName: "file",
+      name: "files",
+      baseName: "files",
       type: "Array<RequestFile>",
     },
     {
-      name: "fileUrl",
-      baseName: "file_url",
+      name: "fileUrls",
+      baseName: "file_urls",
       type: "Array<string>",
     },
     {
@@ -260,5 +260,13 @@ export class TemplateCreateEmbeddedDraftRequest {
 
   static getAttributeTypeMap(): AttributeTypeMap {
     return TemplateCreateEmbeddedDraftRequest.attributeTypeMap;
+  }
+
+  /** Attempt to instantiate and hydrate a new instance of this class */
+  static init(data: any): TemplateCreateEmbeddedDraftRequest {
+    return ObjectSerializer.deserialize(
+      data,
+      "TemplateCreateEmbeddedDraftRequest"
+    );
   }
 }

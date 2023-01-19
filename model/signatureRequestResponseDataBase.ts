@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  *
- * Copyright (C) 2022 hellosign.com
+ * Copyright (C) 2023 dropbox.com
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-import { RequestFile, AttributeTypeMap } from "./models";
+import { RequestFile, AttributeTypeMap, ObjectSerializer } from "./models";
 
 /**
  * An array of form field objects containing the name, value, and type of each textbox or checkmark field filled in by the signers.

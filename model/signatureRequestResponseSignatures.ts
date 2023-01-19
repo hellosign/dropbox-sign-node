@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  *
- * Copyright (C) 2022 hellosign.com
+ * Copyright (C) 2023 dropbox.com
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-import { RequestFile, AttributeTypeMap } from "./models";
+import { RequestFile, AttributeTypeMap, ObjectSerializer } from "./models";
 
 /**
  * An array of signature objects, 1 for each signer.
@@ -32,6 +32,10 @@ export class SignatureRequestResponseSignatures {
    * Signature identifier.
    */
   "signatureId"?: string;
+  /**
+   * Signer Group GUID
+   */
+  "signerGroupGuid"?: string | null;
   /**
    * The email address of the signer.
    */
@@ -107,6 +111,11 @@ export class SignatureRequestResponseSignatures {
     {
       name: "signatureId",
       baseName: "signature_id",
+      type: "string",
+    },
+    {
+      name: "signerGroupGuid",
+      baseName: "signer_group_guid",
       type: "string",
     },
     {
@@ -198,5 +207,13 @@ export class SignatureRequestResponseSignatures {
 
   static getAttributeTypeMap(): AttributeTypeMap {
     return SignatureRequestResponseSignatures.attributeTypeMap;
+  }
+
+  /** Attempt to instantiate and hydrate a new instance of this class */
+  static init(data: any): SignatureRequestResponseSignatures {
+    return ObjectSerializer.deserialize(
+      data,
+      "SignatureRequestResponseSignatures"
+    );
   }
 }

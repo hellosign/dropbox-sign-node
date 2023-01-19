@@ -18346,6 +18346,7 @@ __export(api_exports, {
   SubMergeField: () => SubMergeField,
   SubOAuth: () => SubOAuth,
   SubOptions: () => SubOptions,
+  SubSignatureRequestGroupedSigners: () => SubSignatureRequestGroupedSigners,
   SubSignatureRequestSigner: () => SubSignatureRequestSigner,
   SubSignatureRequestTemplateSigner: () => SubSignatureRequestTemplateSigner,
   SubSigningOptions: () => SubSigningOptions,
@@ -18415,83 +18416,13 @@ module.exports = __toCommonJS(api_exports);
 // api/accountApi.ts
 var import_axios = __toESM(require_axios2());
 
-// model/accountCreateRequest.ts
-var _AccountCreateRequest = class {
-  static getAttributeTypeMap() {
-    return _AccountCreateRequest.attributeTypeMap;
-  }
-};
-var AccountCreateRequest = _AccountCreateRequest;
-AccountCreateRequest.discriminator = void 0;
-AccountCreateRequest.attributeTypeMap = [
-  {
-    name: "emailAddress",
-    baseName: "email_address",
-    type: "string"
-  },
-  {
-    name: "clientId",
-    baseName: "client_id",
-    type: "string"
-  },
-  {
-    name: "clientSecret",
-    baseName: "client_secret",
-    type: "string"
-  },
-  {
-    name: "locale",
-    baseName: "locale",
-    type: "string"
-  }
-];
-
-// model/accountUpdateRequest.ts
-var _AccountUpdateRequest = class {
-  static getAttributeTypeMap() {
-    return _AccountUpdateRequest.attributeTypeMap;
-  }
-};
-var AccountUpdateRequest = _AccountUpdateRequest;
-AccountUpdateRequest.discriminator = void 0;
-AccountUpdateRequest.attributeTypeMap = [
-  {
-    name: "accountId",
-    baseName: "account_id",
-    type: "string"
-  },
-  {
-    name: "callbackUrl",
-    baseName: "callback_url",
-    type: "string"
-  },
-  {
-    name: "locale",
-    baseName: "locale",
-    type: "string"
-  }
-];
-
-// model/accountVerifyRequest.ts
-var _AccountVerifyRequest = class {
-  static getAttributeTypeMap() {
-    return _AccountVerifyRequest.attributeTypeMap;
-  }
-};
-var AccountVerifyRequest = _AccountVerifyRequest;
-AccountVerifyRequest.discriminator = void 0;
-AccountVerifyRequest.attributeTypeMap = [
-  {
-    name: "emailAddress",
-    baseName: "email_address",
-    type: "string"
-  }
-];
-
 // model/accountCreateResponse.ts
 var _AccountCreateResponse = class {
   static getAttributeTypeMap() {
     return _AccountCreateResponse.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "AccountCreateResponse");
   }
 };
 var AccountCreateResponse = _AccountCreateResponse;
@@ -18519,6 +18450,9 @@ var _AccountGetResponse = class {
   static getAttributeTypeMap() {
     return _AccountGetResponse.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "AccountGetResponse");
+  }
 };
 var AccountGetResponse = _AccountGetResponse;
 AccountGetResponse.discriminator = void 0;
@@ -18539,6 +18473,9 @@ AccountGetResponse.attributeTypeMap = [
 var _AccountResponse = class {
   static getAttributeTypeMap() {
     return _AccountResponse.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "AccountResponse");
   }
 };
 var AccountResponse = _AccountResponse;
@@ -18601,6 +18538,9 @@ var _AccountResponseQuotas = class {
   static getAttributeTypeMap() {
     return _AccountResponseQuotas.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "AccountResponseQuotas");
+  }
 };
 var AccountResponseQuotas = _AccountResponseQuotas;
 AccountResponseQuotas.discriminator = void 0;
@@ -18616,8 +18556,8 @@ AccountResponseQuotas.attributeTypeMap = [
     type: "number"
   },
   {
-    name: "totalTemplates",
-    baseName: "total_templates",
+    name: "templatesTotal",
+    baseName: "templates_total",
     type: "number"
   },
   {
@@ -18632,10 +18572,61 @@ AccountResponseQuotas.attributeTypeMap = [
   }
 ];
 
+// model/accountUpdateRequest.ts
+var _AccountUpdateRequest = class {
+  static getAttributeTypeMap() {
+    return _AccountUpdateRequest.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "AccountUpdateRequest");
+  }
+};
+var AccountUpdateRequest = _AccountUpdateRequest;
+AccountUpdateRequest.discriminator = void 0;
+AccountUpdateRequest.attributeTypeMap = [
+  {
+    name: "accountId",
+    baseName: "account_id",
+    type: "string"
+  },
+  {
+    name: "callbackUrl",
+    baseName: "callback_url",
+    type: "string"
+  },
+  {
+    name: "locale",
+    baseName: "locale",
+    type: "string"
+  }
+];
+
+// model/accountVerifyRequest.ts
+var _AccountVerifyRequest = class {
+  static getAttributeTypeMap() {
+    return _AccountVerifyRequest.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "AccountVerifyRequest");
+  }
+};
+var AccountVerifyRequest = _AccountVerifyRequest;
+AccountVerifyRequest.discriminator = void 0;
+AccountVerifyRequest.attributeTypeMap = [
+  {
+    name: "emailAddress",
+    baseName: "email_address",
+    type: "string"
+  }
+];
+
 // model/accountVerifyResponse.ts
 var _AccountVerifyResponse = class {
   static getAttributeTypeMap() {
     return _AccountVerifyResponse.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "AccountVerifyResponse");
   }
 };
 var AccountVerifyResponse = _AccountVerifyResponse;
@@ -18658,6 +18649,9 @@ var _AccountVerifyResponseAccount = class {
   static getAttributeTypeMap() {
     return _AccountVerifyResponseAccount.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "AccountVerifyResponseAccount");
+  }
 };
 var AccountVerifyResponseAccount = _AccountVerifyResponseAccount;
 AccountVerifyResponseAccount.discriminator = void 0;
@@ -18673,6 +18667,9 @@ AccountVerifyResponseAccount.attributeTypeMap = [
 var _ApiAppCreateRequest = class {
   static getAttributeTypeMap() {
     return _ApiAppCreateRequest.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "ApiAppCreateRequest");
   }
 };
 var ApiAppCreateRequest = _ApiAppCreateRequest;
@@ -18720,6 +18717,9 @@ var _ApiAppGetResponse = class {
   static getAttributeTypeMap() {
     return _ApiAppGetResponse.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "ApiAppGetResponse");
+  }
 };
 var ApiAppGetResponse = _ApiAppGetResponse;
 ApiAppGetResponse.discriminator = void 0;
@@ -18740,6 +18740,9 @@ ApiAppGetResponse.attributeTypeMap = [
 var _ApiAppListResponse = class {
   static getAttributeTypeMap() {
     return _ApiAppListResponse.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "ApiAppListResponse");
   }
 };
 var ApiAppListResponse = _ApiAppListResponse;
@@ -18766,6 +18769,9 @@ ApiAppListResponse.attributeTypeMap = [
 var _ApiAppResponse = class {
   static getAttributeTypeMap() {
     return _ApiAppResponse.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "ApiAppResponse");
   }
 };
 var ApiAppResponse = _ApiAppResponse;
@@ -18828,6 +18834,9 @@ var _ApiAppResponseOAuth = class {
   static getAttributeTypeMap() {
     return _ApiAppResponseOAuth.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "ApiAppResponseOAuth");
+  }
 };
 var ApiAppResponseOAuth = _ApiAppResponseOAuth;
 ApiAppResponseOAuth.discriminator = void 0;
@@ -18859,6 +18868,9 @@ var _ApiAppResponseOptions = class {
   static getAttributeTypeMap() {
     return _ApiAppResponseOptions.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "ApiAppResponseOptions");
+  }
 };
 var ApiAppResponseOptions = _ApiAppResponseOptions;
 ApiAppResponseOptions.discriminator = void 0;
@@ -18874,6 +18886,9 @@ ApiAppResponseOptions.attributeTypeMap = [
 var _ApiAppResponseOwnerAccount = class {
   static getAttributeTypeMap() {
     return _ApiAppResponseOwnerAccount.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "ApiAppResponseOwnerAccount");
   }
 };
 var ApiAppResponseOwnerAccount = _ApiAppResponseOwnerAccount;
@@ -18895,6 +18910,12 @@ ApiAppResponseOwnerAccount.attributeTypeMap = [
 var _ApiAppResponseWhiteLabelingOptions = class {
   static getAttributeTypeMap() {
     return _ApiAppResponseWhiteLabelingOptions.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(
+      data,
+      "ApiAppResponseWhiteLabelingOptions"
+    );
   }
 };
 var ApiAppResponseWhiteLabelingOptions = _ApiAppResponseWhiteLabelingOptions;
@@ -18977,6 +18998,9 @@ var _ApiAppUpdateRequest = class {
   static getAttributeTypeMap() {
     return _ApiAppUpdateRequest.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "ApiAppUpdateRequest");
+  }
 };
 var ApiAppUpdateRequest = _ApiAppUpdateRequest;
 ApiAppUpdateRequest.discriminator = void 0;
@@ -19023,6 +19047,9 @@ var _BulkSendJobGetResponse = class {
   static getAttributeTypeMap() {
     return _BulkSendJobGetResponse.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "BulkSendJobGetResponse");
+  }
 };
 var BulkSendJobGetResponse = _BulkSendJobGetResponse;
 BulkSendJobGetResponse.discriminator = void 0;
@@ -19056,6 +19083,12 @@ var _BulkSendJobGetResponseSignatureRequests = class {
   }
   static getAttributeTypeMap() {
     return _BulkSendJobGetResponseSignatureRequests.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(
+      data,
+      "BulkSendJobGetResponseSignatureRequests"
+    );
   }
 };
 var BulkSendJobGetResponseSignatureRequests = _BulkSendJobGetResponseSignatureRequests;
@@ -19188,6 +19221,9 @@ var _BulkSendJobListResponse = class {
   static getAttributeTypeMap() {
     return _BulkSendJobListResponse.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "BulkSendJobListResponse");
+  }
 };
 var BulkSendJobListResponse = _BulkSendJobListResponse;
 BulkSendJobListResponse.discriminator = void 0;
@@ -19213,6 +19249,9 @@ BulkSendJobListResponse.attributeTypeMap = [
 var _BulkSendJobResponse = class {
   static getAttributeTypeMap() {
     return _BulkSendJobResponse.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "BulkSendJobResponse");
   }
 };
 var BulkSendJobResponse = _BulkSendJobResponse;
@@ -19245,6 +19284,9 @@ var _BulkSendJobSendResponse = class {
   static getAttributeTypeMap() {
     return _BulkSendJobSendResponse.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "BulkSendJobSendResponse");
+  }
 };
 var BulkSendJobSendResponse = _BulkSendJobSendResponse;
 BulkSendJobSendResponse.discriminator = void 0;
@@ -19274,6 +19316,9 @@ var _EmbeddedEditUrlRequest = class {
   }
   static getAttributeTypeMap() {
     return _EmbeddedEditUrlRequest.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "EmbeddedEditUrlRequest");
   }
 };
 var EmbeddedEditUrlRequest = _EmbeddedEditUrlRequest;
@@ -19336,6 +19381,9 @@ var _EmbeddedEditUrlResponse = class {
   static getAttributeTypeMap() {
     return _EmbeddedEditUrlResponse.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "EmbeddedEditUrlResponse");
+  }
 };
 var EmbeddedEditUrlResponse = _EmbeddedEditUrlResponse;
 EmbeddedEditUrlResponse.discriminator = void 0;
@@ -19356,6 +19404,12 @@ EmbeddedEditUrlResponse.attributeTypeMap = [
 var _EmbeddedEditUrlResponseEmbedded = class {
   static getAttributeTypeMap() {
     return _EmbeddedEditUrlResponseEmbedded.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(
+      data,
+      "EmbeddedEditUrlResponseEmbedded"
+    );
   }
 };
 var EmbeddedEditUrlResponseEmbedded = _EmbeddedEditUrlResponseEmbedded;
@@ -19378,6 +19432,9 @@ var _EmbeddedSignUrlResponse = class {
   static getAttributeTypeMap() {
     return _EmbeddedSignUrlResponse.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "EmbeddedSignUrlResponse");
+  }
 };
 var EmbeddedSignUrlResponse = _EmbeddedSignUrlResponse;
 EmbeddedSignUrlResponse.discriminator = void 0;
@@ -19398,6 +19455,12 @@ EmbeddedSignUrlResponse.attributeTypeMap = [
 var _EmbeddedSignUrlResponseEmbedded = class {
   static getAttributeTypeMap() {
     return _EmbeddedSignUrlResponseEmbedded.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(
+      data,
+      "EmbeddedSignUrlResponseEmbedded"
+    );
   }
 };
 var EmbeddedSignUrlResponseEmbedded = _EmbeddedSignUrlResponseEmbedded;
@@ -19420,6 +19483,9 @@ var _ErrorResponse = class {
   static getAttributeTypeMap() {
     return _ErrorResponse.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "ErrorResponse");
+  }
 };
 var ErrorResponse = _ErrorResponse;
 ErrorResponse.discriminator = void 0;
@@ -19435,6 +19501,9 @@ ErrorResponse.attributeTypeMap = [
 var _ErrorResponseError = class {
   static getAttributeTypeMap() {
     return _ErrorResponseError.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "ErrorResponseError");
   }
 };
 var ErrorResponseError = _ErrorResponseError;
@@ -19461,6 +19530,9 @@ ErrorResponseError.attributeTypeMap = [
 var _EventCallbackRequest = class {
   static getAttributeTypeMap() {
     return _EventCallbackRequest.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "EventCallbackRequest");
   }
 };
 var EventCallbackRequest = _EventCallbackRequest;
@@ -19492,6 +19564,9 @@ EventCallbackRequest.attributeTypeMap = [
 var _EventCallbackRequestEvent = class {
   static getAttributeTypeMap() {
     return _EventCallbackRequestEvent.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "EventCallbackRequestEvent");
   }
 };
 var EventCallbackRequestEvent = _EventCallbackRequestEvent;
@@ -19542,6 +19617,7 @@ EventCallbackRequestEvent.attributeTypeMap = [
     EventTypeEnum2["SignatureRequestExpired"] = "signature_request_expired";
     EventTypeEnum2["TemplateCreated"] = "template_created";
     EventTypeEnum2["TemplateError"] = "template_error";
+    EventTypeEnum2["CallbackTest"] = "callback_test";
   })(EventTypeEnum = EventCallbackRequestEvent2.EventTypeEnum || (EventCallbackRequestEvent2.EventTypeEnum = {}));
 })(EventCallbackRequestEvent || (EventCallbackRequestEvent = {}));
 
@@ -19549,6 +19625,12 @@ EventCallbackRequestEvent.attributeTypeMap = [
 var _EventCallbackRequestEventMetadata = class {
   static getAttributeTypeMap() {
     return _EventCallbackRequestEventMetadata.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(
+      data,
+      "EventCallbackRequestEventMetadata"
+    );
   }
 };
 var EventCallbackRequestEventMetadata = _EventCallbackRequestEventMetadata;
@@ -19581,6 +19663,9 @@ var _FileResponse = class {
   static getAttributeTypeMap() {
     return _FileResponse.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "FileResponse");
+  }
 };
 var FileResponse = _FileResponse;
 FileResponse.discriminator = void 0;
@@ -19602,6 +19687,9 @@ var _FileResponseDataUri = class {
   static getAttributeTypeMap() {
     return _FileResponseDataUri.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "FileResponseDataUri");
+  }
 };
 var FileResponseDataUri = _FileResponseDataUri;
 FileResponseDataUri.discriminator = void 0;
@@ -19617,6 +19705,9 @@ FileResponseDataUri.attributeTypeMap = [
 var _ListInfoResponse = class {
   static getAttributeTypeMap() {
     return _ListInfoResponse.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "ListInfoResponse");
   }
 };
 var ListInfoResponse = _ListInfoResponse;
@@ -19651,6 +19742,9 @@ var _OAuthTokenGenerateRequest = class {
   }
   static getAttributeTypeMap() {
     return _OAuthTokenGenerateRequest.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "OAuthTokenGenerateRequest");
   }
 };
 var OAuthTokenGenerateRequest = _OAuthTokenGenerateRequest;
@@ -19691,6 +19785,9 @@ var _OAuthTokenRefreshRequest = class {
   static getAttributeTypeMap() {
     return _OAuthTokenRefreshRequest.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "OAuthTokenRefreshRequest");
+  }
 };
 var OAuthTokenRefreshRequest = _OAuthTokenRefreshRequest;
 OAuthTokenRefreshRequest.discriminator = void 0;
@@ -19711,6 +19808,9 @@ OAuthTokenRefreshRequest.attributeTypeMap = [
 var _OAuthTokenResponse = class {
   static getAttributeTypeMap() {
     return _OAuthTokenResponse.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "OAuthTokenResponse");
   }
 };
 var OAuthTokenResponse = _OAuthTokenResponse;
@@ -19748,6 +19848,9 @@ var _ReportCreateRequest = class {
   static getAttributeTypeMap() {
     return _ReportCreateRequest.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "ReportCreateRequest");
+  }
 };
 var ReportCreateRequest = _ReportCreateRequest;
 ReportCreateRequest.discriminator = void 0;
@@ -19781,6 +19884,9 @@ var _ReportCreateResponse = class {
   static getAttributeTypeMap() {
     return _ReportCreateResponse.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "ReportCreateResponse");
+  }
 };
 var ReportCreateResponse = _ReportCreateResponse;
 ReportCreateResponse.discriminator = void 0;
@@ -19801,6 +19907,9 @@ ReportCreateResponse.attributeTypeMap = [
 var _ReportResponse = class {
   static getAttributeTypeMap() {
     return _ReportResponse.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "ReportResponse");
   }
 };
 var ReportResponse = _ReportResponse;
@@ -19843,6 +19952,12 @@ var _SignatureRequestBulkCreateEmbeddedWithTemplateRequest = class {
   }
   static getAttributeTypeMap() {
     return _SignatureRequestBulkCreateEmbeddedWithTemplateRequest.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(
+      data,
+      "SignatureRequestBulkCreateEmbeddedWithTemplateRequest"
+    );
   }
 };
 var SignatureRequestBulkCreateEmbeddedWithTemplateRequest = _SignatureRequestBulkCreateEmbeddedWithTemplateRequest;
@@ -19923,6 +20038,12 @@ var _SignatureRequestBulkSendWithTemplateRequest = class {
   }
   static getAttributeTypeMap() {
     return _SignatureRequestBulkSendWithTemplateRequest.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(
+      data,
+      "SignatureRequestBulkSendWithTemplateRequest"
+    );
   }
 };
 var SignatureRequestBulkSendWithTemplateRequest = _SignatureRequestBulkSendWithTemplateRequest;
@@ -20008,6 +20129,12 @@ var _SignatureRequestCreateEmbeddedRequest = class {
   static getAttributeTypeMap() {
     return _SignatureRequestCreateEmbeddedRequest.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(
+      data,
+      "SignatureRequestCreateEmbeddedRequest"
+    );
+  }
 };
 var SignatureRequestCreateEmbeddedRequest = _SignatureRequestCreateEmbeddedRequest;
 SignatureRequestCreateEmbeddedRequest.discriminator = void 0;
@@ -20018,19 +20145,24 @@ SignatureRequestCreateEmbeddedRequest.attributeTypeMap = [
     type: "string"
   },
   {
+    name: "files",
+    baseName: "files",
+    type: "Array<RequestFile>"
+  },
+  {
+    name: "fileUrls",
+    baseName: "file_urls",
+    type: "Array<string>"
+  },
+  {
     name: "signers",
     baseName: "signers",
     type: "Array<SubSignatureRequestSigner>"
   },
   {
-    name: "file",
-    baseName: "file",
-    type: "Array<RequestFile>"
-  },
-  {
-    name: "fileUrl",
-    baseName: "file_url",
-    type: "Array<string>"
+    name: "groupedSigners",
+    baseName: "grouped_signers",
+    type: "Array<SubSignatureRequestGroupedSigners>"
   },
   {
     name: "allowDecline",
@@ -20139,6 +20271,12 @@ var _SignatureRequestCreateEmbeddedWithTemplateRequest = class {
   static getAttributeTypeMap() {
     return _SignatureRequestCreateEmbeddedWithTemplateRequest.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(
+      data,
+      "SignatureRequestCreateEmbeddedWithTemplateRequest"
+    );
+  }
 };
 var SignatureRequestCreateEmbeddedWithTemplateRequest = _SignatureRequestCreateEmbeddedWithTemplateRequest;
 SignatureRequestCreateEmbeddedWithTemplateRequest.discriminator = void 0;
@@ -20174,13 +20312,13 @@ SignatureRequestCreateEmbeddedWithTemplateRequest.attributeTypeMap = [
     type: "Array<SubCustomField>"
   },
   {
-    name: "file",
-    baseName: "file",
+    name: "files",
+    baseName: "files",
     type: "Array<RequestFile>"
   },
   {
-    name: "fileUrl",
-    baseName: "file_url",
+    name: "fileUrls",
+    baseName: "file_urls",
     type: "Array<string>"
   },
   {
@@ -20225,6 +20363,9 @@ var _SignatureRequestGetResponse = class {
   static getAttributeTypeMap() {
     return _SignatureRequestGetResponse.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "SignatureRequestGetResponse");
+  }
 };
 var SignatureRequestGetResponse = _SignatureRequestGetResponse;
 SignatureRequestGetResponse.discriminator = void 0;
@@ -20245,6 +20386,9 @@ SignatureRequestGetResponse.attributeTypeMap = [
 var _SignatureRequestListResponse = class {
   static getAttributeTypeMap() {
     return _SignatureRequestListResponse.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "SignatureRequestListResponse");
   }
 };
 var SignatureRequestListResponse = _SignatureRequestListResponse;
@@ -20272,6 +20416,9 @@ var _SignatureRequestRemindRequest = class {
   static getAttributeTypeMap() {
     return _SignatureRequestRemindRequest.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "SignatureRequestRemindRequest");
+  }
 };
 var SignatureRequestRemindRequest = _SignatureRequestRemindRequest;
 SignatureRequestRemindRequest.discriminator = void 0;
@@ -20295,6 +20442,9 @@ var _SignatureRequestResponse = class {
   }
   static getAttributeTypeMap() {
     return _SignatureRequestResponse.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "SignatureRequestResponse");
   }
 };
 var SignatureRequestResponse = _SignatureRequestResponse;
@@ -20422,6 +20572,12 @@ var _SignatureRequestResponseAttachment = class {
   static getAttributeTypeMap() {
     return _SignatureRequestResponseAttachment.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(
+      data,
+      "SignatureRequestResponseAttachment"
+    );
+  }
 };
 var SignatureRequestResponseAttachment = _SignatureRequestResponseAttachment;
 SignatureRequestResponseAttachment.discriminator = void 0;
@@ -20515,6 +20671,12 @@ var _SignatureRequestResponseCustomFieldCheckbox = class extends SignatureReques
   static getAttributeTypeMap() {
     return super.getAttributeTypeMap().concat(_SignatureRequestResponseCustomFieldCheckbox.attributeTypeMap);
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(
+      data,
+      "SignatureRequestResponseCustomFieldCheckbox"
+    );
+  }
 };
 var SignatureRequestResponseCustomFieldCheckbox = _SignatureRequestResponseCustomFieldCheckbox;
 SignatureRequestResponseCustomFieldCheckbox.discriminator = void 0;
@@ -20539,6 +20701,12 @@ var _SignatureRequestResponseCustomFieldText = class extends SignatureRequestRes
   }
   static getAttributeTypeMap() {
     return super.getAttributeTypeMap().concat(_SignatureRequestResponseCustomFieldText.attributeTypeMap);
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(
+      data,
+      "SignatureRequestResponseCustomFieldText"
+    );
   }
 };
 var SignatureRequestResponseCustomFieldText = _SignatureRequestResponseCustomFieldText;
@@ -20655,6 +20823,12 @@ var _SignatureRequestResponseDataValueCheckbox = class extends SignatureRequestR
   static getAttributeTypeMap() {
     return super.getAttributeTypeMap().concat(_SignatureRequestResponseDataValueCheckbox.attributeTypeMap);
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(
+      data,
+      "SignatureRequestResponseDataValueCheckbox"
+    );
+  }
 };
 var SignatureRequestResponseDataValueCheckbox = _SignatureRequestResponseDataValueCheckbox;
 SignatureRequestResponseDataValueCheckbox.discriminator = void 0;
@@ -20679,6 +20853,12 @@ var _SignatureRequestResponseDataValueCheckboxMerge = class extends SignatureReq
   }
   static getAttributeTypeMap() {
     return super.getAttributeTypeMap().concat(_SignatureRequestResponseDataValueCheckboxMerge.attributeTypeMap);
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(
+      data,
+      "SignatureRequestResponseDataValueCheckboxMerge"
+    );
   }
 };
 var SignatureRequestResponseDataValueCheckboxMerge = _SignatureRequestResponseDataValueCheckboxMerge;
@@ -20705,6 +20885,12 @@ var _SignatureRequestResponseDataValueDateSigned = class extends SignatureReques
   static getAttributeTypeMap() {
     return super.getAttributeTypeMap().concat(_SignatureRequestResponseDataValueDateSigned.attributeTypeMap);
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(
+      data,
+      "SignatureRequestResponseDataValueDateSigned"
+    );
+  }
 };
 var SignatureRequestResponseDataValueDateSigned = _SignatureRequestResponseDataValueDateSigned;
 SignatureRequestResponseDataValueDateSigned.discriminator = void 0;
@@ -20729,6 +20915,12 @@ var _SignatureRequestResponseDataValueDropdown = class extends SignatureRequestR
   }
   static getAttributeTypeMap() {
     return super.getAttributeTypeMap().concat(_SignatureRequestResponseDataValueDropdown.attributeTypeMap);
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(
+      data,
+      "SignatureRequestResponseDataValueDropdown"
+    );
   }
 };
 var SignatureRequestResponseDataValueDropdown = _SignatureRequestResponseDataValueDropdown;
@@ -20755,6 +20947,12 @@ var _SignatureRequestResponseDataValueInitials = class extends SignatureRequestR
   static getAttributeTypeMap() {
     return super.getAttributeTypeMap().concat(_SignatureRequestResponseDataValueInitials.attributeTypeMap);
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(
+      data,
+      "SignatureRequestResponseDataValueInitials"
+    );
+  }
 };
 var SignatureRequestResponseDataValueInitials = _SignatureRequestResponseDataValueInitials;
 SignatureRequestResponseDataValueInitials.discriminator = void 0;
@@ -20779,6 +20977,12 @@ var _SignatureRequestResponseDataValueRadio = class extends SignatureRequestResp
   }
   static getAttributeTypeMap() {
     return super.getAttributeTypeMap().concat(_SignatureRequestResponseDataValueRadio.attributeTypeMap);
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(
+      data,
+      "SignatureRequestResponseDataValueRadio"
+    );
   }
 };
 var SignatureRequestResponseDataValueRadio = _SignatureRequestResponseDataValueRadio;
@@ -20805,6 +21009,12 @@ var _SignatureRequestResponseDataValueSignature = class extends SignatureRequest
   static getAttributeTypeMap() {
     return super.getAttributeTypeMap().concat(_SignatureRequestResponseDataValueSignature.attributeTypeMap);
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(
+      data,
+      "SignatureRequestResponseDataValueSignature"
+    );
+  }
 };
 var SignatureRequestResponseDataValueSignature = _SignatureRequestResponseDataValueSignature;
 SignatureRequestResponseDataValueSignature.discriminator = void 0;
@@ -20829,6 +21039,12 @@ var _SignatureRequestResponseDataValueText = class extends SignatureRequestRespo
   }
   static getAttributeTypeMap() {
     return super.getAttributeTypeMap().concat(_SignatureRequestResponseDataValueText.attributeTypeMap);
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(
+      data,
+      "SignatureRequestResponseDataValueText"
+    );
   }
 };
 var SignatureRequestResponseDataValueText = _SignatureRequestResponseDataValueText;
@@ -20855,6 +21071,12 @@ var _SignatureRequestResponseDataValueTextMerge = class extends SignatureRequest
   static getAttributeTypeMap() {
     return super.getAttributeTypeMap().concat(_SignatureRequestResponseDataValueTextMerge.attributeTypeMap);
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(
+      data,
+      "SignatureRequestResponseDataValueTextMerge"
+    );
+  }
 };
 var SignatureRequestResponseDataValueTextMerge = _SignatureRequestResponseDataValueTextMerge;
 SignatureRequestResponseDataValueTextMerge.discriminator = void 0;
@@ -20876,6 +21098,12 @@ var _SignatureRequestResponseSignatures = class {
   static getAttributeTypeMap() {
     return _SignatureRequestResponseSignatures.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(
+      data,
+      "SignatureRequestResponseSignatures"
+    );
+  }
 };
 var SignatureRequestResponseSignatures = _SignatureRequestResponseSignatures;
 SignatureRequestResponseSignatures.discriminator = void 0;
@@ -20883,6 +21111,11 @@ SignatureRequestResponseSignatures.attributeTypeMap = [
   {
     name: "signatureId",
     baseName: "signature_id",
+    type: "string"
+  },
+  {
+    name: "signerGroupGuid",
+    baseName: "signer_group_guid",
     type: "string"
   },
   {
@@ -20985,24 +21218,32 @@ var _SignatureRequestSendRequest = class {
   static getAttributeTypeMap() {
     return _SignatureRequestSendRequest.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "SignatureRequestSendRequest");
+  }
 };
 var SignatureRequestSendRequest = _SignatureRequestSendRequest;
 SignatureRequestSendRequest.discriminator = void 0;
 SignatureRequestSendRequest.attributeTypeMap = [
+  {
+    name: "files",
+    baseName: "files",
+    type: "Array<RequestFile>"
+  },
+  {
+    name: "fileUrls",
+    baseName: "file_urls",
+    type: "Array<string>"
+  },
   {
     name: "signers",
     baseName: "signers",
     type: "Array<SubSignatureRequestSigner>"
   },
   {
-    name: "file",
-    baseName: "file",
-    type: "Array<RequestFile>"
-  },
-  {
-    name: "fileUrl",
-    baseName: "file_url",
-    type: "Array<string>"
+    name: "groupedSigners",
+    baseName: "grouped_signers",
+    type: "Array<SubSignatureRequestGroupedSigners>"
   },
   {
     name: "allowDecline",
@@ -21121,6 +21362,12 @@ var _SignatureRequestSendWithTemplateRequest = class {
   static getAttributeTypeMap() {
     return _SignatureRequestSendWithTemplateRequest.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(
+      data,
+      "SignatureRequestSendWithTemplateRequest"
+    );
+  }
 };
 var SignatureRequestSendWithTemplateRequest = _SignatureRequestSendWithTemplateRequest;
 SignatureRequestSendWithTemplateRequest.discriminator = void 0;
@@ -21156,13 +21403,13 @@ SignatureRequestSendWithTemplateRequest.attributeTypeMap = [
     type: "Array<SubCustomField>"
   },
   {
-    name: "file",
-    baseName: "file",
+    name: "files",
+    baseName: "files",
     type: "Array<RequestFile>"
   },
   {
-    name: "fileUrl",
-    baseName: "file_url",
+    name: "fileUrls",
+    baseName: "file_urls",
     type: "Array<string>"
   },
   {
@@ -21212,6 +21459,9 @@ var _SignatureRequestUpdateRequest = class {
   static getAttributeTypeMap() {
     return _SignatureRequestUpdateRequest.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "SignatureRequestUpdateRequest");
+  }
 };
 var SignatureRequestUpdateRequest = _SignatureRequestUpdateRequest;
 SignatureRequestUpdateRequest.discriminator = void 0;
@@ -21246,6 +21496,9 @@ var _SubAttachment = class {
   static getAttributeTypeMap() {
     return _SubAttachment.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "SubAttachment");
+  }
 };
 var SubAttachment = _SubAttachment;
 SubAttachment.discriminator = void 0;
@@ -21277,6 +21530,9 @@ var _SubBulkSignerList = class {
   static getAttributeTypeMap() {
     return _SubBulkSignerList.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "SubBulkSignerList");
+  }
 };
 var SubBulkSignerList = _SubBulkSignerList;
 SubBulkSignerList.discriminator = void 0;
@@ -21298,6 +21554,9 @@ var _SubBulkSignerListCustomField = class {
   static getAttributeTypeMap() {
     return _SubBulkSignerListCustomField.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "SubBulkSignerListCustomField");
+  }
 };
 var SubBulkSignerListCustomField = _SubBulkSignerListCustomField;
 SubBulkSignerListCustomField.discriminator = void 0;
@@ -21318,6 +21577,9 @@ SubBulkSignerListCustomField.attributeTypeMap = [
 var _SubCC = class {
   static getAttributeTypeMap() {
     return _SubCC.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "SubCC");
   }
 };
 var SubCC = _SubCC;
@@ -21342,6 +21604,9 @@ var _SubCustomField = class {
   }
   static getAttributeTypeMap() {
     return _SubCustomField.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "SubCustomField");
   }
 };
 var SubCustomField = _SubCustomField;
@@ -21378,6 +21643,9 @@ var _SubEditorOptions = class {
   static getAttributeTypeMap() {
     return _SubEditorOptions.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "SubEditorOptions");
+  }
 };
 var SubEditorOptions = _SubEditorOptions;
 SubEditorOptions.discriminator = void 0;
@@ -21398,6 +21666,9 @@ SubEditorOptions.attributeTypeMap = [
 var _SubFieldOptions = class {
   static getAttributeTypeMap() {
     return _SubFieldOptions.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "SubFieldOptions");
   }
 };
 var SubFieldOptions = _SubFieldOptions;
@@ -21425,6 +21696,9 @@ SubFieldOptions.attributeTypeMap = [
 var _SubFormFieldGroup = class {
   static getAttributeTypeMap() {
     return _SubFormFieldGroup.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "SubFormFieldGroup");
   }
 };
 var SubFormFieldGroup = _SubFormFieldGroup;
@@ -21454,6 +21728,9 @@ var _SubFormFieldRule = class {
   }
   static getAttributeTypeMap() {
     return _SubFormFieldRule.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "SubFormFieldRule");
   }
 };
 var SubFormFieldRule = _SubFormFieldRule;
@@ -21485,6 +21762,9 @@ SubFormFieldRule.attributeTypeMap = [
 var _SubFormFieldRuleAction = class {
   static getAttributeTypeMap() {
     return _SubFormFieldRuleAction.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "SubFormFieldRuleAction");
   }
 };
 var SubFormFieldRuleAction = _SubFormFieldRuleAction;
@@ -21523,6 +21803,9 @@ SubFormFieldRuleAction.attributeTypeMap = [
 var _SubFormFieldRuleTrigger = class {
   static getAttributeTypeMap() {
     return _SubFormFieldRuleTrigger.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "SubFormFieldRuleTrigger");
   }
 };
 var SubFormFieldRuleTrigger = _SubFormFieldRuleTrigger;
@@ -21671,6 +21954,12 @@ var _SubFormFieldsPerDocumentCheckbox = class extends SubFormFieldsPerDocumentBa
   static getAttributeTypeMap() {
     return super.getAttributeTypeMap().concat(_SubFormFieldsPerDocumentCheckbox.attributeTypeMap);
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(
+      data,
+      "SubFormFieldsPerDocumentCheckbox"
+    );
+  }
 };
 var SubFormFieldsPerDocumentCheckbox = _SubFormFieldsPerDocumentCheckbox;
 SubFormFieldsPerDocumentCheckbox.discriminator = void 0;
@@ -21701,6 +21990,12 @@ var _SubFormFieldsPerDocumentCheckboxMerge = class extends SubFormFieldsPerDocum
   static getAttributeTypeMap() {
     return super.getAttributeTypeMap().concat(_SubFormFieldsPerDocumentCheckboxMerge.attributeTypeMap);
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(
+      data,
+      "SubFormFieldsPerDocumentCheckboxMerge"
+    );
+  }
 };
 var SubFormFieldsPerDocumentCheckboxMerge = _SubFormFieldsPerDocumentCheckboxMerge;
 SubFormFieldsPerDocumentCheckboxMerge.discriminator = void 0;
@@ -21721,6 +22016,12 @@ var _SubFormFieldsPerDocumentDateSigned = class extends SubFormFieldsPerDocument
   static getAttributeTypeMap() {
     return super.getAttributeTypeMap().concat(_SubFormFieldsPerDocumentDateSigned.attributeTypeMap);
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(
+      data,
+      "SubFormFieldsPerDocumentDateSigned"
+    );
+  }
 };
 var SubFormFieldsPerDocumentDateSigned = _SubFormFieldsPerDocumentDateSigned;
 SubFormFieldsPerDocumentDateSigned.discriminator = void 0;
@@ -21740,6 +22041,12 @@ var _SubFormFieldsPerDocumentDropdown = class extends SubFormFieldsPerDocumentBa
   }
   static getAttributeTypeMap() {
     return super.getAttributeTypeMap().concat(_SubFormFieldsPerDocumentDropdown.attributeTypeMap);
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(
+      data,
+      "SubFormFieldsPerDocumentDropdown"
+    );
   }
 };
 var SubFormFieldsPerDocumentDropdown = _SubFormFieldsPerDocumentDropdown;
@@ -21771,6 +22078,12 @@ var _SubFormFieldsPerDocumentHyperlink = class extends SubFormFieldsPerDocumentB
   static getAttributeTypeMap() {
     return super.getAttributeTypeMap().concat(_SubFormFieldsPerDocumentHyperlink.attributeTypeMap);
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(
+      data,
+      "SubFormFieldsPerDocumentHyperlink"
+    );
+  }
 };
 var SubFormFieldsPerDocumentHyperlink = _SubFormFieldsPerDocumentHyperlink;
 SubFormFieldsPerDocumentHyperlink.discriminator = void 0;
@@ -21801,6 +22114,12 @@ var _SubFormFieldsPerDocumentInitials = class extends SubFormFieldsPerDocumentBa
   static getAttributeTypeMap() {
     return super.getAttributeTypeMap().concat(_SubFormFieldsPerDocumentInitials.attributeTypeMap);
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(
+      data,
+      "SubFormFieldsPerDocumentInitials"
+    );
+  }
 };
 var SubFormFieldsPerDocumentInitials = _SubFormFieldsPerDocumentInitials;
 SubFormFieldsPerDocumentInitials.discriminator = void 0;
@@ -21820,6 +22139,9 @@ var _SubFormFieldsPerDocumentRadio = class extends SubFormFieldsPerDocumentBase 
   }
   static getAttributeTypeMap() {
     return super.getAttributeTypeMap().concat(_SubFormFieldsPerDocumentRadio.attributeTypeMap);
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "SubFormFieldsPerDocumentRadio");
   }
 };
 var SubFormFieldsPerDocumentRadio = _SubFormFieldsPerDocumentRadio;
@@ -21851,6 +22173,12 @@ var _SubFormFieldsPerDocumentSignature = class extends SubFormFieldsPerDocumentB
   static getAttributeTypeMap() {
     return super.getAttributeTypeMap().concat(_SubFormFieldsPerDocumentSignature.attributeTypeMap);
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(
+      data,
+      "SubFormFieldsPerDocumentSignature"
+    );
+  }
 };
 var SubFormFieldsPerDocumentSignature = _SubFormFieldsPerDocumentSignature;
 SubFormFieldsPerDocumentSignature.discriminator = void 0;
@@ -21870,6 +22198,9 @@ var _SubFormFieldsPerDocumentText = class extends SubFormFieldsPerDocumentBase {
   }
   static getAttributeTypeMap() {
     return super.getAttributeTypeMap().concat(_SubFormFieldsPerDocumentText.attributeTypeMap);
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "SubFormFieldsPerDocumentText");
   }
 };
 var SubFormFieldsPerDocumentText = _SubFormFieldsPerDocumentText;
@@ -21941,6 +22272,12 @@ var _SubFormFieldsPerDocumentTextMerge = class extends SubFormFieldsPerDocumentB
   static getAttributeTypeMap() {
     return super.getAttributeTypeMap().concat(_SubFormFieldsPerDocumentTextMerge.attributeTypeMap);
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(
+      data,
+      "SubFormFieldsPerDocumentTextMerge"
+    );
+  }
 };
 var SubFormFieldsPerDocumentTextMerge = _SubFormFieldsPerDocumentTextMerge;
 SubFormFieldsPerDocumentTextMerge.discriminator = void 0;
@@ -21972,6 +22309,9 @@ var _SubMergeField = class {
   static getAttributeTypeMap() {
     return _SubMergeField.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "SubMergeField");
+  }
 };
 var SubMergeField = _SubMergeField;
 SubMergeField.discriminator = void 0;
@@ -21999,6 +22339,9 @@ SubMergeField.attributeTypeMap = [
 var _SubOAuth = class {
   static getAttributeTypeMap() {
     return _SubOAuth.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "SubOAuth");
   }
 };
 var SubOAuth = _SubOAuth;
@@ -22037,6 +22380,9 @@ var _SubOptions = class {
   static getAttributeTypeMap() {
     return _SubOptions.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "SubOptions");
+  }
 };
 var SubOptions = _SubOptions;
 SubOptions.discriminator = void 0;
@@ -22048,10 +22394,45 @@ SubOptions.attributeTypeMap = [
   }
 ];
 
+// model/subSignatureRequestGroupedSigners.ts
+var _SubSignatureRequestGroupedSigners = class {
+  static getAttributeTypeMap() {
+    return _SubSignatureRequestGroupedSigners.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(
+      data,
+      "SubSignatureRequestGroupedSigners"
+    );
+  }
+};
+var SubSignatureRequestGroupedSigners = _SubSignatureRequestGroupedSigners;
+SubSignatureRequestGroupedSigners.discriminator = void 0;
+SubSignatureRequestGroupedSigners.attributeTypeMap = [
+  {
+    name: "group",
+    baseName: "group",
+    type: "string"
+  },
+  {
+    name: "signers",
+    baseName: "signers",
+    type: "Array<SubSignatureRequestSigner>"
+  },
+  {
+    name: "order",
+    baseName: "order",
+    type: "number"
+  }
+];
+
 // model/subSignatureRequestSigner.ts
 var _SubSignatureRequestSigner = class {
   static getAttributeTypeMap() {
     return _SubSignatureRequestSigner.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "SubSignatureRequestSigner");
   }
 };
 var SubSignatureRequestSigner = _SubSignatureRequestSigner;
@@ -22100,6 +22481,12 @@ SubSignatureRequestSigner.attributeTypeMap = [
 var _SubSignatureRequestTemplateSigner = class {
   static getAttributeTypeMap() {
     return _SubSignatureRequestTemplateSigner.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(
+      data,
+      "SubSignatureRequestTemplateSigner"
+    );
   }
 };
 var SubSignatureRequestTemplateSigner = _SubSignatureRequestTemplateSigner;
@@ -22155,6 +22542,9 @@ var _SubSigningOptions = class {
   static getAttributeTypeMap() {
     return _SubSigningOptions.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "SubSigningOptions");
+  }
 };
 var SubSigningOptions = _SubSigningOptions;
 SubSigningOptions.discriminator = void 0;
@@ -22200,6 +22590,9 @@ var _SubTeamResponse = class {
   static getAttributeTypeMap() {
     return _SubTeamResponse.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "SubTeamResponse");
+  }
 };
 var SubTeamResponse = _SubTeamResponse;
 SubTeamResponse.discriminator = void 0;
@@ -22221,6 +22614,9 @@ var _SubTemplateRole = class {
   static getAttributeTypeMap() {
     return _SubTemplateRole.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "SubTemplateRole");
+  }
 };
 var SubTemplateRole = _SubTemplateRole;
 SubTemplateRole.discriminator = void 0;
@@ -22241,6 +22637,9 @@ SubTemplateRole.attributeTypeMap = [
 var _SubUnclaimedDraftSigner = class {
   static getAttributeTypeMap() {
     return _SubUnclaimedDraftSigner.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "SubUnclaimedDraftSigner");
   }
 };
 var SubUnclaimedDraftSigner = _SubUnclaimedDraftSigner;
@@ -22267,6 +22666,12 @@ SubUnclaimedDraftSigner.attributeTypeMap = [
 var _SubUnclaimedDraftTemplateSigner = class {
   static getAttributeTypeMap() {
     return _SubUnclaimedDraftTemplateSigner.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(
+      data,
+      "SubUnclaimedDraftTemplateSigner"
+    );
   }
 };
 var SubUnclaimedDraftTemplateSigner = _SubUnclaimedDraftTemplateSigner;
@@ -22309,6 +22714,9 @@ var _SubWhiteLabelingOptions = class {
   }
   static getAttributeTypeMap() {
     return _SubWhiteLabelingOptions.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "SubWhiteLabelingOptions");
   }
 };
 var SubWhiteLabelingOptions = _SubWhiteLabelingOptions;
@@ -22403,6 +22811,9 @@ var _TeamAddMemberRequest = class {
   static getAttributeTypeMap() {
     return _TeamAddMemberRequest.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "TeamAddMemberRequest");
+  }
 };
 var TeamAddMemberRequest = _TeamAddMemberRequest;
 TeamAddMemberRequest.discriminator = void 0;
@@ -22441,6 +22852,9 @@ var _TeamCreateRequest = class {
   static getAttributeTypeMap() {
     return _TeamCreateRequest.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "TeamCreateRequest");
+  }
 };
 var TeamCreateRequest = _TeamCreateRequest;
 TeamCreateRequest.discriminator = void 0;
@@ -22456,6 +22870,9 @@ TeamCreateRequest.attributeTypeMap = [
 var _TeamGetInfoResponse = class {
   static getAttributeTypeMap() {
     return _TeamGetInfoResponse.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "TeamGetInfoResponse");
   }
 };
 var TeamGetInfoResponse = _TeamGetInfoResponse;
@@ -22478,6 +22895,9 @@ var _TeamGetResponse = class {
   static getAttributeTypeMap() {
     return _TeamGetResponse.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "TeamGetResponse");
+  }
 };
 var TeamGetResponse = _TeamGetResponse;
 TeamGetResponse.discriminator = void 0;
@@ -22498,6 +22918,9 @@ TeamGetResponse.attributeTypeMap = [
 var _TeamInfoResponse = class {
   static getAttributeTypeMap() {
     return _TeamInfoResponse.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "TeamInfoResponse");
   }
 };
 var TeamInfoResponse = _TeamInfoResponse;
@@ -22534,6 +22957,9 @@ TeamInfoResponse.attributeTypeMap = [
 var _TeamInviteResponse = class {
   static getAttributeTypeMap() {
     return _TeamInviteResponse.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "TeamInviteResponse");
   }
 };
 var TeamInviteResponse = _TeamInviteResponse;
@@ -22576,6 +23002,9 @@ var _TeamInvitesResponse = class {
   static getAttributeTypeMap() {
     return _TeamInvitesResponse.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "TeamInvitesResponse");
+  }
 };
 var TeamInvitesResponse = _TeamInvitesResponse;
 TeamInvitesResponse.discriminator = void 0;
@@ -22596,6 +23025,9 @@ TeamInvitesResponse.attributeTypeMap = [
 var _TeamMemberResponse = class {
   static getAttributeTypeMap() {
     return _TeamMemberResponse.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "TeamMemberResponse");
   }
 };
 var TeamMemberResponse = _TeamMemberResponse;
@@ -22623,6 +23055,9 @@ var _TeamMembersResponse = class {
   static getAttributeTypeMap() {
     return _TeamMembersResponse.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "TeamMembersResponse");
+  }
 };
 var TeamMembersResponse = _TeamMembersResponse;
 TeamMembersResponse.discriminator = void 0;
@@ -22649,6 +23084,9 @@ var _TeamParentResponse = class {
   static getAttributeTypeMap() {
     return _TeamParentResponse.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "TeamParentResponse");
+  }
 };
 var TeamParentResponse = _TeamParentResponse;
 TeamParentResponse.discriminator = void 0;
@@ -22669,6 +23107,9 @@ TeamParentResponse.attributeTypeMap = [
 var _TeamRemoveMemberRequest = class {
   static getAttributeTypeMap() {
     return _TeamRemoveMemberRequest.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "TeamRemoveMemberRequest");
   }
 };
 var TeamRemoveMemberRequest = _TeamRemoveMemberRequest;
@@ -22715,6 +23156,9 @@ var _TeamResponse = class {
   static getAttributeTypeMap() {
     return _TeamResponse.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "TeamResponse");
+  }
 };
 var TeamResponse = _TeamResponse;
 TeamResponse.discriminator = void 0;
@@ -22740,6 +23184,9 @@ TeamResponse.attributeTypeMap = [
 var _TeamSubTeamsResponse = class {
   static getAttributeTypeMap() {
     return _TeamSubTeamsResponse.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "TeamSubTeamsResponse");
   }
 };
 var TeamSubTeamsResponse = _TeamSubTeamsResponse;
@@ -22767,6 +23214,9 @@ var _TeamUpdateRequest = class {
   static getAttributeTypeMap() {
     return _TeamUpdateRequest.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "TeamUpdateRequest");
+  }
 };
 var TeamUpdateRequest = _TeamUpdateRequest;
 TeamUpdateRequest.discriminator = void 0;
@@ -22785,6 +23235,9 @@ var _TemplateAddUserRequest = class {
   }
   static getAttributeTypeMap() {
     return _TemplateAddUserRequest.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "TemplateAddUserRequest");
   }
 };
 var TemplateAddUserRequest = _TemplateAddUserRequest;
@@ -22823,6 +23276,12 @@ var _TemplateCreateEmbeddedDraftRequest = class {
   static getAttributeTypeMap() {
     return _TemplateCreateEmbeddedDraftRequest.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(
+      data,
+      "TemplateCreateEmbeddedDraftRequest"
+    );
+  }
 };
 var TemplateCreateEmbeddedDraftRequest = _TemplateCreateEmbeddedDraftRequest;
 TemplateCreateEmbeddedDraftRequest.discriminator = void 0;
@@ -22833,13 +23292,13 @@ TemplateCreateEmbeddedDraftRequest.attributeTypeMap = [
     type: "string"
   },
   {
-    name: "file",
-    baseName: "file",
+    name: "files",
+    baseName: "files",
     type: "Array<RequestFile>"
   },
   {
-    name: "fileUrl",
-    baseName: "file_url",
+    name: "fileUrls",
+    baseName: "file_urls",
     type: "Array<string>"
   },
   {
@@ -22959,6 +23418,12 @@ var _TemplateCreateEmbeddedDraftResponse = class {
   static getAttributeTypeMap() {
     return _TemplateCreateEmbeddedDraftResponse.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(
+      data,
+      "TemplateCreateEmbeddedDraftResponse"
+    );
+  }
 };
 var TemplateCreateEmbeddedDraftResponse = _TemplateCreateEmbeddedDraftResponse;
 TemplateCreateEmbeddedDraftResponse.discriminator = void 0;
@@ -22979,6 +23444,12 @@ TemplateCreateEmbeddedDraftResponse.attributeTypeMap = [
 var _TemplateCreateEmbeddedDraftResponseTemplate = class {
   static getAttributeTypeMap() {
     return _TemplateCreateEmbeddedDraftResponseTemplate.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(
+      data,
+      "TemplateCreateEmbeddedDraftResponseTemplate"
+    );
   }
 };
 var TemplateCreateEmbeddedDraftResponseTemplate = _TemplateCreateEmbeddedDraftResponseTemplate;
@@ -23011,6 +23482,9 @@ var _TemplateEditResponse = class {
   static getAttributeTypeMap() {
     return _TemplateEditResponse.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "TemplateEditResponse");
+  }
 };
 var TemplateEditResponse = _TemplateEditResponse;
 TemplateEditResponse.discriminator = void 0;
@@ -23026,6 +23500,9 @@ TemplateEditResponse.attributeTypeMap = [
 var _TemplateGetResponse = class {
   static getAttributeTypeMap() {
     return _TemplateGetResponse.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "TemplateGetResponse");
   }
 };
 var TemplateGetResponse = _TemplateGetResponse;
@@ -23047,6 +23524,9 @@ TemplateGetResponse.attributeTypeMap = [
 var _TemplateListResponse = class {
   static getAttributeTypeMap() {
     return _TemplateListResponse.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "TemplateListResponse");
   }
 };
 var TemplateListResponse = _TemplateListResponse;
@@ -23074,6 +23554,9 @@ var _TemplateRemoveUserRequest = class {
   static getAttributeTypeMap() {
     return _TemplateRemoveUserRequest.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "TemplateRemoveUserRequest");
+  }
 };
 var TemplateRemoveUserRequest = _TemplateRemoveUserRequest;
 TemplateRemoveUserRequest.discriminator = void 0;
@@ -23094,6 +23577,9 @@ TemplateRemoveUserRequest.attributeTypeMap = [
 var _TemplateResponse = class {
   static getAttributeTypeMap() {
     return _TemplateResponse.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "TemplateResponse");
   }
 };
 var TemplateResponse = _TemplateResponse;
@@ -23181,6 +23667,9 @@ var _TemplateResponseAccount = class {
   static getAttributeTypeMap() {
     return _TemplateResponseAccount.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "TemplateResponseAccount");
+  }
 };
 var TemplateResponseAccount = _TemplateResponseAccount;
 TemplateResponseAccount.discriminator = void 0;
@@ -23222,6 +23711,9 @@ var _TemplateResponseAccountQuota = class {
   static getAttributeTypeMap() {
     return _TemplateResponseAccountQuota.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "TemplateResponseAccountQuota");
+  }
 };
 var TemplateResponseAccountQuota = _TemplateResponseAccountQuota;
 TemplateResponseAccountQuota.discriminator = void 0;
@@ -23253,6 +23745,9 @@ var _TemplateResponseCCRole = class {
   static getAttributeTypeMap() {
     return _TemplateResponseCCRole.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "TemplateResponseCCRole");
+  }
 };
 var TemplateResponseCCRole = _TemplateResponseCCRole;
 TemplateResponseCCRole.discriminator = void 0;
@@ -23268,6 +23763,9 @@ TemplateResponseCCRole.attributeTypeMap = [
 var _TemplateResponseCustomField = class {
   static getAttributeTypeMap() {
     return _TemplateResponseCustomField.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "TemplateResponseCustomField");
   }
 };
 var TemplateResponseCustomField = _TemplateResponseCustomField;
@@ -23352,6 +23850,9 @@ var _TemplateResponseDocument = class {
   static getAttributeTypeMap() {
     return _TemplateResponseDocument.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "TemplateResponseDocument");
+  }
 };
 var TemplateResponseDocument = _TemplateResponseDocument;
 TemplateResponseDocument.discriminator = void 0;
@@ -23392,6 +23893,12 @@ TemplateResponseDocument.attributeTypeMap = [
 var _TemplateResponseDocumentCustomField = class {
   static getAttributeTypeMap() {
     return _TemplateResponseDocumentCustomField.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(
+      data,
+      "TemplateResponseDocumentCustomField"
+    );
   }
 };
 var TemplateResponseDocumentCustomField = _TemplateResponseDocumentCustomField;
@@ -23491,6 +23998,12 @@ var _TemplateResponseDocumentFieldGroup = class {
   static getAttributeTypeMap() {
     return _TemplateResponseDocumentFieldGroup.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(
+      data,
+      "TemplateResponseDocumentFieldGroup"
+    );
+  }
 };
 var TemplateResponseDocumentFieldGroup = _TemplateResponseDocumentFieldGroup;
 TemplateResponseDocumentFieldGroup.discriminator = void 0;
@@ -23511,6 +24024,12 @@ TemplateResponseDocumentFieldGroup.attributeTypeMap = [
 var _TemplateResponseDocumentFormField = class {
   static getAttributeTypeMap() {
     return _TemplateResponseDocumentFormField.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(
+      data,
+      "TemplateResponseDocumentFormField"
+    );
   }
 };
 var TemplateResponseDocumentFormField = _TemplateResponseDocumentFormField;
@@ -23608,6 +24127,12 @@ var _TemplateResponseDocumentStaticField = class {
   static getAttributeTypeMap() {
     return _TemplateResponseDocumentStaticField.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(
+      data,
+      "TemplateResponseDocumentStaticField"
+    );
+  }
 };
 var TemplateResponseDocumentStaticField = _TemplateResponseDocumentStaticField;
 TemplateResponseDocumentStaticField.discriminator = void 0;
@@ -23669,6 +24194,12 @@ var _TemplateResponseFieldAvgTextLength = class {
   static getAttributeTypeMap() {
     return _TemplateResponseFieldAvgTextLength.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(
+      data,
+      "TemplateResponseFieldAvgTextLength"
+    );
+  }
 };
 var TemplateResponseFieldAvgTextLength = _TemplateResponseFieldAvgTextLength;
 TemplateResponseFieldAvgTextLength.discriminator = void 0;
@@ -23689,6 +24220,9 @@ TemplateResponseFieldAvgTextLength.attributeTypeMap = [
 var _TemplateResponseNamedFormField = class {
   static getAttributeTypeMap() {
     return _TemplateResponseNamedFormField.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "TemplateResponseNamedFormField");
   }
 };
 var TemplateResponseNamedFormField = _TemplateResponseNamedFormField;
@@ -23771,6 +24305,9 @@ var _TemplateResponseSignerRole = class {
   static getAttributeTypeMap() {
     return _TemplateResponseSignerRole.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "TemplateResponseSignerRole");
+  }
 };
 var TemplateResponseSignerRole = _TemplateResponseSignerRole;
 TemplateResponseSignerRole.discriminator = void 0;
@@ -23795,6 +24332,9 @@ var _TemplateUpdateFilesRequest = class {
   static getAttributeTypeMap() {
     return _TemplateUpdateFilesRequest.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "TemplateUpdateFilesRequest");
+  }
 };
 var TemplateUpdateFilesRequest = _TemplateUpdateFilesRequest;
 TemplateUpdateFilesRequest.discriminator = void 0;
@@ -23805,13 +24345,13 @@ TemplateUpdateFilesRequest.attributeTypeMap = [
     type: "string"
   },
   {
-    name: "file",
-    baseName: "file",
+    name: "files",
+    baseName: "files",
     type: "Array<RequestFile>"
   },
   {
-    name: "fileUrl",
-    baseName: "file_url",
+    name: "fileUrls",
+    baseName: "file_urls",
     type: "Array<string>"
   },
   {
@@ -23836,6 +24376,9 @@ var _TemplateUpdateFilesResponse = class {
   static getAttributeTypeMap() {
     return _TemplateUpdateFilesResponse.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "TemplateUpdateFilesResponse");
+  }
 };
 var TemplateUpdateFilesResponse = _TemplateUpdateFilesResponse;
 TemplateUpdateFilesResponse.discriminator = void 0;
@@ -23851,6 +24394,12 @@ TemplateUpdateFilesResponse.attributeTypeMap = [
 var _TemplateUpdateFilesResponseTemplate = class {
   static getAttributeTypeMap() {
     return _TemplateUpdateFilesResponseTemplate.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(
+      data,
+      "TemplateUpdateFilesResponseTemplate"
+    );
   }
 };
 var TemplateUpdateFilesResponseTemplate = _TemplateUpdateFilesResponseTemplate;
@@ -23890,6 +24439,12 @@ var _UnclaimedDraftCreateEmbeddedRequest = class {
   static getAttributeTypeMap() {
     return _UnclaimedDraftCreateEmbeddedRequest.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(
+      data,
+      "UnclaimedDraftCreateEmbeddedRequest"
+    );
+  }
 };
 var UnclaimedDraftCreateEmbeddedRequest = _UnclaimedDraftCreateEmbeddedRequest;
 UnclaimedDraftCreateEmbeddedRequest.discriminator = void 0;
@@ -23905,13 +24460,13 @@ UnclaimedDraftCreateEmbeddedRequest.attributeTypeMap = [
     type: "string"
   },
   {
-    name: "file",
-    baseName: "file",
+    name: "files",
+    baseName: "files",
     type: "Array<RequestFile>"
   },
   {
-    name: "fileUrl",
-    baseName: "file_url",
+    name: "fileUrls",
+    baseName: "file_urls",
     type: "Array<string>"
   },
   {
@@ -24102,6 +24657,12 @@ var _UnclaimedDraftCreateEmbeddedWithTemplateRequest = class {
   static getAttributeTypeMap() {
     return _UnclaimedDraftCreateEmbeddedWithTemplateRequest.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(
+      data,
+      "UnclaimedDraftCreateEmbeddedWithTemplateRequest"
+    );
+  }
 };
 var UnclaimedDraftCreateEmbeddedWithTemplateRequest = _UnclaimedDraftCreateEmbeddedWithTemplateRequest;
 UnclaimedDraftCreateEmbeddedWithTemplateRequest.discriminator = void 0;
@@ -24152,13 +24713,13 @@ UnclaimedDraftCreateEmbeddedWithTemplateRequest.attributeTypeMap = [
     type: "SubFieldOptions"
   },
   {
-    name: "file",
-    baseName: "file",
+    name: "files",
+    baseName: "files",
     type: "Array<RequestFile>"
   },
   {
-    name: "fileUrl",
-    baseName: "file_url",
+    name: "fileUrls",
+    baseName: "file_urls",
     type: "Array<string>"
   },
   {
@@ -24266,6 +24827,9 @@ var _UnclaimedDraftCreateRequest = class {
   static getAttributeTypeMap() {
     return _UnclaimedDraftCreateRequest.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "UnclaimedDraftCreateRequest");
+  }
 };
 var UnclaimedDraftCreateRequest = _UnclaimedDraftCreateRequest;
 UnclaimedDraftCreateRequest.discriminator = void 0;
@@ -24276,13 +24840,13 @@ UnclaimedDraftCreateRequest.attributeTypeMap = [
     type: "UnclaimedDraftCreateRequest.TypeEnum"
   },
   {
-    name: "file",
-    baseName: "file",
+    name: "files",
+    baseName: "files",
     type: "Array<RequestFile>"
   },
   {
-    name: "fileUrl",
-    baseName: "file_url",
+    name: "fileUrls",
+    baseName: "file_urls",
     type: "Array<string>"
   },
   {
@@ -24404,6 +24968,9 @@ var _UnclaimedDraftCreateResponse = class {
   static getAttributeTypeMap() {
     return _UnclaimedDraftCreateResponse.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "UnclaimedDraftCreateResponse");
+  }
 };
 var UnclaimedDraftCreateResponse = _UnclaimedDraftCreateResponse;
 UnclaimedDraftCreateResponse.discriminator = void 0;
@@ -24428,6 +24995,12 @@ var _UnclaimedDraftEditAndResendRequest = class {
   }
   static getAttributeTypeMap() {
     return _UnclaimedDraftEditAndResendRequest.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(
+      data,
+      "UnclaimedDraftEditAndResendRequest"
+    );
   }
 };
 var UnclaimedDraftEditAndResendRequest = _UnclaimedDraftEditAndResendRequest;
@@ -24480,6 +25053,9 @@ var _UnclaimedDraftResponse = class {
   static getAttributeTypeMap() {
     return _UnclaimedDraftResponse.attributeTypeMap;
   }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "UnclaimedDraftResponse");
+  }
 };
 var UnclaimedDraftResponse = _UnclaimedDraftResponse;
 UnclaimedDraftResponse.discriminator = void 0;
@@ -24520,6 +25096,9 @@ UnclaimedDraftResponse.attributeTypeMap = [
 var _WarningResponse = class {
   static getAttributeTypeMap() {
     return _WarningResponse.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "WarningResponse");
   }
 };
 var WarningResponse = _WarningResponse;
@@ -24688,6 +25267,7 @@ var typeMap = {
   SubMergeField,
   SubOAuth,
   SubOptions,
+  SubSignatureRequestGroupedSigners,
   SubSignatureRequestSigner,
   SubSignatureRequestTemplateSigner,
   SubSigningOptions,
@@ -24918,6 +25498,40 @@ var VoidAuth = class {
   applyToRequest(_) {
   }
 };
+
+// model/accountCreateRequest.ts
+var _AccountCreateRequest = class {
+  static getAttributeTypeMap() {
+    return _AccountCreateRequest.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "AccountCreateRequest");
+  }
+};
+var AccountCreateRequest = _AccountCreateRequest;
+AccountCreateRequest.discriminator = void 0;
+AccountCreateRequest.attributeTypeMap = [
+  {
+    name: "emailAddress",
+    baseName: "email_address",
+    type: "string"
+  },
+  {
+    name: "clientId",
+    baseName: "client_id",
+    type: "string"
+  },
+  {
+    name: "clientSecret",
+    baseName: "client_secret",
+    type: "string"
+  },
+  {
+    name: "locale",
+    baseName: "locale",
+    type: "string"
+  }
+];
 
 // api/accountApi.ts
 var defaultBasePath = "https://api.hellosign.com/v3";
@@ -31639,6 +32253,7 @@ var shouldJsonify = (val) => val === Object(val);
   SubMergeField,
   SubOAuth,
   SubOptions,
+  SubSignatureRequestGroupedSigners,
   SubSignatureRequestSigner,
   SubSignatureRequestTemplateSigner,
   SubSigningOptions,

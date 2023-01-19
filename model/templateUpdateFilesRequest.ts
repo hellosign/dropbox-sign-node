@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  *
- * Copyright (C) 2022 hellosign.com
+ * Copyright (C) 2023 dropbox.com
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-import { RequestFile, AttributeTypeMap } from "./models";
+import { RequestFile, AttributeTypeMap, ObjectSerializer } from "./models";
 
 export class TemplateUpdateFilesRequest {
   /**
@@ -30,13 +30,13 @@ export class TemplateUpdateFilesRequest {
    */
   "clientId"?: string;
   /**
-   * Use `file[]` to indicate the uploaded file(s) to use for the template.  This endpoint requires either **file** or **file_url[]**, but not both.
+   * Use `files[]` to indicate the uploaded file(s) to use for the template.  This endpoint requires either **files** or **file_urls[]**, but not both.
    */
-  "file"?: Array<RequestFile>;
+  "files"?: Array<RequestFile>;
   /**
-   * Use `file_url[]` to have Dropbox Sign download the file(s) to use for the template.  This endpoint requires either **file** or **file_url[]**, but not both.
+   * Use `file_urls[]` to have Dropbox Sign download the file(s) to use for the template.  This endpoint requires either **files** or **file_urls[]**, but not both.
    */
-  "fileUrl"?: Array<string>;
+  "fileUrls"?: Array<string>;
   /**
    * The new default template email message.
    */
@@ -59,13 +59,13 @@ export class TemplateUpdateFilesRequest {
       type: "string",
     },
     {
-      name: "file",
-      baseName: "file",
+      name: "files",
+      baseName: "files",
       type: "Array<RequestFile>",
     },
     {
-      name: "fileUrl",
-      baseName: "file_url",
+      name: "fileUrls",
+      baseName: "file_urls",
       type: "Array<string>",
     },
     {
@@ -87,5 +87,10 @@ export class TemplateUpdateFilesRequest {
 
   static getAttributeTypeMap(): AttributeTypeMap {
     return TemplateUpdateFilesRequest.attributeTypeMap;
+  }
+
+  /** Attempt to instantiate and hydrate a new instance of this class */
+  static init(data: any): TemplateUpdateFilesRequest {
+    return ObjectSerializer.deserialize(data, "TemplateUpdateFilesRequest");
   }
 }

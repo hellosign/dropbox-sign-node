@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  *
- * Copyright (C) 2022 hellosign.com
+ * Copyright (C) 2023 dropbox.com
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-import { RequestFile, AttributeTypeMap } from "./models";
+import { RequestFile, AttributeTypeMap, ObjectSerializer } from "./models";
 
 /**
  * Details concerning remaining monthly quotas.
@@ -39,7 +39,7 @@ export class AccountResponseQuotas {
   /**
    * Total API templates allowed.
    */
-  "totalTemplates"?: number | null;
+  "templatesTotal"?: number | null;
   /**
    * API templates remaining.
    */
@@ -63,8 +63,8 @@ export class AccountResponseQuotas {
       type: "number",
     },
     {
-      name: "totalTemplates",
-      baseName: "total_templates",
+      name: "templatesTotal",
+      baseName: "templates_total",
       type: "number",
     },
     {
@@ -81,5 +81,10 @@ export class AccountResponseQuotas {
 
   static getAttributeTypeMap(): AttributeTypeMap {
     return AccountResponseQuotas.attributeTypeMap;
+  }
+
+  /** Attempt to instantiate and hydrate a new instance of this class */
+  static init(data: any): AccountResponseQuotas {
+    return ObjectSerializer.deserialize(data, "AccountResponseQuotas");
   }
 }

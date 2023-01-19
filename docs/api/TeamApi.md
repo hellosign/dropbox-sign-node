@@ -29,25 +29,25 @@ Invites a user (specified using the `email_address` parameter) to your Team. If 
 ### TypeScript Example
 
 ```typescript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.TeamApi();
+const teamApi = new DropboxSign.TeamApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+teamApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// teamApi.accessToken = "YOUR_ACCESS_TOKEN";
 
-const data: HelloSignSDK.TeamAddMemberRequest = {
+const data: DropboxSign.TeamAddMemberRequest = {
   emailAddress: "george@example.com",
 };
 
-const result = api.teamAddMember(data);
+const result = teamApi.teamAddMember(data);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -56,25 +56,25 @@ result.then(response => {
 ### JavaScript Example
 
 ```javascript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.TeamApi();
+const teamApi = new DropboxSign.TeamApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+teamApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// teamApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const data = {
   emailAddress: "george@example.com",
 };
 
-const result = api.teamAddMember(data);
+const result = teamApi.teamAddMember(data);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -117,25 +117,25 @@ Creates a new Team and makes you a member. You must not currently belong to a Te
 ### TypeScript Example
 
 ```typescript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.TeamApi();
+const teamApi = new DropboxSign.TeamApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+teamApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// teamApi.accessToken = "YOUR_ACCESS_TOKEN";
 
-const data: HelloSignSDK.TeamCreateRequest = {
+const data: DropboxSign.TeamCreateRequest = {
   name: "New Team Name"
 };
 
-const result = api.teamCreate(data);
+const result = teamApi.teamCreate(data);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -144,25 +144,25 @@ result.then(response => {
 ### JavaScript Example
 
 ```javascript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.TeamApi();
+const teamApi = new DropboxSign.TeamApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+teamApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// teamApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const data = {
   name: "New Team Name"
 };
 
-const result = api.teamCreate(data);
+const result = teamApi.teamCreate(data);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -204,21 +204,21 @@ Deletes your Team. Can only be invoked when you have a Team with only one member
 ### TypeScript Example
 
 ```typescript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.TeamApi();
+const teamApi = new DropboxSign.TeamApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+teamApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// teamApi.accessToken = "YOUR_ACCESS_TOKEN";
 
-const result = api.teamDelete();
+const result = teamApi.teamDelete();
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -227,21 +227,21 @@ result.then(response => {
 ### JavaScript Example
 
 ```javascript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.TeamApi();
+const teamApi = new DropboxSign.TeamApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+teamApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// teamApi.accessToken = "YOUR_ACCESS_TOKEN";
 
-const result = api.teamDelete();
+const result = teamApi.teamDelete();
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -281,21 +281,21 @@ Returns information about your Team as well as a list of its members. If you do 
 ### TypeScript Example
 
 ```typescript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.TeamApi();
+const teamApi = new DropboxSign.TeamApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+teamApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// teamApi.accessToken = "YOUR_ACCESS_TOKEN";
 
-const result = api.teamGet();
+const result = teamApi.teamGet();
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -304,21 +304,21 @@ result.then(response => {
 ### JavaScript Example
 
 ```javascript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.TeamApi();
+const teamApi = new DropboxSign.TeamApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+teamApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// teamApi.accessToken = "YOUR_ACCESS_TOKEN";
 
-const result = api.teamGet();
+const result = teamApi.teamGet();
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -358,21 +358,21 @@ Provides information about a team.
 ### TypeScript Example
 
 ```typescript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.TeamApi();
+const teamApi = new DropboxSign.TeamApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+teamApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// teamApi.accessToken = "YOUR_ACCESS_TOKEN";
 
-const result = api.teamInfo();
+const result = teamApi.teamInfo();
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -381,21 +381,21 @@ result.then(response => {
 ### JavaScript Example
 
 ```javascript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.TeamApi();
+const teamApi = new DropboxSign.TeamApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+teamApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// teamApi.accessToken = "YOUR_ACCESS_TOKEN";
 
-const result = api.teamInfo();
+const result = teamApi.teamInfo();
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -437,23 +437,23 @@ Provides a list of team invites (and their roles).
 ### TypeScript Example
 
 ```typescript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.TeamApi();
+const teamApi = new DropboxSign.TeamApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+teamApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// teamApi.accessToken = "YOUR_ACCESS_TOKEN";
 
-const emailAddress = "user@hellosign.com";
+const emailAddress = "user@dropboxsign.com";
 
-const result = api.teamInvites(emailAddress);
+const result = teamApi.teamInvites(emailAddress);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -462,23 +462,23 @@ result.then(response => {
 ### JavaScript Example
 
 ```javascript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.TeamApi();
+const teamApi = new DropboxSign.TeamApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+teamApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// teamApi.accessToken = "YOUR_ACCESS_TOKEN";
 
-const emailAddress = "user@hellosign.com";
+const emailAddress = "user@dropboxsign.com";
 
-const result = api.teamInvites(emailAddress);
+const result = teamApi.teamInvites(emailAddress);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -520,23 +520,23 @@ Provides a paginated list of members (and their roles) that belong to a given te
 ### TypeScript Example
 
 ```typescript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.TeamApi();
+const teamApi = new DropboxSign.TeamApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+teamApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// teamApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const teamId = "4fea99bfcf2b26bfccf6cea3e127fb8bb74d8d9c";
 
-const result = api.teamMembers(teamId);
+const result = teamApi.teamMembers(teamId);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -545,23 +545,23 @@ result.then(response => {
 ### JavaScript Example
 
 ```javascript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.TeamApi();
+const teamApi = new DropboxSign.TeamApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+teamApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// teamApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const teamId = "4fea99bfcf2b26bfccf6cea3e127fb8bb74d8d9c";
 
-const result = api.teamMembers(teamId);
+const result = teamApi.teamMembers(teamId);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -605,26 +605,26 @@ Removes the provided user Account from your Team. If the Account had an outstand
 ### TypeScript Example
 
 ```typescript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.TeamApi();
+const teamApi = new DropboxSign.TeamApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+teamApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// teamApi.accessToken = "YOUR_ACCESS_TOKEN";
 
-const data: HelloSignSDK.TeamRemoveMemberRequest = {
-  emailAddress: "teammate@hellosign.com",
-  newOwnerEmailAddress: "new_teammate@hellosign.com",
+const data: DropboxSign.TeamRemoveMemberRequest = {
+  emailAddress: "teammate@dropboxsign.com",
+  newOwnerEmailAddress: "new_teammate@dropboxsign.com",
 };
 
-const result = api.teamRemoveMember(data);
+const result = teamApi.teamRemoveMember(data);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -633,26 +633,26 @@ result.then(response => {
 ### JavaScript Example
 
 ```javascript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.TeamApi();
+const teamApi = new DropboxSign.TeamApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+teamApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// teamApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const data = {
-  emailAddress: "teammate@hellosign.com",
-  newOwnerEmailAddress: "new_teammate@hellosign.com",
+  emailAddress: "teammate@dropboxsign.com",
+  newOwnerEmailAddress: "new_teammate@dropboxsign.com",
 };
 
-const result = api.teamRemoveMember(data);
+const result = teamApi.teamRemoveMember(data);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -694,23 +694,23 @@ Provides a paginated list of sub teams that belong to a given team.
 ### TypeScript Example
 
 ```typescript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.TeamApi();
+const teamApi = new DropboxSign.TeamApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+teamApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// teamApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const teamId = "4fea99bfcf2b26bfccf6cea3e127fb8bb74d8d9c";
 
-const result = api.teamSubTeams(teamId);
+const result = teamApi.teamSubTeams(teamId);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -719,23 +719,23 @@ result.then(response => {
 ### JavaScript Example
 
 ```javascript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.TeamApi();
+const teamApi = new DropboxSign.TeamApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+teamApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// teamApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const teamId = "4fea99bfcf2b26bfccf6cea3e127fb8bb74d8d9c";
 
-const result = api.teamSubTeams(teamId);
+const result = teamApi.teamSubTeams(teamId);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -779,25 +779,25 @@ Updates the name of your Team.
 ### TypeScript Example
 
 ```typescript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.TeamApi();
+const teamApi = new DropboxSign.TeamApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+teamApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// teamApi.accessToken = "YOUR_ACCESS_TOKEN";
 
-const data: HelloSignSDK.TeamUpdateRequest = {
+const data: DropboxSign.TeamUpdateRequest = {
   name: "New Team Name",
 };
 
-const result = api.teamUpdate(data);
+const result = teamApi.teamUpdate(data);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -806,25 +806,25 @@ result.then(response => {
 ### JavaScript Example
 
 ```javascript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.TeamApi();
+const teamApi = new DropboxSign.TeamApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+teamApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// teamApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const data = {
   name: "New Team Name",
 };
 
-const result = api.teamUpdate(data);
+const result = teamApi.teamUpdate(data);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 

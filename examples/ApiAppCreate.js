@@ -1,14 +1,14 @@
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
 const fs = require('fs');
 
-const api = new HelloSignSDK.ApiAppApi();
+const apiAppApi = new DropboxSign.ApiAppApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+apiAppApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// apiAppApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const oauth = {
   callbackUrl: "https://example.com/oauth",
@@ -31,10 +31,10 @@ const data = {
   whiteLabelingOptions,
 };
 
-const result = api.apiAppCreate(data);
+const result = apiAppApi.apiAppCreate(data);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });

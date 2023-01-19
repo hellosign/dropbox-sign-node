@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  *
- * Copyright (C) 2022 hellosign.com
+ * Copyright (C) 2023 dropbox.com
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,14 +22,11 @@
  * SOFTWARE.
  */
 
-import { RequestFile, AttributeTypeMap } from "./models";
+import { RequestFile, AttributeTypeMap, ObjectSerializer } from "./models";
 import { SubBulkSignerList } from "./subBulkSignerList";
 import { SubCC } from "./subCC";
 import { SubCustomField } from "./subCustomField";
 
-/**
- * Calls SignatureRequestBulkSendWithTemplate in controller
- */
 export class SignatureRequestBulkCreateEmbeddedWithTemplateRequest {
   /**
    * Use `template_ids` to create a SignatureRequest from one or more templates, in the order in which the template will be used.
@@ -156,5 +153,15 @@ export class SignatureRequestBulkCreateEmbeddedWithTemplateRequest {
 
   static getAttributeTypeMap(): AttributeTypeMap {
     return SignatureRequestBulkCreateEmbeddedWithTemplateRequest.attributeTypeMap;
+  }
+
+  /** Attempt to instantiate and hydrate a new instance of this class */
+  static init(
+    data: any
+  ): SignatureRequestBulkCreateEmbeddedWithTemplateRequest {
+    return ObjectSerializer.deserialize(
+      data,
+      "SignatureRequestBulkCreateEmbeddedWithTemplateRequest"
+    );
   }
 }

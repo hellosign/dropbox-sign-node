@@ -1,53 +1,53 @@
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.SignatureRequestApi();
+const signatureRequestApi = new DropboxSign.SignatureRequestApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+signatureRequestApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// signatureRequestApi.accessToken = "YOUR_ACCESS_TOKEN";
 
-const signerList1Signer: HelloSignSDK.SubSignatureRequestTemplateSigner = {
+const signerList1Signer: DropboxSign.SubSignatureRequestTemplateSigner = {
   role: "Client",
   name: "George",
   emailAddress: "george@example.com",
   pin: "d79a3td",
 };
 
-const signerList1CustomFields: HelloSignSDK.SubBulkSignerListCustomField = {
+const signerList1CustomFields: DropboxSign.SubBulkSignerListCustomField = {
   name: "company",
   value: "ABC Corp",
 };
 
-const signerList1: HelloSignSDK.SubBulkSignerList = {
+const signerList1: DropboxSign.SubBulkSignerList = {
   signers: [ signerList1Signer ],
   customFields: [ signerList1CustomFields ],
 };
 
-const signerList2Signer: HelloSignSDK.SubSignatureRequestTemplateSigner = {
+const signerList2Signer: DropboxSign.SubSignatureRequestTemplateSigner = {
   role: "Client",
   name: "Mary",
   emailAddress: "mary@example.com",
   pin: "gd9as5b",
 };
 
-const signerList2CustomFields: HelloSignSDK.SubBulkSignerListCustomField = {
+const signerList2CustomFields: DropboxSign.SubBulkSignerListCustomField = {
   name: "company",
   value: "123 LLC",
 };
 
-const signerList2: HelloSignSDK.SubBulkSignerList = {
+const signerList2: DropboxSign.SubBulkSignerList = {
   signers: [ signerList2Signer ],
   customFields: [ signerList2CustomFields ],
 };
 
-const cc1: HelloSignSDK.SubCC = {
+const cc1: DropboxSign.SubCC = {
   role: "Accounting",
   emailAddress: "accounting@example.com",
 };
 
-const data: HelloSignSDK.SignatureRequestBulkSendWithTemplateRequest = {
+const data: DropboxSign.SignatureRequestBulkSendWithTemplateRequest = {
   templateIds: ["c26b8a16784a872da37ea946b9ddec7c1e11dff6"],
   subject: "Purchase Order",
   message: "Glad we could come to an agreement.",
@@ -56,10 +56,10 @@ const data: HelloSignSDK.SignatureRequestBulkSendWithTemplateRequest = {
   testMode: true,
 };
 
-const result = api.signatureRequestBulkSendWithTemplate(data);
+const result = signatureRequestApi.signatureRequestBulkSendWithTemplate(data);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });

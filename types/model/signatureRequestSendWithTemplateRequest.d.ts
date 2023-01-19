@@ -10,8 +10,8 @@ export declare class SignatureRequestSendWithTemplateRequest {
     "ccs"?: Array<SubCC>;
     "clientId"?: string;
     "customFields"?: Array<SubCustomField>;
-    "file"?: Array<RequestFile>;
-    "fileUrl"?: Array<string>;
+    "files"?: Array<RequestFile>;
+    "fileUrls"?: Array<string>;
     "isQualifiedSignature"?: boolean;
     "message"?: string;
     "metadata"?: {
@@ -25,4 +25,5 @@ export declare class SignatureRequestSendWithTemplateRequest {
     static discriminator: string | undefined;
     static attributeTypeMap: AttributeTypeMap;
     static getAttributeTypeMap(): AttributeTypeMap;
+    static init(data: any): SignatureRequestSendWithTemplateRequest;
 }

@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  *
- * Copyright (C) 2022 hellosign.com
+ * Copyright (C) 2023 dropbox.com
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-import { RequestFile, AttributeTypeMap } from "./models";
+import { RequestFile, AttributeTypeMap, ObjectSerializer } from "./models";
 import { TemplateResponseDocumentCustomField } from "./templateResponseDocumentCustomField";
 import { TemplateResponseDocumentFieldGroup } from "./templateResponseDocumentFieldGroup";
 import { TemplateResponseDocumentFormField } from "./templateResponseDocumentFormField";
@@ -91,5 +91,10 @@ export class TemplateResponseDocument {
 
   static getAttributeTypeMap(): AttributeTypeMap {
     return TemplateResponseDocument.attributeTypeMap;
+  }
+
+  /** Attempt to instantiate and hydrate a new instance of this class */
+  static init(data: any): TemplateResponseDocument {
+    return ObjectSerializer.deserialize(data, "TemplateResponseDocument");
   }
 }

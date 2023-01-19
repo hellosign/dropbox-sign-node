@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  *
- * Copyright (C) 2022 hellosign.com
+ * Copyright (C) 2023 dropbox.com
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-import { RequestFile, AttributeTypeMap } from "./models";
+import { RequestFile, AttributeTypeMap, ObjectSerializer } from "./models";
 import { SignatureRequestResponse } from "./signatureRequestResponse";
 import { SignatureRequestResponseAttachment } from "./signatureRequestResponseAttachment";
 import { SignatureRequestResponseCustomFieldBase } from "./signatureRequestResponseCustomFieldBase";
@@ -67,7 +67,7 @@ export class BulkSendJobGetResponseSignatureRequests {
    */
   "createdAt"?: number;
   /**
-   * The time when the signature request will expire pending signatures.
+   * The time when the signature request will expire unsigned signatures. See [Signature Request Expiration Date](https://developers.hellosign.com/docs/signature-request/expiration/) for details.
    */
   "expiresAt"?: number;
   /**
@@ -254,5 +254,13 @@ export class BulkSendJobGetResponseSignatureRequests {
 
   static getAttributeTypeMap(): AttributeTypeMap {
     return BulkSendJobGetResponseSignatureRequests.attributeTypeMap;
+  }
+
+  /** Attempt to instantiate and hydrate a new instance of this class */
+  static init(data: any): BulkSendJobGetResponseSignatureRequests {
+    return ObjectSerializer.deserialize(
+      data,
+      "BulkSendJobGetResponseSignatureRequests"
+    );
   }
 }

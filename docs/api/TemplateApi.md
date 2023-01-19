@@ -29,27 +29,27 @@ Gives the specified Account access to the specified Template. The specified Acco
 ### TypeScript Example
 
 ```typescript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.TemplateApi();
+const templateApi = new DropboxSign.TemplateApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+templateApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// templateApi.accessToken = "YOUR_ACCESS_TOKEN";
 
-const data: HelloSignSDK.TemplateAddUserRequest = {
-  emailAddress: "george@hellosign.com",
+const data: DropboxSign.TemplateAddUserRequest = {
+  emailAddress: "george@dropboxsign.com",
 };
 
 const templateId = "f57db65d3f933b5316d398057a36176831451a35";
 
-const result = api.templateAddUser(templateId, data);
+const result = templateApi.templateAddUser(templateId, data);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -58,27 +58,27 @@ result.then(response => {
 ### JavaScript Example
 
 ```javascript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.TemplateApi();
+const templateApi = new DropboxSign.TemplateApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+templateApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// templateApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const data = {
-  emailAddress: "george@hellosign.com",
+  emailAddress: "george@dropboxsign.com",
 };
 
 const templateId = "f57db65d3f933b5316d398057a36176831451a35";
 
-const result = api.templateAddUser(templateId, data);
+const result = templateApi.templateAddUser(templateId, data);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -121,45 +121,45 @@ The first step in an embedded template workflow. Creates a draft template that c
 ### TypeScript Example
 
 ```typescript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
 const fs = require('fs');
 
-const api = new HelloSignSDK.TemplateApi();
+const templateApi = new DropboxSign.TemplateApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+templateApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// templateApi.accessToken = "YOUR_ACCESS_TOKEN";
 
-const role1: HelloSignSDK.SubTemplateRole = {
+const role1: DropboxSign.SubTemplateRole = {
   name: "Client",
   order: 0,
 };
 
-const role2: HelloSignSDK.SubTemplateRole = {
+const role2: DropboxSign.SubTemplateRole = {
   name: "Witness",
   order: 1,
 };
 
-const mergeField1: HelloSignSDK.SubMergeField = {
+const mergeField1: DropboxSign.SubMergeField = {
   name: "Full Name",
-  type: HelloSignSDK.SubMergeField.TypeEnum.Text,
+  type: DropboxSign.SubMergeField.TypeEnum.Text,
 };
 
-const mergeField2: HelloSignSDK.SubMergeField = {
+const mergeField2: DropboxSign.SubMergeField = {
   name: "Is Registered?",
-  type: HelloSignSDK.SubMergeField.TypeEnum.Checkbox,
+  type: DropboxSign.SubMergeField.TypeEnum.Checkbox,
 };
 
-const fieldOptions: HelloSignSDK.SubFieldOptions = {
-  dateFormat: HelloSignSDK.SubFieldOptions.DateFormatEnum.DD_MM_YYYY,
+const fieldOptions: DropboxSign.SubFieldOptions = {
+  dateFormat: DropboxSign.SubFieldOptions.DateFormatEnum.DD_MM_YYYY,
 };
 
-const data: HelloSignSDK.TemplateCreateEmbeddedDraftRequest = {
+const data: DropboxSign.TemplateCreateEmbeddedDraftRequest = {
   clientId: "37dee8d8440c66d54cfa05d92c160882",
-  file: [fs.createReadStream("example_signature_request.pdf")],
+  files: [fs.createReadStream("example_signature_request.pdf")],
   title: "Test Template",
   subject: "Please sign this document",
   message: "For your approval",
@@ -176,11 +176,11 @@ const data: HelloSignSDK.TemplateCreateEmbeddedDraftRequest = {
   testMode: true,
 };
 
-const result = api.templateCreateEmbeddedDraft(data);
+const result = templateApi.templateCreateEmbeddedDraft(data);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -189,17 +189,17 @@ result.then(response => {
 ### JavaScript Example
 
 ```javascript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
 const fs = require('fs');
 
-const api = new HelloSignSDK.TemplateApi();
+const templateApi = new DropboxSign.TemplateApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+templateApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// templateApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const role1 = {
   name: "Client",
@@ -227,7 +227,7 @@ const fieldOptions = {
 
 const data = {
   clientId: "37dee8d8440c66d54cfa05d92c160882",
-  file: [fs.createReadStream("example_signature_request.pdf")],
+  files: [fs.createReadStream("example_signature_request.pdf")],
   title: "Test Template",
   subject: "Please sign this document",
   message: "For your approval",
@@ -244,11 +244,11 @@ const data = {
   testMode: true,
 };
 
-const result = api.templateCreateEmbeddedDraft(data);
+const result = templateApi.templateCreateEmbeddedDraft(data);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -290,23 +290,23 @@ Completely deletes the template specified from the account.
 ### TypeScript Example
 
 ```typescript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.TemplateApi();
+const templateApi = new DropboxSign.TemplateApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+templateApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// templateApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const templateId = "5de8179668f2033afac48da1868d0093bf133266";
 
-const result = api.templateDelete(templateId);
+const result = templateApi.templateDelete(templateId);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -315,23 +315,23 @@ result.then(response => {
 ### JavaScript Example
 
 ```javascript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.TemplateApi();
+const templateApi = new DropboxSign.TemplateApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+templateApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// templateApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const templateId = "5de8179668f2033afac48da1868d0093bf133266";
 
-const result = api.templateDelete(templateId);
+const result = templateApi.templateDelete(templateId);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -373,25 +373,25 @@ Obtain a copy of the current documents specified by the `template_id` parameter.
 ### TypeScript Example
 
 ```typescript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 import * as fs from 'fs';
 
-const api = new HelloSignSDK.TemplateApi();
+const templateApi = new DropboxSign.TemplateApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+templateApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// templateApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const templateId = "5de8179668f2033afac48da1868d0093bf133266";
 const fileType = "pdf";
 
-const result = api.templateFiles(templateId, fileType);
+const result = templateApi.templateFiles(templateId, fileType);
 result.then(response => {
   fs.createWriteStream('file_response.pdf').write(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -400,25 +400,25 @@ result.then(response => {
 ### JavaScript Example
 
 ```javascript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 import * as fs from 'fs';
 
-const api = new HelloSignSDK.TemplateApi();
+const templateApi = new DropboxSign.TemplateApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+templateApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// templateApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const templateId = "5de8179668f2033afac48da1868d0093bf133266";
 const fileType = "pdf";
 
-const result = api.templateFiles(templateId, fileType);
+const result = templateApi.templateFiles(templateId, fileType);
 result.then(response => {
   fs.createWriteStream('file_response.pdf').write(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -461,23 +461,23 @@ Obtain a copy of the current documents specified by the `template_id` parameter.
 ### TypeScript Example
 
 ```typescript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.TemplateApi();
+const templateApi = new DropboxSign.TemplateApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+templateApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// templateApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const templateId = "5de8179668f2033afac48da1868d0093bf133266";
 
-const result = api.templateFilesAsDataUri(templateId);
+const result = templateApi.templateFilesAsDataUri(templateId);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -486,23 +486,23 @@ result.then(response => {
 ### JavaScript Example
 
 ```javascript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.TemplateApi();
+const templateApi = new DropboxSign.TemplateApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+templateApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// templateApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const templateId = "5de8179668f2033afac48da1868d0093bf133266";
 
-const result = api.templateFilesAsDataUri(templateId);
+const result = templateApi.templateFilesAsDataUri(templateId);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -544,23 +544,23 @@ Obtain a copy of the current documents specified by the `template_id` parameter.
 ### TypeScript Example
 
 ```typescript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.TemplateApi();
+const templateApi = new DropboxSign.TemplateApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+templateApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// templateApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const templateId = "5de8179668f2033afac48da1868d0093bf133266";
 
-const result = api.templateFilesAsFileUrl(templateId);
+const result = templateApi.templateFilesAsFileUrl(templateId);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -569,23 +569,23 @@ result.then(response => {
 ### JavaScript Example
 
 ```javascript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.TemplateApi();
+const templateApi = new DropboxSign.TemplateApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+templateApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// templateApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const templateId = "5de8179668f2033afac48da1868d0093bf133266";
 
-const result = api.templateFilesAsFileUrl(templateId);
+const result = templateApi.templateFilesAsFileUrl(templateId);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -627,23 +627,23 @@ Returns the Template specified by the `template_id` parameter.
 ### TypeScript Example
 
 ```typescript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.TemplateApi();
+const templateApi = new DropboxSign.TemplateApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+templateApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// templateApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const templateId = "f57db65d3f933b5316d398057a36176831451a35";
 
-const result = api.templateGet(templateId);
+const result = templateApi.templateGet(templateId);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -652,23 +652,23 @@ result.then(response => {
 ### JavaScript Example
 
 ```javascript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.TemplateApi();
+const templateApi = new DropboxSign.TemplateApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+templateApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// templateApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const templateId = "f57db65d3f933b5316d398057a36176831451a35";
 
-const result = api.templateGet(templateId);
+const result = templateApi.templateGet(templateId);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -710,23 +710,23 @@ Returns a list of the Templates that are accessible by you.  Take a look at our 
 ### TypeScript Example
 
 ```typescript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.TemplateApi();
+const templateApi = new DropboxSign.TemplateApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+templateApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// templateApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const accountId = "f57db65d3f933b5316d398057a36176831451a35";
 
-const result = api.templateList(accountId);
+const result = templateApi.templateList(accountId);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -735,23 +735,23 @@ result.then(response => {
 ### JavaScript Example
 
 ```javascript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.TemplateApi();
+const templateApi = new DropboxSign.TemplateApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+templateApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// templateApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const accountId = "f57db65d3f933b5316d398057a36176831451a35";
 
-const result = api.templateList(accountId);
+const result = templateApi.templateList(accountId);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -796,27 +796,27 @@ Removes the specified Account\'s access to the specified Template.
 ### TypeScript Example
 
 ```typescript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.TemplateApi();
+const templateApi = new DropboxSign.TemplateApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+templateApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// templateApi.accessToken = "YOUR_ACCESS_TOKEN";
 
-const data: HelloSignSDK.TemplateRemoveUserRequest = {
-  emailAddress: "george@hellosign.com",
+const data: DropboxSign.TemplateRemoveUserRequest = {
+  emailAddress: "george@dropboxsign.com",
 };
 
 const templateId = "21f920ec2b7f4b6bb64d3ed79f26303843046536";
 
-const result = api.templateRemoveUser(templateId, data);
+const result = templateApi.templateRemoveUser(templateId, data);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -825,27 +825,27 @@ result.then(response => {
 ### JavaScript Example
 
 ```javascript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.TemplateApi();
+const templateApi = new DropboxSign.TemplateApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+templateApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// templateApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const data = {
-  emailAddress: "george@hellosign.com",
+  emailAddress: "george@dropboxsign.com",
 };
 
 const templateId = "21f920ec2b7f4b6bb64d3ed79f26303843046536";
 
-const result = api.templateRemoveUser(templateId, data);
+const result = templateApi.templateRemoveUser(templateId, data);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -888,29 +888,29 @@ Overlays a new file with the overlay of an existing template. The new file(s) mu
 ### TypeScript Example
 
 ```typescript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
 const fs = require('fs');
 
-const api = new HelloSignSDK.TemplateApi();
+const templateApi = new DropboxSign.TemplateApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+templateApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// templateApi.accessToken = "YOUR_ACCESS_TOKEN";
 
-const data: HelloSignSDK.TemplateUpdateFilesRequest = {
-  file: [fs.createReadStream("example_signature_request.pdf")],
+const data: DropboxSign.TemplateUpdateFilesRequest = {
+  files: [fs.createReadStream("example_signature_request.pdf")],
 };
 
 const templateId = "5de8179668f2033afac48da1868d0093bf133266";
 
-const result = api.templateUpdateFiles(templateId, data);
+const result = templateApi.templateUpdateFiles(templateId, data);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -919,29 +919,29 @@ result.then(response => {
 ### JavaScript Example
 
 ```javascript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
 const fs = require('fs');
 
-const api = new HelloSignSDK.TemplateApi();
+const templateApi = new DropboxSign.TemplateApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+templateApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// templateApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const data = {
-  file: [fs.createReadStream("example_signature_request.pdf")],
+  files: [fs.createReadStream("example_signature_request.pdf")],
 };
 
 const templateId = "5de8179668f2033afac48da1868d0093bf133266";
 
-const result = api.templateUpdateFiles(templateId, data);
+const result = templateApi.templateUpdateFiles(templateId, data);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 

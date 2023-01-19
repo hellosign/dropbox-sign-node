@@ -5,13 +5,15 @@ import { SubFieldOptions } from "./subFieldOptions";
 import { SubFormFieldGroup } from "./subFormFieldGroup";
 import { SubFormFieldRule } from "./subFormFieldRule";
 import { SubFormFieldsPerDocumentBase } from "./subFormFieldsPerDocumentBase";
+import { SubSignatureRequestGroupedSigners } from "./subSignatureRequestGroupedSigners";
 import { SubSignatureRequestSigner } from "./subSignatureRequestSigner";
 import { SubSigningOptions } from "./subSigningOptions";
 export declare class SignatureRequestCreateEmbeddedRequest {
     "clientId": string;
-    "signers": Array<SubSignatureRequestSigner>;
-    "file"?: Array<RequestFile>;
-    "fileUrl"?: Array<string>;
+    "files"?: Array<RequestFile>;
+    "fileUrls"?: Array<string>;
+    "signers"?: Array<SubSignatureRequestSigner>;
+    "groupedSigners"?: Array<SubSignatureRequestGroupedSigners>;
     "allowDecline"?: boolean;
     "allowReassign"?: boolean;
     "attachments"?: Array<SubAttachment>;
@@ -36,4 +38,5 @@ export declare class SignatureRequestCreateEmbeddedRequest {
     static discriminator: string | undefined;
     static attributeTypeMap: AttributeTypeMap;
     static getAttributeTypeMap(): AttributeTypeMap;
+    static init(data: any): SignatureRequestCreateEmbeddedRequest;
 }

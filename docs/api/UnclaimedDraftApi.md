@@ -23,55 +23,55 @@ Creates a new Draft that can be claimed using the claim URL. The first authentic
 ### TypeScript Example
 
 ```typescript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
 const fs = require('fs');
 
-const api = new HelloSignSDK.UnclaimedDraftApi();
+const unclaimedDraftApi = new DropboxSign.UnclaimedDraftApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+unclaimedDraftApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// unclaimedDraftApi.accessToken = "YOUR_ACCESS_TOKEN";
 
-const signer1: HelloSignSDK.SubUnclaimedDraftSigner = {
+const signer1: DropboxSign.SubUnclaimedDraftSigner = {
   emailAddress: "jack@example.com",
   name: "Jack",
   order: 0,
 };
 
-const signer2: HelloSignSDK.SubUnclaimedDraftSigner = {
+const signer2: DropboxSign.SubUnclaimedDraftSigner = {
   emailAddress: "jill@example.com",
   name: "Jill",
   order: 1,
 };
 
-const signingOptions: HelloSignSDK.SubSigningOptions = {
+const signingOptions: DropboxSign.SubSigningOptions = {
   draw: true,
   type: true,
   upload: true,
   phone: false,
-  defaultType: HelloSignSDK.SubSigningOptions.DefaultTypeEnum.Draw,
+  defaultType: DropboxSign.SubSigningOptions.DefaultTypeEnum.Draw,
 };
 
-const fieldOptions: HelloSignSDK.SubFieldOptions = {
-  dateFormat: HelloSignSDK.SubFieldOptions.DateFormatEnum.DD_MM_YYYY,
+const fieldOptions: DropboxSign.SubFieldOptions = {
+  dateFormat: DropboxSign.SubFieldOptions.DateFormatEnum.DD_MM_YYYY,
 };
 
-const data: HelloSignSDK.UnclaimedDraftCreateRequest = {
+const data: DropboxSign.UnclaimedDraftCreateRequest = {
   subject: "The NDA we talked about",
-  type: HelloSignSDK.UnclaimedDraftCreateRequest.TypeEnum.RequestSignature,
+  type: DropboxSign.UnclaimedDraftCreateRequest.TypeEnum.RequestSignature,
   message: "Please sign this NDA and then we can discuss more. Let me know if you have any questions.",
   signers: [
     signer1,
     signer2,
   ],
   ccEmailAddresses: [
-    "lawyer@hellosign.com",
-    "lawyer@example.com",
+    "lawyer@dropboxsign.com",
+    "lawyer@dropboxsign.com",
   ],
-  file: [fs.createReadStream("example_signature_request.pdf")],
+  files: [fs.createReadStream("example_signature_request.pdf")],
   metadata: {
     "custom_id": 1234,
     "custom_text": "NDA #9",
@@ -81,11 +81,11 @@ const data: HelloSignSDK.UnclaimedDraftCreateRequest = {
   testMode: true,
 };
 
-const result = api.unclaimedDraftCreate(data);
+const result = unclaimedDraftApi.unclaimedDraftCreate(data);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -94,17 +94,17 @@ result.then(response => {
 ### JavaScript Example
 
 ```javascript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
 const fs = require('fs');
 
-const api = new HelloSignSDK.UnclaimedDraftApi();
+const unclaimedDraftApi = new DropboxSign.UnclaimedDraftApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+unclaimedDraftApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// unclaimedDraftApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const signer1 = {
   emailAddress: "jack@example.com",
@@ -139,10 +139,10 @@ const data = {
     signer2,
   ],
   ccEmailAddresses: [
-    "lawyer@hellosign.com",
+    "lawyer@dropboxsign.com",
     "lawyer@example.com",
   ],
-  file: [fs.createReadStream("example_signature_request.pdf")],
+  files: [fs.createReadStream("example_signature_request.pdf")],
   metadata: {
     "custom_id": 1234,
     "custom_text": "NDA #9",
@@ -152,11 +152,11 @@ const data = {
   testMode: true,
 };
 
-const result = api.unclaimedDraftCreate(data);
+const result = unclaimedDraftApi.unclaimedDraftCreate(data);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -198,30 +198,30 @@ Creates a new Draft that can be claimed and used in an embedded iFrame. The firs
 ### TypeScript Example
 
 ```typescript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
 const fs = require('fs');
 
-const api = new HelloSignSDK.UnclaimedDraftApi();
+const unclaimedDraftApi = new DropboxSign.UnclaimedDraftApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+unclaimedDraftApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// unclaimedDraftApi.accessToken = "YOUR_ACCESS_TOKEN";
 
-const data: HelloSignSDK.UnclaimedDraftCreateEmbeddedRequest = {
+const data: DropboxSign.UnclaimedDraftCreateEmbeddedRequest = {
   clientId: "ec64a202072370a737edf4a0eb7f4437",
-  file: [fs.createReadStream("example_signature_request.pdf")],
-  requesterEmailAddress: "jack@hellosign.com",
+  files: [fs.createReadStream("example_signature_request.pdf")],
+  requesterEmailAddress: "jack@dropboxsign.com",
   testMode: true,
 };
 
-const result = api.unclaimedDraftCreateEmbedded(data);
+const result = unclaimedDraftApi.unclaimedDraftCreateEmbedded(data);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -230,30 +230,30 @@ result.then(response => {
 ### JavaScript Example
 
 ```javascript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
 const fs = require('fs');
 
-const api = new HelloSignSDK.UnclaimedDraftApi();
+const unclaimedDraftApi = new DropboxSign.UnclaimedDraftApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+unclaimedDraftApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// unclaimedDraftApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const data = {
   clientId: "ec64a202072370a737edf4a0eb7f4437",
-  file: [fs.createReadStream("example_signature_request.pdf")],
-  requesterEmailAddress: "jack@hellosign.com",
+  files: [fs.createReadStream("example_signature_request.pdf")],
+  requesterEmailAddress: "jack@dropboxsign.com",
   testMode: true,
 };
 
-const result = api.unclaimedDraftCreateEmbedded(data);
+const result = unclaimedDraftApi.unclaimedDraftCreateEmbedded(data);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -295,41 +295,41 @@ Creates a new Draft with a previously saved template(s) that can be claimed and 
 ### TypeScript Example
 
 ```typescript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.UnclaimedDraftApi();
+const unclaimedDraftApi = new DropboxSign.UnclaimedDraftApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+unclaimedDraftApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// unclaimedDraftApi.accessToken = "YOUR_ACCESS_TOKEN";
 
-const signer1: HelloSignSDK.SubUnclaimedDraftTemplateSigner = {
+const signer1: DropboxSign.SubUnclaimedDraftTemplateSigner = {
   role: "Client",
   name: "George",
   emailAddress: "george@example.com",
 };
 
-const cc1: HelloSignSDK.SubCC = {
+const cc1: DropboxSign.SubCC = {
   role: "Accounting",
-  emailAddress: "accounting@hellosign.com",
+  emailAddress: "accounting@dropboxsign.com",
 };
 
-const data: HelloSignSDK.UnclaimedDraftCreateEmbeddedWithTemplateRequest = {
+const data: DropboxSign.UnclaimedDraftCreateEmbeddedWithTemplateRequest = {
   clientId: "ec64a202072370a737edf4a0eb7f4437",
   templateIds: ["61a832ff0d8423f91d503e76bfbcc750f7417c78"],
-  requesterEmailAddress: "jack@hellosign.com",
+  requesterEmailAddress: "jack@dropboxsign.com",
   signers: [ signer1 ],
   ccs: [ cc1 ],
   testMode: true,
 };
 
-const result = api.unclaimedDraftCreateEmbeddedWithTemplate(data);
+const result = unclaimedDraftApi.unclaimedDraftCreateEmbeddedWithTemplate(data);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -338,15 +338,15 @@ result.then(response => {
 ### JavaScript Example
 
 ```javascript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.UnclaimedDraftApi();
+const unclaimedDraftApi = new DropboxSign.UnclaimedDraftApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+unclaimedDraftApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// unclaimedDraftApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const signer1 = {
   role: "Client",
@@ -356,23 +356,23 @@ const signer1 = {
 
 const cc1 = {
   role: "Accounting",
-  emailAddress: "accounting@hellosign.com",
+  emailAddress: "accounting@dropboxsign.com",
 };
 
 const data = {
   clientId: "ec64a202072370a737edf4a0eb7f4437",
   templateIds: ["61a832ff0d8423f91d503e76bfbcc750f7417c78"],
-  requesterEmailAddress: "jack@hellosign.com",
+  requesterEmailAddress: "jack@dropboxsign.com",
   signers: [ signer1 ],
   ccs: [ cc1 ],
   testMode: true,
 };
 
-const result = api.unclaimedDraftCreateEmbeddedWithTemplate(data);
+const result = unclaimedDraftApi.unclaimedDraftCreateEmbeddedWithTemplate(data);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -414,28 +414,28 @@ Creates a new signature request from an embedded request that can be edited prio
 ### TypeScript Example
 
 ```typescript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.UnclaimedDraftApi();
+const unclaimedDraftApi = new DropboxSign.UnclaimedDraftApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+unclaimedDraftApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// unclaimedDraftApi.accessToken = "YOUR_ACCESS_TOKEN";
 
-const data: HelloSignSDK.UnclaimedDraftEditAndResendRequest = {
+const data: DropboxSign.UnclaimedDraftEditAndResendRequest = {
   clientId: "ec64a202072370a737edf4a0eb7f4437",
   testMode: true,
 };
 
 const signatureRequestId = "2f9781e1a83jdja934d808c153c2e1d3df6f8f2f";
 
-const result = api.unclaimedDraftEditAndResend(signatureRequestId, data);
+const result = unclaimedDraftApi.unclaimedDraftEditAndResend(signatureRequestId, data);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -444,15 +444,15 @@ result.then(response => {
 ### JavaScript Example
 
 ```javascript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.UnclaimedDraftApi();
+const unclaimedDraftApi = new DropboxSign.UnclaimedDraftApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+unclaimedDraftApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// unclaimedDraftApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const data = {
   clientId: "ec64a202072370a737edf4a0eb7f4437",
@@ -461,11 +461,11 @@ const data = {
 
 const signatureRequestId = "2f9781e1a83jdja934d808c153c2e1d3df6f8f2f";
 
-const result = api.unclaimedDraftEditAndResend(signatureRequestId, data);
+const result = unclaimedDraftApi.unclaimedDraftEditAndResend(signatureRequestId, data);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 

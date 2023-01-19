@@ -1,23 +1,23 @@
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.ReportApi();
+const reportApi = new DropboxSign.ReportApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+reportApi.username = "YOUR_API_KEY";
 
-const data: HelloSignSDK.ReportCreateRequest = {
+const data: DropboxSign.ReportCreateRequest = {
   startDate: "09/01/2020",
   endDate: "09/01/2020",
   reportType: [
-    HelloSignSDK.ReportCreateRequest.ReportTypeEnum.UserActivity,
-    HelloSignSDK.ReportCreateRequest.ReportTypeEnum.DocumentStatus,
+    DropboxSign.ReportCreateRequest.ReportTypeEnum.UserActivity,
+    DropboxSign.ReportCreateRequest.ReportTypeEnum.DocumentStatus,
   ]
 };
 
-const result = api.reportCreate(data);
+const result = reportApi.reportCreate(data);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });

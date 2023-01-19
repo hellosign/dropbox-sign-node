@@ -15,8 +15,8 @@ export declare class UnclaimedDraftCreateEmbeddedWithTemplateRequest {
     "customFields"?: Array<SubCustomField>;
     "editorOptions"?: SubEditorOptions;
     "fieldOptions"?: SubFieldOptions;
-    "file"?: Array<RequestFile>;
-    "fileUrl"?: Array<string>;
+    "files"?: Array<RequestFile>;
+    "fileUrls"?: Array<string>;
     "forceSignerRoles"?: boolean;
     "forceSubjectMessage"?: boolean;
     "holdRequest"?: boolean;
@@ -40,4 +40,5 @@ export declare class UnclaimedDraftCreateEmbeddedWithTemplateRequest {
     static discriminator: string | undefined;
     static attributeTypeMap: AttributeTypeMap;
     static getAttributeTypeMap(): AttributeTypeMap;
+    static init(data: any): UnclaimedDraftCreateEmbeddedWithTemplateRequest;
 }

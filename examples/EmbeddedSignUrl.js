@@ -1,19 +1,19 @@
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.EmbeddedApi();
+const embeddedApi = new DropboxSign.EmbeddedApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+embeddedApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// embeddedApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const signatureId = "50e3542f738adfa7ddd4cbd4c00d2a8ab6e4194b";
 
-const result = api.embeddedSignUrl(signatureId);
+const result = embeddedApi.embeddedSignUrl(signatureId);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });

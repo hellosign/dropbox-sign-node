@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  *
- * Copyright (C) 2022 hellosign.com
+ * Copyright (C) 2023 dropbox.com
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,15 +22,12 @@
  * SOFTWARE.
  */
 
-import { RequestFile, AttributeTypeMap } from "./models";
+import { RequestFile, AttributeTypeMap, ObjectSerializer } from "./models";
 import { SubCC } from "./subCC";
 import { SubCustomField } from "./subCustomField";
 import { SubSignatureRequestTemplateSigner } from "./subSignatureRequestTemplateSigner";
 import { SubSigningOptions } from "./subSigningOptions";
 
-/**
- * Calls SignatureRequestSend in controller
- */
 export class SignatureRequestCreateEmbeddedWithTemplateRequest {
   /**
    * Use `template_ids` to create a SignatureRequest from one or more templates, in the order in which the template will be used.
@@ -57,13 +54,13 @@ export class SignatureRequestCreateEmbeddedWithTemplateRequest {
    */
   "customFields"?: Array<SubCustomField>;
   /**
-   * Use `file[]` to indicate the uploaded file(s) to send for signature.  This endpoint requires either **file** or **file_url[]**, but not both.
+   * Use `files[]` to indicate the uploaded file(s) to send for signature.  This endpoint requires either **files** or **file_urls[]**, but not both.
    */
-  "file"?: Array<RequestFile>;
+  "files"?: Array<RequestFile>;
   /**
-   * Use `file_url[]` to have Dropbox Sign download the file(s) to send for signature.  This endpoint requires either **file** or **file_url[]**, but not both.
+   * Use `file_urls[]` to have Dropbox Sign download the file(s) to send for signature.  This endpoint requires either **files** or **file_urls[]**, but not both.
    */
-  "fileUrl"?: Array<string>;
+  "fileUrls"?: Array<string>;
   /**
    * The custom message in the email that will be sent to the signers.
    */
@@ -124,13 +121,13 @@ export class SignatureRequestCreateEmbeddedWithTemplateRequest {
       type: "Array<SubCustomField>",
     },
     {
-      name: "file",
-      baseName: "file",
+      name: "files",
+      baseName: "files",
       type: "Array<RequestFile>",
     },
     {
-      name: "fileUrl",
-      baseName: "file_url",
+      name: "fileUrls",
+      baseName: "file_urls",
       type: "Array<string>",
     },
     {
@@ -172,5 +169,13 @@ export class SignatureRequestCreateEmbeddedWithTemplateRequest {
 
   static getAttributeTypeMap(): AttributeTypeMap {
     return SignatureRequestCreateEmbeddedWithTemplateRequest.attributeTypeMap;
+  }
+
+  /** Attempt to instantiate and hydrate a new instance of this class */
+  static init(data: any): SignatureRequestCreateEmbeddedWithTemplateRequest {
+    return ObjectSerializer.deserialize(
+      data,
+      "SignatureRequestCreateEmbeddedWithTemplateRequest"
+    );
   }
 }

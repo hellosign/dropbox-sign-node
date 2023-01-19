@@ -1,21 +1,21 @@
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 import * as fs from 'fs';
 
-const api = new HelloSignSDK.TemplateApi();
+const templateApi = new DropboxSign.TemplateApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+templateApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// templateApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const templateId = "5de8179668f2033afac48da1868d0093bf133266";
 const fileType = "pdf";
 
-const result = api.templateFiles(templateId, fileType);
+const result = templateApi.templateFiles(templateId, fileType);
 result.then(response => {
   fs.createWriteStream('file_response.pdf').write(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });

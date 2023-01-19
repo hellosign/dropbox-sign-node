@@ -35,53 +35,53 @@ Creates BulkSendJob which sends up to 250 SignatureRequests in bulk based off of
 ### TypeScript Example
 
 ```typescript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.SignatureRequestApi();
+const signatureRequestApi = new DropboxSign.SignatureRequestApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+signatureRequestApi.username = "YOUR_API_KEY";
 
-const signerList1Signer: HelloSignSDK.SubSignatureRequestTemplateSigner = {
+const signerList1Signer: DropboxSign.SubSignatureRequestTemplateSigner = {
   role: "Client",
   name: "George",
   emailAddress: "george@example.com",
   pin: "d79a3td",
 };
 
-const signerList1CustomFields: HelloSignSDK.SubBulkSignerListCustomField = {
+const signerList1CustomFields: DropboxSign.SubBulkSignerListCustomField = {
   name: "company",
   value: "ABC Corp",
 };
 
-const signerList1: HelloSignSDK.SubBulkSignerList = {
+const signerList1: DropboxSign.SubBulkSignerList = {
   signers: [ signerList1Signer ],
   customFields: [ signerList1CustomFields ],
 };
 
-const signerList2Signer: HelloSignSDK.SubSignatureRequestTemplateSigner = {
+const signerList2Signer: DropboxSign.SubSignatureRequestTemplateSigner = {
   role: "Client",
   name: "Mary",
   emailAddress: "mary@example.com",
   pin: "gd9as5b",
 };
 
-const signerList2CustomFields: HelloSignSDK.SubBulkSignerListCustomField = {
+const signerList2CustomFields: DropboxSign.SubBulkSignerListCustomField = {
   name: "company",
   value: "123 LLC",
 };
 
-const signerList2: HelloSignSDK.SubBulkSignerList = {
+const signerList2: DropboxSign.SubBulkSignerList = {
   signers: [ signerList2Signer ],
   customFields: [ signerList2CustomFields ],
 };
 
-const cc1: HelloSignSDK.SubCC = {
+const cc1: DropboxSign.SubCC = {
   role: "Accounting",
   emailAddress: "accounting@example.com",
 };
 
-const data: HelloSignSDK.SignatureRequestBulkCreateEmbeddedWithTemplateRequest = {
+const data: DropboxSign.SignatureRequestBulkCreateEmbeddedWithTemplateRequest = {
   clientId: "1a659d9ad95bccd307ecad78d72192f8",
   templateIds: ["c26b8a16784a872da37ea946b9ddec7c1e11dff6"],
   subject: "Purchase Order",
@@ -91,11 +91,11 @@ const data: HelloSignSDK.SignatureRequestBulkCreateEmbeddedWithTemplateRequest =
   testMode: true,
 };
 
-const result = api.signatureRequestBulkCreateEmbeddedWithTemplate(data);
+const result = signatureRequestApi.signatureRequestBulkCreateEmbeddedWithTemplate(data);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -104,15 +104,15 @@ result.then(response => {
 ### JavaScript Example
 
 ```javascript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.SignatureRequestApi();
+const signatureRequestApi = new DropboxSign.SignatureRequestApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+signatureRequestApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// signatureRequestApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const signerList1Signer = {
   role: "Client",
@@ -163,11 +163,11 @@ const data = {
   testMode: true,
 };
 
-const result = api.signatureRequestBulkCreateEmbeddedWithTemplate(data);
+const result = signatureRequestApi.signatureRequestBulkCreateEmbeddedWithTemplate(data);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -209,56 +209,56 @@ Creates BulkSendJob which sends up to 250 SignatureRequests in bulk based off of
 ### TypeScript Example
 
 ```typescript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.SignatureRequestApi();
+const signatureRequestApi = new DropboxSign.SignatureRequestApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+signatureRequestApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// signatureRequestApi.accessToken = "YOUR_ACCESS_TOKEN";
 
-const signerList1Signer: HelloSignSDK.SubSignatureRequestTemplateSigner = {
+const signerList1Signer: DropboxSign.SubSignatureRequestTemplateSigner = {
   role: "Client",
   name: "George",
   emailAddress: "george@example.com",
   pin: "d79a3td",
 };
 
-const signerList1CustomFields: HelloSignSDK.SubBulkSignerListCustomField = {
+const signerList1CustomFields: DropboxSign.SubBulkSignerListCustomField = {
   name: "company",
   value: "ABC Corp",
 };
 
-const signerList1: HelloSignSDK.SubBulkSignerList = {
+const signerList1: DropboxSign.SubBulkSignerList = {
   signers: [ signerList1Signer ],
   customFields: [ signerList1CustomFields ],
 };
 
-const signerList2Signer: HelloSignSDK.SubSignatureRequestTemplateSigner = {
+const signerList2Signer: DropboxSign.SubSignatureRequestTemplateSigner = {
   role: "Client",
   name: "Mary",
   emailAddress: "mary@example.com",
   pin: "gd9as5b",
 };
 
-const signerList2CustomFields: HelloSignSDK.SubBulkSignerListCustomField = {
+const signerList2CustomFields: DropboxSign.SubBulkSignerListCustomField = {
   name: "company",
   value: "123 LLC",
 };
 
-const signerList2: HelloSignSDK.SubBulkSignerList = {
+const signerList2: DropboxSign.SubBulkSignerList = {
   signers: [ signerList2Signer ],
   customFields: [ signerList2CustomFields ],
 };
 
-const cc1: HelloSignSDK.SubCC = {
+const cc1: DropboxSign.SubCC = {
   role: "Accounting",
   emailAddress: "accounting@example.com",
 };
 
-const data: HelloSignSDK.SignatureRequestBulkSendWithTemplateRequest = {
+const data: DropboxSign.SignatureRequestBulkSendWithTemplateRequest = {
   templateIds: ["c26b8a16784a872da37ea946b9ddec7c1e11dff6"],
   subject: "Purchase Order",
   message: "Glad we could come to an agreement.",
@@ -267,11 +267,11 @@ const data: HelloSignSDK.SignatureRequestBulkSendWithTemplateRequest = {
   testMode: true,
 };
 
-const result = api.signatureRequestBulkSendWithTemplate(data);
+const result = signatureRequestApi.signatureRequestBulkSendWithTemplate(data);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -280,15 +280,15 @@ result.then(response => {
 ### JavaScript Example
 
 ```javascript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.SignatureRequestApi();
+const signatureRequestApi = new DropboxSign.SignatureRequestApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+signatureRequestApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// signatureRequestApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const signerList1Signer = {
   role: "Client",
@@ -338,11 +338,11 @@ const data = {
   testMode: true,
 };
 
-const result = api.signatureRequestBulkSendWithTemplate(data);
+const result = signatureRequestApi.signatureRequestBulkSendWithTemplate(data);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -384,23 +384,23 @@ Cancels an incomplete signature request. This action is **not reversible**.  The
 ### TypeScript Example
 
 ```typescript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.SignatureRequestApi();
+const signatureRequestApi = new DropboxSign.SignatureRequestApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+signatureRequestApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// signatureRequestApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const signatureRequestId = "2f9781e1a8e2045224d808c153c2e1d3df6f8f2f";
 
-const result = api.signatureRequestCancel(signatureRequestId);
+const result = signatureRequestApi.signatureRequestCancel(signatureRequestId);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -409,23 +409,23 @@ result.then(response => {
 ### JavaScript Example
 
 ```javascript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.SignatureRequestApi();
+const signatureRequestApi = new DropboxSign.SignatureRequestApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+signatureRequestApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// signatureRequestApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const signatureRequestId = "2f9781e1a8e2045224d808c153c2e1d3df6f8f2f";
 
-const result = api.signatureRequestCancel(signatureRequestId);
+const result = signatureRequestApi.signatureRequestCancel(signatureRequestId);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -467,58 +467,58 @@ Creates a new SignatureRequest with the submitted documents to be signed in an e
 ### TypeScript Example
 
 ```typescript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
 const fs = require('fs');
 
-const api = new HelloSignSDK.SignatureRequestApi();
+const signatureRequestApi = new DropboxSign.SignatureRequestApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+signatureRequestApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// signatureRequestApi.accessToken = "YOUR_ACCESS_TOKEN";
 
-const signer1: HelloSignSDK.SubSignatureRequestSigner = {
+const signer1: DropboxSign.SubSignatureRequestSigner = {
   emailAddress: "jack@example.com",
   name: "Jack",
   order: 0,
 };
 
-const signer2: HelloSignSDK.SubSignatureRequestSigner = {
+const signer2: DropboxSign.SubSignatureRequestSigner = {
   emailAddress: "jill@example.com",
   name: "Jill",
   order: 1,
 };
 
-const signingOptions: HelloSignSDK.SubSigningOptions = {
+const signingOptions: DropboxSign.SubSigningOptions = {
   draw: true,
   type: true,
   upload: true,
   phone: true,
-  defaultType: HelloSignSDK.SubSigningOptions.DefaultTypeEnum.Draw,
+  defaultType: DropboxSign.SubSigningOptions.DefaultTypeEnum.Draw,
 };
 
-const data: HelloSignSDK.SignatureRequestCreateEmbeddedRequest = {
+const data: DropboxSign.SignatureRequestCreateEmbeddedRequest = {
   clientId: "ec64a202072370a737edf4a0eb7f4437",
   title: "NDA with Acme Co.",
   subject: "The NDA we talked about",
   message: "Please sign this NDA and then we can discuss more. Let me know if you have any questions.",
   signers: [ signer1, signer2 ],
   ccEmailAddresses: [
-    "lawyer@hellosign.com",
-    "lawyer@example.com",
+    "lawyer@dropboxsign.com",
+    "lawyer@dropboxsign.com",
   ],
-  file: [fs.createReadStream("example_signature_request.pdf")],
+  files: [fs.createReadStream("example_signature_request.pdf")],
   signingOptions,
   testMode: true,
 };
 
-const result = api.signatureRequestCreateEmbedded(data);
+const result = signatureRequestApi.signatureRequestCreateEmbedded(data);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -527,17 +527,17 @@ result.then(response => {
 ### JavaScript Example
 
 ```javascript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
 const fs = require('fs');
 
-const api = new HelloSignSDK.SignatureRequestApi();
+const signatureRequestApi = new DropboxSign.SignatureRequestApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+signatureRequestApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// signatureRequestApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const signer1 = {
   emailAddress: "jack@example.com",
@@ -566,19 +566,19 @@ const data = {
   message: "Please sign this NDA and then we can discuss more. Let me know if you have any questions.",
   signers: [ signer1, signer2 ],
   ccEmailAddresses: [
-    "lawyer@hellosign.com",
+    "lawyer@dropboxsign.com",
     "lawyer@example.com",
   ],
-  file: [fs.createReadStream("example_signature_request.pdf")],
+  files: [fs.createReadStream("example_signature_request.pdf")],
   signingOptions,
   testMode: true,
 };
 
-const result = api.signatureRequestCreateEmbedded(data);
+const result = signatureRequestApi.signatureRequestCreateEmbedded(data);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -620,31 +620,31 @@ Creates a new SignatureRequest based on the given Template(s) to be signed in an
 ### TypeScript Example
 
 ```typescript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.SignatureRequestApi();
+const signatureRequestApi = new DropboxSign.SignatureRequestApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+signatureRequestApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// signatureRequestApi.accessToken = "YOUR_ACCESS_TOKEN";
 
-const signer1: HelloSignSDK.SubSignatureRequestTemplateSigner = {
+const signer1: DropboxSign.SubSignatureRequestTemplateSigner = {
   role: "Client",
   emailAddress: "george@example.com",
   name: "George",
 };
 
-const signingOptions: HelloSignSDK.SubSigningOptions = {
+const signingOptions: DropboxSign.SubSigningOptions = {
   draw: true,
   type: true,
   upload: true,
   phone: false,
-  defaultType: HelloSignSDK.SubSigningOptions.DefaultTypeEnum.Draw,
+  defaultType: DropboxSign.SubSigningOptions.DefaultTypeEnum.Draw,
 };
 
-const data: HelloSignSDK.SignatureRequestCreateEmbeddedWithTemplateRequest = {
+const data: DropboxSign.SignatureRequestCreateEmbeddedWithTemplateRequest = {
   clientId: "ec64a202072370a737edf4a0eb7f4437",
   templateIds: ["c26b8a16784a872da37ea946b9ddec7c1e11dff6"],
   subject: "Purchase Order",
@@ -654,11 +654,11 @@ const data: HelloSignSDK.SignatureRequestCreateEmbeddedWithTemplateRequest = {
   testMode: true,
 };
 
-const result = api.signatureRequestCreateEmbeddedWithTemplate(data);
+const result = signatureRequestApi.signatureRequestCreateEmbeddedWithTemplate(data);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -667,15 +667,15 @@ result.then(response => {
 ### JavaScript Example
 
 ```javascript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.SignatureRequestApi();
+const signatureRequestApi = new DropboxSign.SignatureRequestApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+signatureRequestApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// signatureRequestApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const signer1 = {
   role: "Client",
@@ -701,11 +701,11 @@ const data = {
   testMode: true,
 };
 
-const result = api.signatureRequestCreateEmbeddedWithTemplate(data);
+const result = signatureRequestApi.signatureRequestCreateEmbeddedWithTemplate(data);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -747,26 +747,26 @@ Obtain a copy of the current documents specified by the `signature_request_id` p
 ### TypeScript Example
 
 ```typescript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 import * as fs from 'fs';
 
-const api = new HelloSignSDK.SignatureRequestApi();
+const signatureRequestApi = new DropboxSign.SignatureRequestApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+signatureRequestApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// signatureRequestApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const signatureRequestId = "fa5c8a0b0f492d768749333ad6fcc214c111e967";
 const fileType = "pdf";
 
-const result = api.signatureRequestFiles(signatureRequestId, fileType);
+const result = signatureRequestApi.signatureRequestFiles(signatureRequestId, fileType);
 
 result.then(response => {
   fs.createWriteStream('file_response.pdf').write(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -775,26 +775,26 @@ result.then(response => {
 ### JavaScript Example
 
 ```javascript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 import * as fs from 'fs';
 
-const api = new HelloSignSDK.SignatureRequestApi();
+const signatureRequestApi = new DropboxSign.SignatureRequestApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+signatureRequestApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// signatureRequestApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const signatureRequestId = "fa5c8a0b0f492d768749333ad6fcc214c111e967";
 const fileType = "pdf";
 
-const result = api.signatureRequestFiles(signatureRequestId, fileType);
+const result = signatureRequestApi.signatureRequestFiles(signatureRequestId, fileType);
 
 result.then(response => {
   fs.createWriteStream('file_response.pdf').write(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -837,23 +837,23 @@ Obtain a copy of the current documents specified by the `signature_request_id` p
 ### TypeScript Example
 
 ```typescript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.SignatureRequestApi();
+const signatureRequestApi = new DropboxSign.SignatureRequestApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+signatureRequestApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// signatureRequestApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const signatureRequestId = "fa5c8a0b0f492d768749333ad6fcc214c111e967";
 
-const result = api.signatureRequestFilesAsDataUri(signatureRequestId);
+const result = signatureRequestApi.signatureRequestFilesAsDataUri(signatureRequestId);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -862,23 +862,23 @@ result.then(response => {
 ### JavaScript Example
 
 ```javascript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.SignatureRequestApi();
+const signatureRequestApi = new DropboxSign.SignatureRequestApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+signatureRequestApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// signatureRequestApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const signatureRequestId = "fa5c8a0b0f492d768749333ad6fcc214c111e967";
 
-const result = api.signatureRequestFilesAsDataUri(signatureRequestId);
+const result = signatureRequestApi.signatureRequestFilesAsDataUri(signatureRequestId);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -920,23 +920,23 @@ Obtain a copy of the current documents specified by the `signature_request_id` p
 ### TypeScript Example
 
 ```typescript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.SignatureRequestApi();
+const signatureRequestApi = new DropboxSign.SignatureRequestApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+signatureRequestApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// signatureRequestApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const signatureRequestId = "fa5c8a0b0f492d768749333ad6fcc214c111e967";
 
-const result = api.signatureRequestFilesAsFileUrl(signatureRequestId);
+const result = signatureRequestApi.signatureRequestFilesAsFileUrl(signatureRequestId);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -945,23 +945,23 @@ result.then(response => {
 ### JavaScript Example
 
 ```javascript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.SignatureRequestApi();
+const signatureRequestApi = new DropboxSign.SignatureRequestApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+signatureRequestApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// signatureRequestApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const signatureRequestId = "fa5c8a0b0f492d768749333ad6fcc214c111e967";
 
-const result = api.signatureRequestFilesAsFileUrl(signatureRequestId);
+const result = signatureRequestApi.signatureRequestFilesAsFileUrl(signatureRequestId);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -1003,23 +1003,23 @@ Returns the status of the SignatureRequest specified by the `signature_request_i
 ### TypeScript Example
 
 ```typescript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.SignatureRequestApi();
+const signatureRequestApi = new DropboxSign.SignatureRequestApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+signatureRequestApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// signatureRequestApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const signatureRequestId = "fa5c8a0b0f492d768749333ad6fcc214c111e967";
 
-const result = api.signatureRequestGet(signatureRequestId);
+const result = signatureRequestApi.signatureRequestGet(signatureRequestId);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -1028,23 +1028,23 @@ result.then(response => {
 ### JavaScript Example
 
 ```javascript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.SignatureRequestApi();
+const signatureRequestApi = new DropboxSign.SignatureRequestApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+signatureRequestApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// signatureRequestApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const signatureRequestId = "fa5c8a0b0f492d768749333ad6fcc214c111e967";
 
-const result = api.signatureRequestGet(signatureRequestId);
+const result = signatureRequestApi.signatureRequestGet(signatureRequestId);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -1086,24 +1086,24 @@ Returns a list of SignatureRequests that you can access. This includes Signature
 ### TypeScript Example
 
 ```typescript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.SignatureRequestApi();
+const signatureRequestApi = new DropboxSign.SignatureRequestApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+signatureRequestApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// signatureRequestApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const accountId = null;
 const page = 1;
 
-const result = api.signatureRequestList(accountId, page);
+const result = signatureRequestApi.signatureRequestList(accountId, page);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -1112,24 +1112,24 @@ result.then(response => {
 ### JavaScript Example
 
 ```javascript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.SignatureRequestApi();
+const signatureRequestApi = new DropboxSign.SignatureRequestApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+signatureRequestApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// signatureRequestApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const accountId = null;
 const page = 1;
 
-const result = api.signatureRequestList(accountId, page);
+const result = signatureRequestApi.signatureRequestList(accountId, page);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -1174,23 +1174,23 @@ Releases a held SignatureRequest that was claimed and prepared from an [Unclaime
 ### TypeScript Example
 
 ```typescript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.SignatureRequestApi();
+const signatureRequestApi = new DropboxSign.SignatureRequestApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+signatureRequestApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// signatureRequestApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const signatureRequestId = "2f9781e1a8e2045224d808c153c2e1d3df6f8f2f";
 
-const result = api.signatureRequestReleaseHold(signatureRequestId);
+const result = signatureRequestApi.signatureRequestReleaseHold(signatureRequestId);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -1199,23 +1199,23 @@ result.then(response => {
 ### JavaScript Example
 
 ```javascript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.SignatureRequestApi();
+const signatureRequestApi = new DropboxSign.SignatureRequestApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+signatureRequestApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// signatureRequestApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const signatureRequestId = "2f9781e1a8e2045224d808c153c2e1d3df6f8f2f";
 
-const result = api.signatureRequestReleaseHold(signatureRequestId);
+const result = signatureRequestApi.signatureRequestReleaseHold(signatureRequestId);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -1257,27 +1257,27 @@ Sends an email to the signer reminding them to sign the signature request. You c
 ### TypeScript Example
 
 ```typescript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.SignatureRequestApi();
+const signatureRequestApi = new DropboxSign.SignatureRequestApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+signatureRequestApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// signatureRequestApi.accessToken = "YOUR_ACCESS_TOKEN";
 
-const data: HelloSignSDK.SignatureRequestRemindRequest = {
+const data: DropboxSign.SignatureRequestRemindRequest = {
   emailAddress: "john@example.com",
 };
 
 const signatureRequestId = "2f9781e1a8e2045224d808c153c2e1d3df6f8f2f";
 
-const result = api.signatureRequestRemind(signatureRequestId, data);
+const result = signatureRequestApi.signatureRequestRemind(signatureRequestId, data);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -1286,15 +1286,15 @@ result.then(response => {
 ### JavaScript Example
 
 ```javascript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.SignatureRequestApi();
+const signatureRequestApi = new DropboxSign.SignatureRequestApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+signatureRequestApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// signatureRequestApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const data = {
   emailAddress: "john@example.com",
@@ -1302,11 +1302,11 @@ const data = {
 
 const signatureRequestId = "2f9781e1a8e2045224d808c153c2e1d3df6f8f2f";
 
-const result = api.signatureRequestRemind(signatureRequestId, data);
+const result = signatureRequestApi.signatureRequestRemind(signatureRequestId, data);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -1349,23 +1349,23 @@ Removes your access to a completed signature request. This action is **not rever
 ### TypeScript Example
 
 ```typescript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.SignatureRequestApi();
+const signatureRequestApi = new DropboxSign.SignatureRequestApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+signatureRequestApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// signatureRequestApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const signatureRequestId = "2f9781e1a8e2045224d808c153c2e1d3df6f8f2f";
 
-const result = api.signatureRequestRemove(signatureRequestId);
+const result = signatureRequestApi.signatureRequestRemove(signatureRequestId);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -1374,23 +1374,23 @@ result.then(response => {
 ### JavaScript Example
 
 ```javascript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.SignatureRequestApi();
+const signatureRequestApi = new DropboxSign.SignatureRequestApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+signatureRequestApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// signatureRequestApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const signatureRequestId = "2f9781e1a8e2045224d808c153c2e1d3df6f8f2f";
 
-const result = api.signatureRequestRemove(signatureRequestId);
+const result = signatureRequestApi.signatureRequestRemove(signatureRequestId);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -1432,52 +1432,52 @@ Creates and sends a new SignatureRequest with the submitted documents. If `form_
 ### TypeScript Example
 
 ```typescript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
 const fs = require('fs');
 
-const api = new HelloSignSDK.SignatureRequestApi();
+const signatureRequestApi = new DropboxSign.SignatureRequestApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+signatureRequestApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// signatureRequestApi.accessToken = "YOUR_ACCESS_TOKEN";
 
-const signer1: HelloSignSDK.SubSignatureRequestSigner = {
+const signer1: DropboxSign.SubSignatureRequestSigner = {
   emailAddress: "jack@example.com",
   name: "Jack",
   order: 0,
 };
 
-const signer2: HelloSignSDK.SubSignatureRequestSigner = {
+const signer2: DropboxSign.SubSignatureRequestSigner = {
   emailAddress: "jill@example.com",
   name: "Jill",
   order: 1,
 };
 
-const signingOptions: HelloSignSDK.SubSigningOptions = {
+const signingOptions: DropboxSign.SubSigningOptions = {
   draw: true,
   type: true,
   upload: true,
   phone: false,
-  defaultType: HelloSignSDK.SubSigningOptions.DefaultTypeEnum.Draw,
+  defaultType: DropboxSign.SubSigningOptions.DefaultTypeEnum.Draw,
 };
 
-const fieldOptions: HelloSignSDK.SubFieldOptions = {
-  dateFormat: HelloSignSDK.SubFieldOptions.DateFormatEnum.DD_MM_YYYY,
+const fieldOptions: DropboxSign.SubFieldOptions = {
+  dateFormat: DropboxSign.SubFieldOptions.DateFormatEnum.DD_MM_YYYY,
 };
 
-const data: HelloSignSDK.SignatureRequestSendRequest = {
+const data: DropboxSign.SignatureRequestSendRequest = {
   title: "NDA with Acme Co.",
   subject: "The NDA we talked about",
   message: "Please sign this NDA and then we can discuss more. Let me know if you have any questions.",
   signers: [ signer1, signer2 ],
   ccEmailAddresses: [
-    "lawyer@hellosign.com",
-    "lawyer@example.com",
+    "lawyer@dropboxsign.com",
+    "lawyer@dropboxsign.com",
   ],
-  file: [fs.createReadStream("example_signature_request.pdf")],
+  files: [fs.createReadStream("example_signature_request.pdf")],
   metadata: {
     "custom_id": 1234,
     "custom_text": "NDA #9",
@@ -1487,11 +1487,11 @@ const data: HelloSignSDK.SignatureRequestSendRequest = {
   testMode: true,
 };
 
-const result = api.signatureRequestSend(data);
+const result = signatureRequestApi.signatureRequestSend(data);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -1500,17 +1500,17 @@ result.then(response => {
 ### JavaScript Example
 
 ```javascript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
 const fs = require('fs');
 
-const api = new HelloSignSDK.SignatureRequestApi();
+const signatureRequestApi = new DropboxSign.SignatureRequestApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+signatureRequestApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// signatureRequestApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const signer1 = {
   emailAddress: "jack@example.com",
@@ -1542,10 +1542,10 @@ const data = {
   message: "Please sign this NDA and then we can discuss more. Let me know if you have any questions.",
   signers: [ signer1, signer2 ],
   ccEmailAddresses: [
-    "lawyer@hellosign.com",
+    "lawyer@dropboxsign.com",
     "lawyer@example.com",
   ],
-  file: [fs.createReadStream("example_signature_request.pdf")],
+  files: [fs.createReadStream("example_signature_request.pdf")],
   metadata: {
     "custom_id": 1234,
     "custom_text": "NDA #9",
@@ -1555,11 +1555,11 @@ const data = {
   testMode: true,
 };
 
-const result = api.signatureRequestSend(data);
+const result = signatureRequestApi.signatureRequestSend(data);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -1601,43 +1601,43 @@ Creates and sends a new SignatureRequest based off of the Template(s) specified 
 ### TypeScript Example
 
 ```typescript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.SignatureRequestApi();
+const signatureRequestApi = new DropboxSign.SignatureRequestApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+signatureRequestApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// signatureRequestApi.accessToken = "YOUR_ACCESS_TOKEN";
 
-const signer1: HelloSignSDK.SubSignatureRequestTemplateSigner = {
+const signer1: DropboxSign.SubSignatureRequestTemplateSigner = {
   role: "Client",
   emailAddress: "george@example.com",
   name: "George",
 };
 
-const cc1: HelloSignSDK.SubCC = {
+const cc1: DropboxSign.SubCC = {
   role: "Accounting",
   emailAddress: "accounting@example.com",
 };
 
-const customField1: HelloSignSDK.SubCustomField = {
+const customField1: DropboxSign.SubCustomField = {
   name: "Cost",
   value: "$20,000",
   editor: "Client",
   required: true,
 };
 
-const signingOptions: HelloSignSDK.SubSigningOptions = {
+const signingOptions: DropboxSign.SubSigningOptions = {
   draw: true,
   type: true,
   upload: true,
   phone: false,
-  defaultType: HelloSignSDK.SubSigningOptions.DefaultTypeEnum.Draw,
+  defaultType: DropboxSign.SubSigningOptions.DefaultTypeEnum.Draw,
 };
 
-const data: HelloSignSDK.SignatureRequestSendWithTemplateRequest = {
+const data: DropboxSign.SignatureRequestSendWithTemplateRequest = {
   templateIds: ["c26b8a16784a872da37ea946b9ddec7c1e11dff6"],
   subject: "Purchase Order",
   message: "Glad we could come to an agreement.",
@@ -1648,11 +1648,11 @@ const data: HelloSignSDK.SignatureRequestSendWithTemplateRequest = {
   testMode: true,
 };
 
-const result = api.signatureRequestSendWithTemplate(data);
+const result = signatureRequestApi.signatureRequestSendWithTemplate(data);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -1661,15 +1661,15 @@ result.then(response => {
 ### JavaScript Example
 
 ```javascript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.SignatureRequestApi();
+const signatureRequestApi = new DropboxSign.SignatureRequestApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+signatureRequestApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// signatureRequestApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const signer1 = {
   role: "Client",
@@ -1708,11 +1708,11 @@ const data = {
   testMode: true,
 };
 
-const result = api.signatureRequestSendWithTemplate(data);
+const result = signatureRequestApi.signatureRequestSendWithTemplate(data);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -1754,28 +1754,28 @@ Updates the email address and/or the name for a given signer on a signature requ
 ### TypeScript Example
 
 ```typescript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.SignatureRequestApi();
+const signatureRequestApi = new DropboxSign.SignatureRequestApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+signatureRequestApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// signatureRequestApi.accessToken = "YOUR_ACCESS_TOKEN";
 
-const data: HelloSignSDK.SignatureRequestUpdateRequest = {
+const data: DropboxSign.SignatureRequestUpdateRequest = {
   emailAddress: "john@example.com",
   signatureId: "78caf2a1d01cd39cea2bc1cbb340dac3",
 };
 
 const signatureRequestId = "2f9781e1a8e2045224d808c153c2e1d3df6f8f2f";
 
-const result = api.signatureRequestUpdate(signatureRequestId, data);
+const result = signatureRequestApi.signatureRequestUpdate(signatureRequestId, data);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
@@ -1784,15 +1784,15 @@ result.then(response => {
 ### JavaScript Example
 
 ```javascript
-import * as HelloSignSDK from "hellosign-sdk";
+import * as DropboxSign from "@dropbox/sign";
 
-const api = new HelloSignSDK.SignatureRequestApi();
+const signatureRequestApi = new DropboxSign.SignatureRequestApi();
 
 // Configure HTTP basic authorization: api_key
-api.username = "YOUR_API_KEY";
+signatureRequestApi.username = "YOUR_API_KEY";
 
 // or, configure Bearer (JWT) authorization: oauth2
-// api.accessToken = "YOUR_ACCESS_TOKEN";
+// signatureRequestApi.accessToken = "YOUR_ACCESS_TOKEN";
 
 const data = {
   emailAddress: "john@example.com",
@@ -1801,11 +1801,11 @@ const data = {
 
 const signatureRequestId = "2f9781e1a8e2045224d808c153c2e1d3df6f8f2f";
 
-const result = api.signatureRequestUpdate(signatureRequestId, data);
+const result = signatureRequestApi.signatureRequestUpdate(signatureRequestId, data);
 result.then(response => {
   console.log(response.body);
 }).catch(error => {
-  console.log("Exception when calling HelloSign API:");
+  console.log("Exception when calling Dropbox Sign API:");
   console.log(error.body);
 });
 
