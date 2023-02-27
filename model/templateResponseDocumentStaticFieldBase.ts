@@ -23,31 +23,38 @@
  */
 
 import { RequestFile, AttributeTypeMap, ObjectSerializer } from "./models";
-import { TemplateResponseFieldAvgTextLength } from "./templateResponseFieldAvgTextLength";
 
-export class TemplateResponseCustomField {
+/**
+ * An array describing static overlay fields. **Note** only available for certain subscriptions.
+ */
+export abstract class TemplateResponseDocumentStaticFieldBase {
+  "type": string;
   /**
-   * The name of the Custom Field.
+   * A unique id for the static field.
+   */
+  "apiId"?: string;
+  /**
+   * The name of the static field.
    */
   "name"?: string;
   /**
-   * The type of this Custom Field. Only `text` and `checkbox` are currently supported.
+   * The signer of the Static Field.
    */
-  "type"?: TemplateResponseCustomField.TypeEnum;
+  "signer"?: string = "me_now";
   /**
-   * The horizontal offset in pixels for this form field.
+   * The horizontal offset in pixels for this static field.
    */
   "x"?: number;
   /**
-   * The vertical offset in pixels for this form field.
+   * The vertical offset in pixels for this static field.
    */
   "y"?: number;
   /**
-   * The width in pixels of this form field.
+   * The width in pixels of this static field.
    */
   "width"?: number;
   /**
-   * The height in pixels of this form field.
+   * The height in pixels of this static field.
    */
   "height"?: number;
   /**
@@ -55,39 +62,36 @@ export class TemplateResponseCustomField {
    */
   "required"?: boolean;
   /**
-   * The unique ID for this field.
-   */
-  "apiId"?: string;
-  /**
    * The name of the group this field is in. If this field is not a group, this defaults to `null`.
    */
   "group"?: string | null;
-  "avgTextLength"?: TemplateResponseFieldAvgTextLength;
   /**
-   * Whether this form field is multiline text.
+   * Final font size used by this form field.
    */
-  "isMultiline"?: boolean | null;
-  /**
-   * Original font size used in this form field\'s text.
-   */
-  "originalFontSize"?: number | null;
-  /**
-   * Font family used in this form field\'s text.
-   */
-  "fontFamily"?: string | null;
+  "fontSize"?: number;
 
-  static discriminator: string | undefined = undefined;
+  static discriminator: string | undefined = "type";
 
   static attributeTypeMap: AttributeTypeMap = [
+    {
+      name: "type",
+      baseName: "type",
+      type: "string",
+    },
+    {
+      name: "apiId",
+      baseName: "api_id",
+      type: "string",
+    },
     {
       name: "name",
       baseName: "name",
       type: "string",
     },
     {
-      name: "type",
-      baseName: "type",
-      type: "TemplateResponseCustomField.TypeEnum",
+      name: "signer",
+      baseName: "signer",
+      type: "string",
     },
     {
       name: "x",
@@ -115,50 +119,51 @@ export class TemplateResponseCustomField {
       type: "boolean",
     },
     {
-      name: "apiId",
-      baseName: "api_id",
-      type: "string",
-    },
-    {
       name: "group",
       baseName: "group",
       type: "string",
     },
     {
-      name: "avgTextLength",
-      baseName: "avg_text_length",
-      type: "TemplateResponseFieldAvgTextLength",
-    },
-    {
-      name: "isMultiline",
-      baseName: "isMultiline",
-      type: "boolean",
-    },
-    {
-      name: "originalFontSize",
-      baseName: "originalFontSize",
+      name: "fontSize",
+      baseName: "fontSize",
       type: "number",
-    },
-    {
-      name: "fontFamily",
-      baseName: "fontFamily",
-      type: "string",
     },
   ];
 
   static getAttributeTypeMap(): AttributeTypeMap {
-    return TemplateResponseCustomField.attributeTypeMap;
+    return TemplateResponseDocumentStaticFieldBase.attributeTypeMap;
   }
 
-  /** Attempt to instantiate and hydrate a new instance of this class */
-  static init(data: any): TemplateResponseCustomField {
-    return ObjectSerializer.deserialize(data, "TemplateResponseCustomField");
-  }
-}
+  static discriminatorClassName(value: any): string | null {
+    if (value === undefined || value === null) {
+      return null;
+    }
 
-export namespace TemplateResponseCustomField {
-  export enum TypeEnum {
-    Text = "text",
-    Checkbox = "checkbox",
+    if (value === "checkbox") {
+      return "TemplateResponseDocumentStaticFieldCheckbox";
+    }
+    if (value === "date_signed") {
+      return "TemplateResponseDocumentStaticFieldDateSigned";
+    }
+    if (value === "dropdown") {
+      return "TemplateResponseDocumentStaticFieldDropdown";
+    }
+    if (value === "hyperlink") {
+      return "TemplateResponseDocumentStaticFieldHyperlink";
+    }
+    if (value === "initials") {
+      return "TemplateResponseDocumentStaticFieldInitials";
+    }
+    if (value === "radio") {
+      return "TemplateResponseDocumentStaticFieldRadio";
+    }
+    if (value === "signature") {
+      return "TemplateResponseDocumentStaticFieldSignature";
+    }
+    if (value === "text") {
+      return "TemplateResponseDocumentStaticFieldText";
+    }
+
+    return null;
   }
 }

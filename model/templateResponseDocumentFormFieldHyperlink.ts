@@ -23,114 +23,37 @@
  */
 
 import { RequestFile, AttributeTypeMap, ObjectSerializer } from "./models";
+import { TemplateResponseDocumentFormFieldBase } from "./templateResponseDocumentFormFieldBase";
 import { TemplateResponseFieldAvgTextLength } from "./templateResponseFieldAvgTextLength";
 
-export class TemplateResponseNamedFormField {
+/**
+ * This class extends `TemplateResponseDocumentFormFieldBase`
+ */
+export class TemplateResponseDocumentFormFieldHyperlink extends TemplateResponseDocumentFormFieldBase {
   /**
-   * The name of the Named Form Field.
+   * The type of this form field. See [field types](/api/reference/constants/#field-types).  * Text Field uses `TemplateResponseDocumentFormFieldText` * Dropdown Field uses `TemplateResponseDocumentFormFieldDropdown` * Hyperlink Field uses `TemplateResponseDocumentFormFieldHyperlink` * Checkbox Field uses `TemplateResponseDocumentFormFieldCheckbox` * Radio Field uses `TemplateResponseDocumentFormFieldRadio` * Signature Field uses `TemplateResponseDocumentFormFieldSignature` * Date Signed Field uses `TemplateResponseDocumentFormFieldDateSigned` * Initials Field uses `TemplateResponseDocumentFormFieldInitials`
    */
-  "name"?: string;
-  /**
-   * The type of this Named Form Field. Only `text` and `checkbox` are currently supported.
-   */
-  "type"?: string;
-  /**
-   * The signer of the Named Form Field.
-   */
-  "signer"?: string;
-  /**
-   * The horizontal offset in pixels for this form field.
-   */
-  "x"?: number;
-  /**
-   * The vertical offset in pixels for this form field.
-   */
-  "y"?: number;
-  /**
-   * The width in pixels of this form field.
-   */
-  "width"?: number;
-  /**
-   * The height in pixels of this form field.
-   */
-  "height"?: number;
-  /**
-   * Boolean showing whether or not this field is required.
-   */
-  "required"?: boolean;
-  /**
-   * The unique ID for this field.
-   */
-  "apiId"?: string;
-  /**
-   * The name of the group this field is in. If this field is not a group, this defaults to `null`.
-   */
-  "group"?: string | null;
+  "type": string = "hyperlink";
   "avgTextLength"?: TemplateResponseFieldAvgTextLength;
   /**
    * Whether this form field is multiline text.
    */
-  "isMultiline"?: boolean | null;
+  "isMultiline"?: boolean;
   /**
    * Original font size used in this form field\'s text.
    */
-  "originalFontSize"?: number | null;
+  "originalFontSize"?: number;
   /**
    * Font family used in this form field\'s text.
    */
-  "fontFamily"?: string | null;
+  "fontFamily"?: string;
 
   static discriminator: string | undefined = undefined;
 
   static attributeTypeMap: AttributeTypeMap = [
     {
-      name: "name",
-      baseName: "name",
-      type: "string",
-    },
-    {
       name: "type",
       baseName: "type",
-      type: "string",
-    },
-    {
-      name: "signer",
-      baseName: "signer",
-      type: "string",
-    },
-    {
-      name: "x",
-      baseName: "x",
-      type: "number",
-    },
-    {
-      name: "y",
-      baseName: "y",
-      type: "number",
-    },
-    {
-      name: "width",
-      baseName: "width",
-      type: "number",
-    },
-    {
-      name: "height",
-      baseName: "height",
-      type: "number",
-    },
-    {
-      name: "required",
-      baseName: "required",
-      type: "boolean",
-    },
-    {
-      name: "apiId",
-      baseName: "api_id",
-      type: "string",
-    },
-    {
-      name: "group",
-      baseName: "group",
       type: "string",
     },
     {
@@ -156,11 +79,16 @@ export class TemplateResponseNamedFormField {
   ];
 
   static getAttributeTypeMap(): AttributeTypeMap {
-    return TemplateResponseNamedFormField.attributeTypeMap;
+    return super
+      .getAttributeTypeMap()
+      .concat(TemplateResponseDocumentFormFieldHyperlink.attributeTypeMap);
   }
 
   /** Attempt to instantiate and hydrate a new instance of this class */
-  static init(data: any): TemplateResponseNamedFormField {
-    return ObjectSerializer.deserialize(data, "TemplateResponseNamedFormField");
+  static init(data: any): TemplateResponseDocumentFormFieldHyperlink {
+    return ObjectSerializer.deserialize(
+      data,
+      "TemplateResponseDocumentFormFieldHyperlink"
+    );
   }
 }
