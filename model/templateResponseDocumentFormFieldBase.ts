@@ -23,19 +23,22 @@
  */
 
 import { RequestFile, AttributeTypeMap, ObjectSerializer } from "./models";
-import { TemplateResponseFieldAvgTextLength } from "./templateResponseFieldAvgTextLength";
 
-export class TemplateResponseDocumentCustomField {
+/**
+ * An array of Form Field objects containing the name and type of each named field.
+ */
+export abstract class TemplateResponseDocumentFormFieldBase {
+  "type": string;
   /**
-   * The name of the Custom Field.
+   * A unique id for the form field.
+   */
+  "apiId"?: string;
+  /**
+   * The name of the form field.
    */
   "name"?: string;
   /**
-   * The type of this Custom Field. Only `text` and `checkbox` are currently supported.
-   */
-  "type"?: TemplateResponseDocumentCustomField.TypeEnum;
-  /**
-   * The signer of the Custom Field.
+   * The signer of the Form Field.
    */
   "signer"?: string;
   /**
@@ -59,44 +62,31 @@ export class TemplateResponseDocumentCustomField {
    */
   "required"?: boolean;
   /**
-   * The unique ID for this field.
-   */
-  "apiId"?: string;
-  /**
-   * The name of the group this field is in. If this field is not a group, this defaults to `null`.
+   * The name of the group this field is in. If this field is not a group, this defaults to `null` except for Radio fields.
    */
   "group"?: string | null;
-  "avgTextLength"?: TemplateResponseFieldAvgTextLength;
   /**
-   * Whether this form field is multiline text.
+   * Final font size used by this form field.
    */
-  "isMultiline"?: boolean | null;
-  /**
-   * Original font size used in this form field\'s text.
-   */
-  "originalFontSize"?: number | null;
-  /**
-   * Font family used in this form field\'s text.
-   */
-  "fontFamily"?: string | null;
-  /**
-   * Deprecated. Use `form_fields` inside the [documents](https://developers.hellosign.com/api/reference/operation/templateGet/#!c=200&path=template/documents&t=response) array instead.
-   */
-  "namedFormFields"?: object | null;
-  "reusableFormId"?: string | null;
+  "fontSize"?: number;
 
-  static discriminator: string | undefined = undefined;
+  static discriminator: string | undefined = "type";
 
   static attributeTypeMap: AttributeTypeMap = [
+    {
+      name: "type",
+      baseName: "type",
+      type: "string",
+    },
+    {
+      name: "apiId",
+      baseName: "api_id",
+      type: "string",
+    },
     {
       name: "name",
       baseName: "name",
       type: "string",
-    },
-    {
-      name: "type",
-      baseName: "type",
-      type: "TemplateResponseDocumentCustomField.TypeEnum",
     },
     {
       name: "signer",
@@ -129,63 +119,51 @@ export class TemplateResponseDocumentCustomField {
       type: "boolean",
     },
     {
-      name: "apiId",
-      baseName: "api_id",
-      type: "string",
-    },
-    {
       name: "group",
       baseName: "group",
       type: "string",
     },
     {
-      name: "avgTextLength",
-      baseName: "avg_text_length",
-      type: "TemplateResponseFieldAvgTextLength",
-    },
-    {
-      name: "isMultiline",
-      baseName: "isMultiline",
-      type: "boolean",
-    },
-    {
-      name: "originalFontSize",
-      baseName: "originalFontSize",
+      name: "fontSize",
+      baseName: "fontSize",
       type: "number",
-    },
-    {
-      name: "fontFamily",
-      baseName: "fontFamily",
-      type: "string",
-    },
-    {
-      name: "namedFormFields",
-      baseName: "named_form_fields",
-      type: "object",
-    },
-    {
-      name: "reusableFormId",
-      baseName: "reusable_form_id",
-      type: "string",
     },
   ];
 
   static getAttributeTypeMap(): AttributeTypeMap {
-    return TemplateResponseDocumentCustomField.attributeTypeMap;
+    return TemplateResponseDocumentFormFieldBase.attributeTypeMap;
   }
 
-  /** Attempt to instantiate and hydrate a new instance of this class */
-  static init(data: any): TemplateResponseDocumentCustomField {
-    return ObjectSerializer.deserialize(
-      data,
-      "TemplateResponseDocumentCustomField"
-    );
-  }
-}
+  static discriminatorClassName(value: any): string | null {
+    if (value === undefined || value === null) {
+      return null;
+    }
 
-export namespace TemplateResponseDocumentCustomField {
-  export enum TypeEnum {
-    Text = "text",
-    Checkbox = "checkbox",
+    if (value === "checkbox") {
+      return "TemplateResponseDocumentFormFieldCheckbox";
+    }
+    if (value === "date_signed") {
+      return "TemplateResponseDocumentFormFieldDateSigned";
+    }
+    if (value === "dropdown") {
+      return "TemplateResponseDocumentFormFieldDropdown";
+    }
+    if (value === "hyperlink") {
+      return "TemplateResponseDocumentFormFieldHyperlink";
+    }
+    if (value === "initials") {
+      return "TemplateResponseDocumentFormFieldInitials";
+    }
+    if (value === "radio") {
+      return "TemplateResponseDocumentFormFieldRadio";
+    }
+    if (value === "signature") {
+      return "TemplateResponseDocumentFormFieldSignature";
+    }
+    if (value === "text") {
+      return "TemplateResponseDocumentFormFieldText";
+    }
+
+    return null;
   }
 }

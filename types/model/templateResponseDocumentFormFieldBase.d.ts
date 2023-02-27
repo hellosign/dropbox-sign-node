@@ -1,17 +1,18 @@
 import { AttributeTypeMap } from "./models";
-export declare class TemplateResponseDocumentStaticField {
+export declare abstract class TemplateResponseDocumentFormFieldBase {
+    "type": string;
+    "apiId"?: string;
     "name"?: string;
-    "type"?: string;
     "signer"?: string;
     "x"?: number;
     "y"?: number;
     "width"?: number;
     "height"?: number;
     "required"?: boolean;
-    "apiId"?: string;
     "group"?: string | null;
+    "fontSize"?: number;
     static discriminator: string | undefined;
     static attributeTypeMap: AttributeTypeMap;
     static getAttributeTypeMap(): AttributeTypeMap;
-    static init(data: any): TemplateResponseDocumentStaticField;
+    static discriminatorClassName(value: any): string | null;
 }

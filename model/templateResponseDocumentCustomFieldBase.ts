@@ -24,33 +24,37 @@
 
 import { RequestFile, AttributeTypeMap, ObjectSerializer } from "./models";
 
-export class TemplateResponseDocumentStaticField {
+/**
+ * An array of Form Field objects containing the name and type of each named field.
+ */
+export abstract class TemplateResponseDocumentCustomFieldBase {
+  "type": string;
   /**
-   * The name of the static field.
+   * The unique ID for this field.
+   */
+  "apiId"?: string;
+  /**
+   * The name of the Custom Field.
    */
   "name"?: string;
   /**
-   * The type of this static field. See [field types](/api/reference/constants/#field-types).
+   * The signer of the Custom Field. Can be `null` if field is a merge field (assigned to Sender).
    */
-  "type"?: string;
+  "signer"?: string | null;
   /**
-   * The signer of the Static Field.
-   */
-  "signer"?: string;
-  /**
-   * The horizontal offset in pixels for this static field.
+   * The horizontal offset in pixels for this form field.
    */
   "x"?: number;
   /**
-   * The vertical offset in pixels for this static field.
+   * The vertical offset in pixels for this form field.
    */
   "y"?: number;
   /**
-   * The width in pixels of this static field.
+   * The width in pixels of this form field.
    */
   "width"?: number;
   /**
-   * The height in pixels of this static field.
+   * The height in pixels of this form field.
    */
   "height"?: number;
   /**
@@ -58,25 +62,30 @@ export class TemplateResponseDocumentStaticField {
    */
   "required"?: boolean;
   /**
-   * A unique id for the static field.
-   */
-  "apiId"?: string;
-  /**
    * The name of the group this field is in. If this field is not a group, this defaults to `null`.
    */
   "group"?: string | null;
+  /**
+   * Final font size used by this form field.
+   */
+  "fontSize"?: number;
 
-  static discriminator: string | undefined = undefined;
+  static discriminator: string | undefined = "type";
 
   static attributeTypeMap: AttributeTypeMap = [
     {
-      name: "name",
-      baseName: "name",
+      name: "type",
+      baseName: "type",
       type: "string",
     },
     {
-      name: "type",
-      baseName: "type",
+      name: "apiId",
+      baseName: "api_id",
+      type: "string",
+    },
+    {
+      name: "name",
+      baseName: "name",
       type: "string",
     },
     {
@@ -110,26 +119,33 @@ export class TemplateResponseDocumentStaticField {
       type: "boolean",
     },
     {
-      name: "apiId",
-      baseName: "api_id",
-      type: "string",
-    },
-    {
       name: "group",
       baseName: "group",
       type: "string",
     },
+    {
+      name: "fontSize",
+      baseName: "fontSize",
+      type: "number",
+    },
   ];
 
   static getAttributeTypeMap(): AttributeTypeMap {
-    return TemplateResponseDocumentStaticField.attributeTypeMap;
+    return TemplateResponseDocumentCustomFieldBase.attributeTypeMap;
   }
 
-  /** Attempt to instantiate and hydrate a new instance of this class */
-  static init(data: any): TemplateResponseDocumentStaticField {
-    return ObjectSerializer.deserialize(
-      data,
-      "TemplateResponseDocumentStaticField"
-    );
+  static discriminatorClassName(value: any): string | null {
+    if (value === undefined || value === null) {
+      return null;
+    }
+
+    if (value === "checkbox") {
+      return "TemplateResponseDocumentCustomFieldCheckbox";
+    }
+    if (value === "text") {
+      return "TemplateResponseDocumentCustomFieldText";
+    }
+
+    return null;
   }
 }

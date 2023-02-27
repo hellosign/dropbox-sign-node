@@ -23,114 +23,41 @@
  */
 
 import { RequestFile, AttributeTypeMap, ObjectSerializer } from "./models";
+import { TemplateResponseDocumentFormFieldBase } from "./templateResponseDocumentFormFieldBase";
 import { TemplateResponseFieldAvgTextLength } from "./templateResponseFieldAvgTextLength";
 
-export class TemplateResponseDocumentFormField {
+/**
+ * This class extends `TemplateResponseDocumentFormFieldBase`
+ */
+export class TemplateResponseDocumentFormFieldText extends TemplateResponseDocumentFormFieldBase {
   /**
-   * A unique id for the form field.
+   * The type of this form field. See [field types](/api/reference/constants/#field-types).  * Text Field uses `TemplateResponseDocumentFormFieldText` * Dropdown Field uses `TemplateResponseDocumentFormFieldDropdown` * Hyperlink Field uses `TemplateResponseDocumentFormFieldHyperlink` * Checkbox Field uses `TemplateResponseDocumentFormFieldCheckbox` * Radio Field uses `TemplateResponseDocumentFormFieldRadio` * Signature Field uses `TemplateResponseDocumentFormFieldSignature` * Date Signed Field uses `TemplateResponseDocumentFormFieldDateSigned` * Initials Field uses `TemplateResponseDocumentFormFieldInitials`
    */
-  "apiId"?: string;
-  /**
-   * The name of the form field.
-   */
-  "name"?: string;
-  /**
-   * The type of this form field. See [field types](/api/reference/constants/#field-types).
-   */
-  "type"?: TemplateResponseDocumentFormField.TypeEnum;
-  /**
-   * The signer of the Form Field.
-   */
-  "signer"?: string;
-  /**
-   * The horizontal offset in pixels for this form field.
-   */
-  "x"?: number;
-  /**
-   * The vertical offset in pixels for this form field.
-   */
-  "y"?: number;
-  /**
-   * The width in pixels of this form field.
-   */
-  "width"?: number;
-  /**
-   * The height in pixels of this form field.
-   */
-  "height"?: number;
-  /**
-   * Boolean showing whether or not this field is required.
-   */
-  "required"?: boolean;
-  /**
-   * The name of the group this field is in. If this field is not a group, this defaults to `null`.
-   */
-  "group"?: string | null;
+  "type": string = "text";
   "avgTextLength"?: TemplateResponseFieldAvgTextLength;
   /**
    * Whether this form field is multiline text.
    */
-  "isMultiline"?: boolean | null;
+  "isMultiline"?: boolean;
   /**
    * Original font size used in this form field\'s text.
    */
-  "originalFontSize"?: number | null;
+  "originalFontSize"?: number;
   /**
    * Font family used in this form field\'s text.
    */
-  "fontFamily"?: string | null;
+  "fontFamily"?: string;
+  /**
+   * Each text field may contain a `validation_type` parameter. Check out the list of [validation types](https://faq.hellosign.com/hc/en-us/articles/217115577) to learn more about the possible values.
+   */
+  "validationType"?: TemplateResponseDocumentFormFieldText.ValidationTypeEnum;
 
   static discriminator: string | undefined = undefined;
 
   static attributeTypeMap: AttributeTypeMap = [
     {
-      name: "apiId",
-      baseName: "api_id",
-      type: "string",
-    },
-    {
-      name: "name",
-      baseName: "name",
-      type: "string",
-    },
-    {
       name: "type",
       baseName: "type",
-      type: "TemplateResponseDocumentFormField.TypeEnum",
-    },
-    {
-      name: "signer",
-      baseName: "signer",
-      type: "string",
-    },
-    {
-      name: "x",
-      baseName: "x",
-      type: "number",
-    },
-    {
-      name: "y",
-      baseName: "y",
-      type: "number",
-    },
-    {
-      name: "width",
-      baseName: "width",
-      type: "number",
-    },
-    {
-      name: "height",
-      baseName: "height",
-      type: "number",
-    },
-    {
-      name: "required",
-      baseName: "required",
-      type: "boolean",
-    },
-    {
-      name: "group",
-      baseName: "group",
       type: "string",
     },
     {
@@ -153,32 +80,39 @@ export class TemplateResponseDocumentFormField {
       baseName: "fontFamily",
       type: "string",
     },
+    {
+      name: "validationType",
+      baseName: "validation_type",
+      type: "TemplateResponseDocumentFormFieldText.ValidationTypeEnum",
+    },
   ];
 
   static getAttributeTypeMap(): AttributeTypeMap {
-    return TemplateResponseDocumentFormField.attributeTypeMap;
+    return super
+      .getAttributeTypeMap()
+      .concat(TemplateResponseDocumentFormFieldText.attributeTypeMap);
   }
 
   /** Attempt to instantiate and hydrate a new instance of this class */
-  static init(data: any): TemplateResponseDocumentFormField {
+  static init(data: any): TemplateResponseDocumentFormFieldText {
     return ObjectSerializer.deserialize(
       data,
-      "TemplateResponseDocumentFormField"
+      "TemplateResponseDocumentFormFieldText"
     );
   }
 }
 
-export namespace TemplateResponseDocumentFormField {
-  export enum TypeEnum {
-    Checkbox = "checkbox",
-    CheckboxMerge = "checkbox-merge",
-    DateSigned = "date_signed",
-    Dropdown = "dropdown",
-    Hyperlink = "hyperlink",
-    Initials = "initials",
-    Signature = "signature",
-    Radio = "radio",
-    Text = "text",
-    TextMerge = "text-merge",
+export namespace TemplateResponseDocumentFormFieldText {
+  export enum ValidationTypeEnum {
+    NumbersOnly = "numbers_only",
+    LettersOnly = "letters_only",
+    PhoneNumber = "phone_number",
+    BankRoutingNumber = "bank_routing_number",
+    BankAccountNumber = "bank_account_number",
+    EmailAddress = "email_address",
+    ZipCode = "zip_code",
+    SocialSecurityNumber = "social_security_number",
+    EmployerIdentificationNumber = "employer_identification_number",
+    CustomRegex = "custom_regex",
   }
 }
