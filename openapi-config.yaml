@@ -2,7 +2,7 @@ generatorName: typescript-node
 typeMappings: {}
 additionalProperties:
   npmName: "@dropbox/sign"
-  npmVersion: 1.1.0
+  npmVersion: 1.1.1
   supportsES6: true
   apiDocPath: ./docs/api
   modelDocPath: ./docs/model
@@ -26,6 +26,12 @@ files:
   VERSION.mustache:
     templateType: SupportingFiles
     destinationFilename: VERSION
+  api-index.mustache:
+    templateType: SupportingFiles
+    destinationFilename: api/index.ts
+  model-index.mustache:
+    templateType: SupportingFiles
+    destinationFilename: model/index.ts
 globalProperties:
   apiTests: false
   modelTests: false

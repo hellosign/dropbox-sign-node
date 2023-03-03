@@ -25,33 +25,30 @@
 import axios, { AxiosError, AxiosRequestConfig } from "axios";
 
 /* tslint:disable:no-unused-locals */
-import { BulkSendJobSendResponse } from "../model/bulkSendJobSendResponse";
-import { ErrorResponse } from "../model/errorResponse";
-import { FileResponse } from "../model/fileResponse";
-import { FileResponseDataUri } from "../model/fileResponseDataUri";
-import { SignatureRequestBulkCreateEmbeddedWithTemplateRequest } from "../model/signatureRequestBulkCreateEmbeddedWithTemplateRequest";
-import { SignatureRequestBulkSendWithTemplateRequest } from "../model/signatureRequestBulkSendWithTemplateRequest";
-import { SignatureRequestCreateEmbeddedRequest } from "../model/signatureRequestCreateEmbeddedRequest";
-import { SignatureRequestCreateEmbeddedWithTemplateRequest } from "../model/signatureRequestCreateEmbeddedWithTemplateRequest";
-import { SignatureRequestGetResponse } from "../model/signatureRequestGetResponse";
-import { SignatureRequestListResponse } from "../model/signatureRequestListResponse";
-import { SignatureRequestRemindRequest } from "../model/signatureRequestRemindRequest";
-import { SignatureRequestSendRequest } from "../model/signatureRequestSendRequest";
-import { SignatureRequestSendWithTemplateRequest } from "../model/signatureRequestSendWithTemplateRequest";
-import { SignatureRequestUpdateRequest } from "../model/signatureRequestUpdateRequest";
-
 import {
   ObjectSerializer,
   Authentication,
   VoidAuth,
   Interceptor,
-} from "../model/models";
-import {
   HttpBasicAuth,
   HttpBearerAuth,
   ApiKeyAuth,
   OAuth,
-} from "../model/models";
+  BulkSendJobSendResponse,
+  ErrorResponse,
+  FileResponse,
+  FileResponseDataUri,
+  SignatureRequestBulkCreateEmbeddedWithTemplateRequest,
+  SignatureRequestBulkSendWithTemplateRequest,
+  SignatureRequestCreateEmbeddedRequest,
+  SignatureRequestCreateEmbeddedWithTemplateRequest,
+  SignatureRequestGetResponse,
+  SignatureRequestListResponse,
+  SignatureRequestRemindRequest,
+  SignatureRequestSendRequest,
+  SignatureRequestSendWithTemplateRequest,
+  SignatureRequestUpdateRequest,
+} from "../model";
 
 import {
   HttpError,
@@ -61,7 +58,8 @@ import {
   generateFormData,
   toFormData,
   queryParamsSerializer,
-} from "./apis";
+  USER_AGENT,
+} from "./";
 
 let defaultBasePath = "https://api.hellosign.com/v3";
 
@@ -73,7 +71,9 @@ export enum SignatureRequestApiApiKeys {}
 
 export class SignatureRequestApi {
   protected _basePath = defaultBasePath;
-  protected _defaultHeaders: any = {};
+  protected _defaultHeaders: any = {
+    "User-Agent": USER_AGENT,
+  };
   protected _useQuerystring: boolean = false;
 
   protected authentications = {
@@ -144,6 +144,19 @@ export class SignatureRequestApi {
     signatureRequestBulkCreateEmbeddedWithTemplateRequest: SignatureRequestBulkCreateEmbeddedWithTemplateRequest,
     options: optionsI = { headers: {} }
   ): Promise<returnTypeT<BulkSendJobSendResponse>> {
+    if (
+      signatureRequestBulkCreateEmbeddedWithTemplateRequest !== null &&
+      signatureRequestBulkCreateEmbeddedWithTemplateRequest !== undefined &&
+      signatureRequestBulkCreateEmbeddedWithTemplateRequest.constructor.name !==
+        "SignatureRequestBulkCreateEmbeddedWithTemplateRequest"
+    ) {
+      signatureRequestBulkCreateEmbeddedWithTemplateRequest =
+        ObjectSerializer.deserialize(
+          signatureRequestBulkCreateEmbeddedWithTemplateRequest,
+          "SignatureRequestBulkCreateEmbeddedWithTemplateRequest"
+        );
+    }
+
     const localVarPath =
       this.basePath + "/signature_request/bulk_create_embedded_with_template";
     let localVarQueryParameters: any = {};
@@ -296,6 +309,19 @@ export class SignatureRequestApi {
     signatureRequestBulkSendWithTemplateRequest: SignatureRequestBulkSendWithTemplateRequest,
     options: optionsI = { headers: {} }
   ): Promise<returnTypeT<BulkSendJobSendResponse>> {
+    if (
+      signatureRequestBulkSendWithTemplateRequest !== null &&
+      signatureRequestBulkSendWithTemplateRequest !== undefined &&
+      signatureRequestBulkSendWithTemplateRequest.constructor.name !==
+        "SignatureRequestBulkSendWithTemplateRequest"
+    ) {
+      signatureRequestBulkSendWithTemplateRequest =
+        ObjectSerializer.deserialize(
+          signatureRequestBulkSendWithTemplateRequest,
+          "SignatureRequestBulkSendWithTemplateRequest"
+        );
+    }
+
     const localVarPath =
       this.basePath + "/signature_request/bulk_send_with_template";
     let localVarQueryParameters: any = {};
@@ -558,6 +584,18 @@ export class SignatureRequestApi {
     signatureRequestCreateEmbeddedRequest: SignatureRequestCreateEmbeddedRequest,
     options: optionsI = { headers: {} }
   ): Promise<returnTypeT<SignatureRequestGetResponse>> {
+    if (
+      signatureRequestCreateEmbeddedRequest !== null &&
+      signatureRequestCreateEmbeddedRequest !== undefined &&
+      signatureRequestCreateEmbeddedRequest.constructor.name !==
+        "SignatureRequestCreateEmbeddedRequest"
+    ) {
+      signatureRequestCreateEmbeddedRequest = ObjectSerializer.deserialize(
+        signatureRequestCreateEmbeddedRequest,
+        "SignatureRequestCreateEmbeddedRequest"
+      );
+    }
+
     const localVarPath = this.basePath + "/signature_request/create_embedded";
     let localVarQueryParameters: any = {};
     let localVarHeaderParams: any = (<any>Object).assign(
@@ -714,6 +752,19 @@ export class SignatureRequestApi {
     signatureRequestCreateEmbeddedWithTemplateRequest: SignatureRequestCreateEmbeddedWithTemplateRequest,
     options: optionsI = { headers: {} }
   ): Promise<returnTypeT<SignatureRequestGetResponse>> {
+    if (
+      signatureRequestCreateEmbeddedWithTemplateRequest !== null &&
+      signatureRequestCreateEmbeddedWithTemplateRequest !== undefined &&
+      signatureRequestCreateEmbeddedWithTemplateRequest.constructor.name !==
+        "SignatureRequestCreateEmbeddedWithTemplateRequest"
+    ) {
+      signatureRequestCreateEmbeddedWithTemplateRequest =
+        ObjectSerializer.deserialize(
+          signatureRequestCreateEmbeddedWithTemplateRequest,
+          "SignatureRequestCreateEmbeddedWithTemplateRequest"
+        );
+    }
+
     const localVarPath =
       this.basePath + "/signature_request/create_embedded_with_template";
     let localVarQueryParameters: any = {};
@@ -1707,6 +1758,18 @@ export class SignatureRequestApi {
     signatureRequestRemindRequest: SignatureRequestRemindRequest,
     options: optionsI = { headers: {} }
   ): Promise<returnTypeT<SignatureRequestGetResponse>> {
+    if (
+      signatureRequestRemindRequest !== null &&
+      signatureRequestRemindRequest !== undefined &&
+      signatureRequestRemindRequest.constructor.name !==
+        "SignatureRequestRemindRequest"
+    ) {
+      signatureRequestRemindRequest = ObjectSerializer.deserialize(
+        signatureRequestRemindRequest,
+        "SignatureRequestRemindRequest"
+      );
+    }
+
     const localVarPath =
       this.basePath +
       "/signature_request/remind/{signature_request_id}".replace(
@@ -1975,6 +2038,18 @@ export class SignatureRequestApi {
     signatureRequestSendRequest: SignatureRequestSendRequest,
     options: optionsI = { headers: {} }
   ): Promise<returnTypeT<SignatureRequestGetResponse>> {
+    if (
+      signatureRequestSendRequest !== null &&
+      signatureRequestSendRequest !== undefined &&
+      signatureRequestSendRequest.constructor.name !==
+        "SignatureRequestSendRequest"
+    ) {
+      signatureRequestSendRequest = ObjectSerializer.deserialize(
+        signatureRequestSendRequest,
+        "SignatureRequestSendRequest"
+      );
+    }
+
     const localVarPath = this.basePath + "/signature_request/send";
     let localVarQueryParameters: any = {};
     let localVarHeaderParams: any = (<any>Object).assign(
@@ -2131,6 +2206,18 @@ export class SignatureRequestApi {
     signatureRequestSendWithTemplateRequest: SignatureRequestSendWithTemplateRequest,
     options: optionsI = { headers: {} }
   ): Promise<returnTypeT<SignatureRequestGetResponse>> {
+    if (
+      signatureRequestSendWithTemplateRequest !== null &&
+      signatureRequestSendWithTemplateRequest !== undefined &&
+      signatureRequestSendWithTemplateRequest.constructor.name !==
+        "SignatureRequestSendWithTemplateRequest"
+    ) {
+      signatureRequestSendWithTemplateRequest = ObjectSerializer.deserialize(
+        signatureRequestSendWithTemplateRequest,
+        "SignatureRequestSendWithTemplateRequest"
+      );
+    }
+
     const localVarPath =
       this.basePath + "/signature_request/send_with_template";
     let localVarQueryParameters: any = {};
@@ -2290,6 +2377,18 @@ export class SignatureRequestApi {
     signatureRequestUpdateRequest: SignatureRequestUpdateRequest,
     options: optionsI = { headers: {} }
   ): Promise<returnTypeT<SignatureRequestGetResponse>> {
+    if (
+      signatureRequestUpdateRequest !== null &&
+      signatureRequestUpdateRequest !== undefined &&
+      signatureRequestUpdateRequest.constructor.name !==
+        "SignatureRequestUpdateRequest"
+    ) {
+      signatureRequestUpdateRequest = ObjectSerializer.deserialize(
+        signatureRequestUpdateRequest,
+        "SignatureRequestUpdateRequest"
+      );
+    }
+
     const localVarPath =
       this.basePath +
       "/signature_request/update/{signature_request_id}".replace(
