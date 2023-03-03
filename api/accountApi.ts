@@ -25,26 +25,23 @@
 import axios, { AxiosError, AxiosRequestConfig } from "axios";
 
 /* tslint:disable:no-unused-locals */
-import { AccountCreateRequest } from "../model/accountCreateRequest";
-import { AccountCreateResponse } from "../model/accountCreateResponse";
-import { AccountGetResponse } from "../model/accountGetResponse";
-import { AccountUpdateRequest } from "../model/accountUpdateRequest";
-import { AccountVerifyRequest } from "../model/accountVerifyRequest";
-import { AccountVerifyResponse } from "../model/accountVerifyResponse";
-import { ErrorResponse } from "../model/errorResponse";
-
 import {
   ObjectSerializer,
   Authentication,
   VoidAuth,
   Interceptor,
-} from "../model/models";
-import {
   HttpBasicAuth,
   HttpBearerAuth,
   ApiKeyAuth,
   OAuth,
-} from "../model/models";
+  AccountCreateRequest,
+  AccountCreateResponse,
+  AccountGetResponse,
+  AccountUpdateRequest,
+  AccountVerifyRequest,
+  AccountVerifyResponse,
+  ErrorResponse,
+} from "../model";
 
 import {
   HttpError,
@@ -54,7 +51,8 @@ import {
   generateFormData,
   toFormData,
   queryParamsSerializer,
-} from "./apis";
+  USER_AGENT,
+} from "./";
 
 let defaultBasePath = "https://api.hellosign.com/v3";
 
@@ -66,7 +64,9 @@ export enum AccountApiApiKeys {}
 
 export class AccountApi {
   protected _basePath = defaultBasePath;
-  protected _defaultHeaders: any = {};
+  protected _defaultHeaders: any = {
+    "User-Agent": USER_AGENT,
+  };
   protected _useQuerystring: boolean = false;
 
   protected authentications = {
@@ -137,6 +137,17 @@ export class AccountApi {
     accountCreateRequest: AccountCreateRequest,
     options: optionsI = { headers: {} }
   ): Promise<returnTypeT<AccountCreateResponse>> {
+    if (
+      accountCreateRequest !== null &&
+      accountCreateRequest !== undefined &&
+      accountCreateRequest.constructor.name !== "AccountCreateRequest"
+    ) {
+      accountCreateRequest = ObjectSerializer.deserialize(
+        accountCreateRequest,
+        "AccountCreateRequest"
+      );
+    }
+
     const localVarPath = this.basePath + "/account/create";
     let localVarQueryParameters: any = {};
     let localVarHeaderParams: any = (<any>Object).assign(
@@ -425,6 +436,17 @@ export class AccountApi {
     accountUpdateRequest: AccountUpdateRequest,
     options: optionsI = { headers: {} }
   ): Promise<returnTypeT<AccountGetResponse>> {
+    if (
+      accountUpdateRequest !== null &&
+      accountUpdateRequest !== undefined &&
+      accountUpdateRequest.constructor.name !== "AccountUpdateRequest"
+    ) {
+      accountUpdateRequest = ObjectSerializer.deserialize(
+        accountUpdateRequest,
+        "AccountUpdateRequest"
+      );
+    }
+
     const localVarPath = this.basePath + "/account";
     let localVarQueryParameters: any = {};
     let localVarHeaderParams: any = (<any>Object).assign(
@@ -573,6 +595,17 @@ export class AccountApi {
     accountVerifyRequest: AccountVerifyRequest,
     options: optionsI = { headers: {} }
   ): Promise<returnTypeT<AccountVerifyResponse>> {
+    if (
+      accountVerifyRequest !== null &&
+      accountVerifyRequest !== undefined &&
+      accountVerifyRequest.constructor.name !== "AccountVerifyRequest"
+    ) {
+      accountVerifyRequest = ObjectSerializer.deserialize(
+        accountVerifyRequest,
+        "AccountVerifyRequest"
+      );
+    }
+
     const localVarPath = this.basePath + "/account/verify";
     let localVarQueryParameters: any = {};
     let localVarHeaderParams: any = (<any>Object).assign(
