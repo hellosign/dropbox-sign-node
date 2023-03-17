@@ -1,4 +1,8 @@
-import { AttributeTypeMap, ObjectSerializer } from "../model";
+import {
+  AttributeTypeMap,
+  ObjectSerializer,
+  RequestDetailedFile,
+} from "../model";
 import * as http from "http";
 import { AxiosResponse } from "axios";
 import formData from "form-data";
@@ -35,7 +39,7 @@ export const queryParamsSerializer = (params) => {
 
 export { RequestFile } from "../model";
 
-export const USER_AGENT = "OpenAPI-Generator/1.1.2/node";
+export const USER_AGENT = "OpenAPI-Generator/1.1.3/node";
 
 /**
  * Generates an object containing form data.
@@ -135,10 +139,25 @@ export const toFormData = (obj: object): formData => {
   const form = new formData();
 
   Object.keys(obj).forEach((key) => {
+    if (isBufferDetailedFile(obj[key])) {
+      form.append(key, obj[key].value, obj[key].options);
+      return;
+    }
+
     form.append(key, obj[key]);
   });
 
   return form;
 };
+
+function isBufferDetailedFile(obj: any): obj is RequestDetailedFile {
+  return (
+    (<RequestDetailedFile>obj).value !== undefined &&
+    Buffer.isBuffer(obj.value) &&
+    (<RequestDetailedFile>obj).options !== undefined &&
+    (<RequestDetailedFile>obj).options?.filename !== undefined &&
+    (<RequestDetailedFile>obj).options?.contentType !== undefined
+  );
+}
 
 const shouldJsonify = (val: any): boolean => val === Object(val);
