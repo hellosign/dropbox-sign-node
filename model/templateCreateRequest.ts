@@ -24,7 +24,6 @@
 
 import { RequestFile, AttributeTypeMap, ObjectSerializer } from "./";
 import { SubAttachment } from "./subAttachment";
-import { SubEditorOptions } from "./subEditorOptions";
 import { SubFieldOptions } from "./subFieldOptions";
 import { SubFormFieldGroup } from "./subFormFieldGroup";
 import { SubFormFieldRule } from "./subFormFieldRule";
@@ -32,11 +31,15 @@ import { SubFormFieldsPerDocumentBase } from "./subFormFieldsPerDocumentBase";
 import { SubMergeField } from "./subMergeField";
 import { SubTemplateRole } from "./subTemplateRole";
 
-export class TemplateCreateEmbeddedDraftRequest {
+export class TemplateCreateRequest {
   /**
-   * Client id of the app you\'re using to create this draft. Used to apply the branding and callback url defined for the app.
+   * The fields that should appear on the document, expressed as an array of objects. (For more details you can read about it here: [Using Form Fields per Document](/docs/openapi/form-fields-per-document).)  **NOTE**: Fields like **text**, **dropdown**, **checkbox**, **radio**, and **hyperlink** have additional required and optional parameters. Check out the list of [additional parameters](/api/reference/constants/#form-fields-per-document) for these field types.  * Text Field use `SubFormFieldsPerDocumentText` * Dropdown Field use `SubFormFieldsPerDocumentDropdown` * Hyperlink Field use `SubFormFieldsPerDocumentHyperlink` * Checkbox Field use `SubFormFieldsPerDocumentCheckbox` * Radio Field use `SubFormFieldsPerDocumentRadio` * Signature Field use `SubFormFieldsPerDocumentSignature` * Date Signed Field use `SubFormFieldsPerDocumentDateSigned` * Initials Field use `SubFormFieldsPerDocumentInitials` * Text Merge Field use `SubFormFieldsPerDocumentTextMerge` * Checkbox Merge Field use `SubFormFieldsPerDocumentCheckboxMerge`
    */
-  "clientId": string;
+  "formFieldsPerDocument": Array<SubFormFieldsPerDocumentBase>;
+  /**
+   * An array of the designated signer roles that must be specified when sending a SignatureRequest using this Template.
+   */
+  "signerRoles": Array<SubTemplateRole>;
   /**
    * Use `files[]` to indicate the uploaded file(s) to send for signature.  This endpoint requires either **files** or **file_urls[]**, but not both.
    */
@@ -45,10 +48,6 @@ export class TemplateCreateEmbeddedDraftRequest {
    * Use `file_urls[]` to have Dropbox Sign download the file(s) to send for signature.  This endpoint requires either **files** or **file_urls[]**, but not both.
    */
   "fileUrls"?: Array<string>;
-  /**
-   * This allows the requester to specify whether the user is allowed to provide email addresses to CC when creating a template.
-   */
-  "allowCcs"?: boolean = true;
   /**
    * Allows signers to reassign their signature requests to other signers if set to `true`. Defaults to `false`.  **Note**: Only available for Premium plan and higher.
    */
@@ -61,16 +60,11 @@ export class TemplateCreateEmbeddedDraftRequest {
    * The CC roles that must be assigned when using the template to send a signature request
    */
   "ccRoles"?: Array<string>;
-  "editorOptions"?: SubEditorOptions;
+  /**
+   * Client id of the app you\'re using to create this draft. Used to apply the branding and callback url defined for the app.
+   */
+  "clientId"?: string;
   "fieldOptions"?: SubFieldOptions;
-  /**
-   * Provide users the ability to review/edit the template signer roles.
-   */
-  "forceSignerRoles"?: boolean = false;
-  /**
-   * Provide users the ability to review/edit the template subject and message.
-   */
-  "forceSubjectMessage"?: boolean = false;
   /**
    * Group information for fields defined in `form_fields_per_document`. String-indexed JSON array with `group_label` and `requirement` keys. `form_fields_per_document` must contain fields referencing a group defined in `form_field_groups`.
    */
@@ -79,10 +73,6 @@ export class TemplateCreateEmbeddedDraftRequest {
    * Conditional Logic rules for fields defined in `form_fields_per_document`.
    */
   "formFieldRules"?: Array<SubFormFieldRule>;
-  /**
-   * The fields that should appear on the document, expressed as an array of objects. (For more details you can read about it here: [Using Form Fields per Document](/docs/openapi/form-fields-per-document).)  **NOTE**: Fields like **text**, **dropdown**, **checkbox**, **radio**, and **hyperlink** have additional required and optional parameters. Check out the list of [additional parameters](/api/reference/constants/#form-fields-per-document) for these field types.  * Text Field use `SubFormFieldsPerDocumentText` * Dropdown Field use `SubFormFieldsPerDocumentDropdown` * Hyperlink Field use `SubFormFieldsPerDocumentHyperlink` * Checkbox Field use `SubFormFieldsPerDocumentCheckbox` * Radio Field use `SubFormFieldsPerDocumentRadio` * Signature Field use `SubFormFieldsPerDocumentSignature` * Date Signed Field use `SubFormFieldsPerDocumentDateSigned` * Initials Field use `SubFormFieldsPerDocumentInitials` * Text Merge Field use `SubFormFieldsPerDocumentTextMerge` * Checkbox Merge Field use `SubFormFieldsPerDocumentCheckboxMerge`
-   */
-  "formFieldsPerDocument"?: Array<SubFormFieldsPerDocumentBase>;
   /**
    * Add merge fields to the template. Merge fields are placed by the user creating the template and used to pre-fill data by passing values into signature requests with the `custom_fields` parameter. If the signature request using that template *does not* pass a value into a merge field, then an empty field remains in the document.
    */
@@ -95,22 +85,6 @@ export class TemplateCreateEmbeddedDraftRequest {
    * Key-value data that should be attached to the signature request. This metadata is included in all API responses and events involving the signature request. For example, use the metadata field to store a signer\'s order number for look up when receiving events for the signature request.  Each request can include up to 10 metadata keys (or 50 nested metadata keys), with key names up to 40 characters long and values up to 1000 characters long.
    */
   "metadata"?: { [key: string]: any };
-  /**
-   * This allows the requester to enable the editor/preview experience.  - `show_preview=true`: Allows requesters to enable the editor/preview experience. - `show_preview=false`: Allows requesters to disable the editor/preview experience.
-   */
-  "showPreview"?: boolean = false;
-  /**
-   * When only one step remains in the signature request process and this parameter is set to `false` then the progress stepper will be hidden.
-   */
-  "showProgressStepper"?: boolean = true;
-  /**
-   * An array of the designated signer roles that must be specified when sending a SignatureRequest using this Template.
-   */
-  "signerRoles"?: Array<SubTemplateRole>;
-  /**
-   * Disables the \"Me (Now)\" option for the person preparing the document. Does not work with type `send_document`. Defaults to `false`.
-   */
-  "skipMeNow"?: boolean = false;
   /**
    * The template title (alias).
    */
@@ -132,9 +106,14 @@ export class TemplateCreateEmbeddedDraftRequest {
 
   static attributeTypeMap: AttributeTypeMap = [
     {
-      name: "clientId",
-      baseName: "client_id",
-      type: "string",
+      name: "formFieldsPerDocument",
+      baseName: "form_fields_per_document",
+      type: "Array<SubFormFieldsPerDocumentBase>",
+    },
+    {
+      name: "signerRoles",
+      baseName: "signer_roles",
+      type: "Array<SubTemplateRole>",
     },
     {
       name: "files",
@@ -145,11 +124,6 @@ export class TemplateCreateEmbeddedDraftRequest {
       name: "fileUrls",
       baseName: "file_urls",
       type: "Array<string>",
-    },
-    {
-      name: "allowCcs",
-      baseName: "allow_ccs",
-      type: "boolean",
     },
     {
       name: "allowReassign",
@@ -167,24 +141,14 @@ export class TemplateCreateEmbeddedDraftRequest {
       type: "Array<string>",
     },
     {
-      name: "editorOptions",
-      baseName: "editor_options",
-      type: "SubEditorOptions",
+      name: "clientId",
+      baseName: "client_id",
+      type: "string",
     },
     {
       name: "fieldOptions",
       baseName: "field_options",
       type: "SubFieldOptions",
-    },
-    {
-      name: "forceSignerRoles",
-      baseName: "force_signer_roles",
-      type: "boolean",
-    },
-    {
-      name: "forceSubjectMessage",
-      baseName: "force_subject_message",
-      type: "boolean",
     },
     {
       name: "formFieldGroups",
@@ -195,11 +159,6 @@ export class TemplateCreateEmbeddedDraftRequest {
       name: "formFieldRules",
       baseName: "form_field_rules",
       type: "Array<SubFormFieldRule>",
-    },
-    {
-      name: "formFieldsPerDocument",
-      baseName: "form_fields_per_document",
-      type: "Array<SubFormFieldsPerDocumentBase>",
     },
     {
       name: "mergeFields",
@@ -215,26 +174,6 @@ export class TemplateCreateEmbeddedDraftRequest {
       name: "metadata",
       baseName: "metadata",
       type: "{ [key: string]: any; }",
-    },
-    {
-      name: "showPreview",
-      baseName: "show_preview",
-      type: "boolean",
-    },
-    {
-      name: "showProgressStepper",
-      baseName: "show_progress_stepper",
-      type: "boolean",
-    },
-    {
-      name: "signerRoles",
-      baseName: "signer_roles",
-      type: "Array<SubTemplateRole>",
-    },
-    {
-      name: "skipMeNow",
-      baseName: "skip_me_now",
-      type: "boolean",
     },
     {
       name: "subject",
@@ -259,14 +198,11 @@ export class TemplateCreateEmbeddedDraftRequest {
   ];
 
   static getAttributeTypeMap(): AttributeTypeMap {
-    return TemplateCreateEmbeddedDraftRequest.attributeTypeMap;
+    return TemplateCreateRequest.attributeTypeMap;
   }
 
   /** Attempt to instantiate and hydrate a new instance of this class */
-  static init(data: any): TemplateCreateEmbeddedDraftRequest {
-    return ObjectSerializer.deserialize(
-      data,
-      "TemplateCreateEmbeddedDraftRequest"
-    );
+  static init(data: any): TemplateCreateRequest {
+    return ObjectSerializer.deserialize(data, "TemplateCreateRequest");
   }
 }

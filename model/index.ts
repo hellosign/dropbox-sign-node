@@ -84,6 +84,7 @@ import { SubFormFieldsPerDocumentCheckbox } from "./subFormFieldsPerDocumentChec
 import { SubFormFieldsPerDocumentCheckboxMerge } from "./subFormFieldsPerDocumentCheckboxMerge";
 import { SubFormFieldsPerDocumentDateSigned } from "./subFormFieldsPerDocumentDateSigned";
 import { SubFormFieldsPerDocumentDropdown } from "./subFormFieldsPerDocumentDropdown";
+import { SubFormFieldsPerDocumentFontEnum } from "./subFormFieldsPerDocumentFontEnum";
 import { SubFormFieldsPerDocumentHyperlink } from "./subFormFieldsPerDocumentHyperlink";
 import { SubFormFieldsPerDocumentInitials } from "./subFormFieldsPerDocumentInitials";
 import { SubFormFieldsPerDocumentRadio } from "./subFormFieldsPerDocumentRadio";
@@ -121,6 +122,9 @@ import { TemplateAddUserRequest } from "./templateAddUserRequest";
 import { TemplateCreateEmbeddedDraftRequest } from "./templateCreateEmbeddedDraftRequest";
 import { TemplateCreateEmbeddedDraftResponse } from "./templateCreateEmbeddedDraftResponse";
 import { TemplateCreateEmbeddedDraftResponseTemplate } from "./templateCreateEmbeddedDraftResponseTemplate";
+import { TemplateCreateRequest } from "./templateCreateRequest";
+import { TemplateCreateResponse } from "./templateCreateResponse";
+import { TemplateCreateResponseTemplate } from "./templateCreateResponseTemplate";
 import { TemplateEditResponse } from "./templateEditResponse";
 import { TemplateGetResponse } from "./templateGetResponse";
 import { TemplateListResponse } from "./templateListResponse";
@@ -191,8 +195,19 @@ export let enumsMap: { [index: string]: any } = {
   "SubFieldOptions.DateFormatEnum": SubFieldOptions.DateFormatEnum,
   "SubFormFieldRuleAction.TypeEnum": SubFormFieldRuleAction.TypeEnum,
   "SubFormFieldRuleTrigger.OperatorEnum": SubFormFieldRuleTrigger.OperatorEnum,
+  "SubFormFieldsPerDocumentDateSigned.FontFamilyEnum":
+    SubFormFieldsPerDocumentDateSigned.FontFamilyEnum,
+  "SubFormFieldsPerDocumentDropdown.FontFamilyEnum":
+    SubFormFieldsPerDocumentDropdown.FontFamilyEnum,
+  SubFormFieldsPerDocumentFontEnum: SubFormFieldsPerDocumentFontEnum,
+  "SubFormFieldsPerDocumentHyperlink.FontFamilyEnum":
+    SubFormFieldsPerDocumentHyperlink.FontFamilyEnum,
   "SubFormFieldsPerDocumentText.ValidationTypeEnum":
     SubFormFieldsPerDocumentText.ValidationTypeEnum,
+  "SubFormFieldsPerDocumentText.FontFamilyEnum":
+    SubFormFieldsPerDocumentText.FontFamilyEnum,
+  "SubFormFieldsPerDocumentTextMerge.FontFamilyEnum":
+    SubFormFieldsPerDocumentTextMerge.FontFamilyEnum,
   SubFormFieldsPerDocumentTypeEnum: SubFormFieldsPerDocumentTypeEnum,
   "SubMergeField.TypeEnum": SubMergeField.TypeEnum,
   "SubOAuth.ScopesEnum": SubOAuth.ScopesEnum,
@@ -350,6 +365,9 @@ export let typeMap: { [index: string]: any } = {
   TemplateCreateEmbeddedDraftResponse: TemplateCreateEmbeddedDraftResponse,
   TemplateCreateEmbeddedDraftResponseTemplate:
     TemplateCreateEmbeddedDraftResponseTemplate,
+  TemplateCreateRequest: TemplateCreateRequest,
+  TemplateCreateResponse: TemplateCreateResponse,
+  TemplateCreateResponseTemplate: TemplateCreateResponseTemplate,
   TemplateEditResponse: TemplateEditResponse,
   TemplateGetResponse: TemplateGetResponse,
   TemplateListResponse: TemplateListResponse,
@@ -504,6 +522,7 @@ export {
   SubFormFieldsPerDocumentCheckboxMerge,
   SubFormFieldsPerDocumentDateSigned,
   SubFormFieldsPerDocumentDropdown,
+  SubFormFieldsPerDocumentFontEnum,
   SubFormFieldsPerDocumentHyperlink,
   SubFormFieldsPerDocumentInitials,
   SubFormFieldsPerDocumentRadio,
@@ -541,6 +560,9 @@ export {
   TemplateCreateEmbeddedDraftRequest,
   TemplateCreateEmbeddedDraftResponse,
   TemplateCreateEmbeddedDraftResponseTemplate,
+  TemplateCreateRequest,
+  TemplateCreateResponse,
+  TemplateCreateResponseTemplate,
   TemplateEditResponse,
   TemplateGetResponse,
   TemplateListResponse,
