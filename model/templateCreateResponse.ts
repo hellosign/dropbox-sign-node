@@ -23,56 +23,36 @@
  */
 
 import { RequestFile, AttributeTypeMap, ObjectSerializer } from "./";
+import { WarningResponse } from "./warningResponse";
 
-export class SignatureRequestUpdateRequest {
+export class TemplateCreateResponse {
+  "template"?: TemplateCreateResponse;
   /**
-   * The signature ID for the recipient.
+   * A list of warnings.
    */
-  "signatureId": string;
-  /**
-   * The new email address for the recipient.  This will generate a new `signature_id` value.  **NOTE**: Optional if `name` is provided.
-   */
-  "emailAddress"?: string;
-  /**
-   * The new name for the recipient.  **NOTE**: Optional if `email_address` is provided.
-   */
-  "name"?: string;
-  /**
-   * The new time when the signature request will expire. Unsigned signatures will be moved to the expired status, and no longer signable. See [Signature Request Expiration Date](https://developers.hellosign.com/docs/signature-request/expiration/) for details.
-   */
-  "expiresAt"?: number | null;
+  "warnings"?: Array<WarningResponse>;
 
   static discriminator: string | undefined = undefined;
 
   static attributeTypeMap: AttributeTypeMap = [
     {
-      name: "signatureId",
-      baseName: "signature_id",
-      type: "string",
+      name: "template",
+      baseName: "template",
+      type: "TemplateCreateResponse",
     },
     {
-      name: "emailAddress",
-      baseName: "email_address",
-      type: "string",
-    },
-    {
-      name: "name",
-      baseName: "name",
-      type: "string",
-    },
-    {
-      name: "expiresAt",
-      baseName: "expires_at",
-      type: "number",
+      name: "warnings",
+      baseName: "warnings",
+      type: "Array<WarningResponse>",
     },
   ];
 
   static getAttributeTypeMap(): AttributeTypeMap {
-    return SignatureRequestUpdateRequest.attributeTypeMap;
+    return TemplateCreateResponse.attributeTypeMap;
   }
 
   /** Attempt to instantiate and hydrate a new instance of this class */
-  static init(data: any): SignatureRequestUpdateRequest {
-    return ObjectSerializer.deserialize(data, "SignatureRequestUpdateRequest");
+  static init(data: any): TemplateCreateResponse {
+    return ObjectSerializer.deserialize(data, "TemplateCreateResponse");
   }
 }

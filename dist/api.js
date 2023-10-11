@@ -18329,6 +18329,7 @@ __export(api_exports, {
   SubFormFieldsPerDocumentCheckboxMerge: () => SubFormFieldsPerDocumentCheckboxMerge,
   SubFormFieldsPerDocumentDateSigned: () => SubFormFieldsPerDocumentDateSigned,
   SubFormFieldsPerDocumentDropdown: () => SubFormFieldsPerDocumentDropdown,
+  SubFormFieldsPerDocumentFontEnum: () => SubFormFieldsPerDocumentFontEnum,
   SubFormFieldsPerDocumentHyperlink: () => SubFormFieldsPerDocumentHyperlink,
   SubFormFieldsPerDocumentInitials: () => SubFormFieldsPerDocumentInitials,
   SubFormFieldsPerDocumentRadio: () => SubFormFieldsPerDocumentRadio,
@@ -18368,6 +18369,9 @@ __export(api_exports, {
   TemplateCreateEmbeddedDraftRequest: () => TemplateCreateEmbeddedDraftRequest,
   TemplateCreateEmbeddedDraftResponse: () => TemplateCreateEmbeddedDraftResponse,
   TemplateCreateEmbeddedDraftResponseTemplate: () => TemplateCreateEmbeddedDraftResponseTemplate,
+  TemplateCreateRequest: () => TemplateCreateRequest,
+  TemplateCreateResponse: () => TemplateCreateResponse,
+  TemplateCreateResponseTemplate: () => TemplateCreateResponseTemplate,
   TemplateEditResponse: () => TemplateEditResponse,
   TemplateGetResponse: () => TemplateGetResponse,
   TemplateListResponse: () => TemplateListResponse,
@@ -21256,6 +21260,7 @@ var _SignatureRequestSendRequest = class {
     this["allowReassign"] = false;
     this["hideTextTags"] = false;
     this["isQualifiedSignature"] = false;
+    this["isEid"] = false;
     this["testMode"] = false;
     this["useTextTags"] = false;
   }
@@ -21350,6 +21355,11 @@ SignatureRequestSendRequest.attributeTypeMap = [
     type: "boolean"
   },
   {
+    name: "isEid",
+    baseName: "is_eid",
+    type: "boolean"
+  },
+  {
     name: "message",
     baseName: "message",
     type: "string"
@@ -21401,6 +21411,7 @@ var _SignatureRequestSendWithTemplateRequest = class {
   constructor() {
     this["allowDecline"] = false;
     this["isQualifiedSignature"] = false;
+    this["isEid"] = false;
     this["testMode"] = false;
   }
   static getAttributeTypeMap() {
@@ -21459,6 +21470,11 @@ SignatureRequestSendWithTemplateRequest.attributeTypeMap = [
   {
     name: "isQualifiedSignature",
     baseName: "is_qualified_signature",
+    type: "boolean"
+  },
+  {
+    name: "isEid",
+    baseName: "is_eid",
     type: "boolean"
   },
   {
@@ -22074,8 +22090,39 @@ SubFormFieldsPerDocumentDateSigned.attributeTypeMap = [
     name: "type",
     baseName: "type",
     type: "string"
+  },
+  {
+    name: "fontFamily",
+    baseName: "font_family",
+    type: "SubFormFieldsPerDocumentDateSigned.FontFamilyEnum"
+  },
+  {
+    name: "fontSize",
+    baseName: "font_size",
+    type: "number"
   }
 ];
+((SubFormFieldsPerDocumentDateSigned2) => {
+  let FontFamilyEnum;
+  ((FontFamilyEnum2) => {
+    FontFamilyEnum2["Helvetica"] = "helvetica";
+    FontFamilyEnum2["Arial"] = "arial";
+    FontFamilyEnum2["Courier"] = "courier";
+    FontFamilyEnum2["Calibri"] = "calibri";
+    FontFamilyEnum2["Cambria"] = "cambria";
+    FontFamilyEnum2["Georgia"] = "georgia";
+    FontFamilyEnum2["Times"] = "times";
+    FontFamilyEnum2["Trebuchet"] = "trebuchet";
+    FontFamilyEnum2["Verdana"] = "verdana";
+    FontFamilyEnum2["Roboto"] = "roboto";
+    FontFamilyEnum2["RobotoMono"] = "robotoMono";
+    FontFamilyEnum2["NotoSans"] = "notoSans";
+    FontFamilyEnum2["NotoSerif"] = "notoSerif";
+    FontFamilyEnum2["NotoCjkJpRegular"] = "notoCJK-JP-Regular";
+    FontFamilyEnum2["NotoHebrewRegular"] = "notoHebrew-Regular";
+    FontFamilyEnum2["NotoSanThaiMerged"] = "notoSanThaiMerged";
+  })(FontFamilyEnum = SubFormFieldsPerDocumentDateSigned2.FontFamilyEnum || (SubFormFieldsPerDocumentDateSigned2.FontFamilyEnum = {}));
+})(SubFormFieldsPerDocumentDateSigned || (SubFormFieldsPerDocumentDateSigned = {}));
 
 // model/subFormFieldsPerDocumentDropdown.ts
 var _SubFormFieldsPerDocumentDropdown = class extends SubFormFieldsPerDocumentBase {
@@ -22110,8 +22157,60 @@ SubFormFieldsPerDocumentDropdown.attributeTypeMap = [
     name: "content",
     baseName: "content",
     type: "string"
+  },
+  {
+    name: "fontFamily",
+    baseName: "font_family",
+    type: "SubFormFieldsPerDocumentDropdown.FontFamilyEnum"
+  },
+  {
+    name: "fontSize",
+    baseName: "font_size",
+    type: "number"
   }
 ];
+((SubFormFieldsPerDocumentDropdown2) => {
+  let FontFamilyEnum;
+  ((FontFamilyEnum2) => {
+    FontFamilyEnum2["Helvetica"] = "helvetica";
+    FontFamilyEnum2["Arial"] = "arial";
+    FontFamilyEnum2["Courier"] = "courier";
+    FontFamilyEnum2["Calibri"] = "calibri";
+    FontFamilyEnum2["Cambria"] = "cambria";
+    FontFamilyEnum2["Georgia"] = "georgia";
+    FontFamilyEnum2["Times"] = "times";
+    FontFamilyEnum2["Trebuchet"] = "trebuchet";
+    FontFamilyEnum2["Verdana"] = "verdana";
+    FontFamilyEnum2["Roboto"] = "roboto";
+    FontFamilyEnum2["RobotoMono"] = "robotoMono";
+    FontFamilyEnum2["NotoSans"] = "notoSans";
+    FontFamilyEnum2["NotoSerif"] = "notoSerif";
+    FontFamilyEnum2["NotoCjkJpRegular"] = "notoCJK-JP-Regular";
+    FontFamilyEnum2["NotoHebrewRegular"] = "notoHebrew-Regular";
+    FontFamilyEnum2["NotoSanThaiMerged"] = "notoSanThaiMerged";
+  })(FontFamilyEnum = SubFormFieldsPerDocumentDropdown2.FontFamilyEnum || (SubFormFieldsPerDocumentDropdown2.FontFamilyEnum = {}));
+})(SubFormFieldsPerDocumentDropdown || (SubFormFieldsPerDocumentDropdown = {}));
+
+// model/subFormFieldsPerDocumentFontEnum.ts
+var SubFormFieldsPerDocumentFontEnum = /* @__PURE__ */ ((SubFormFieldsPerDocumentFontEnum2) => {
+  SubFormFieldsPerDocumentFontEnum2["Helvetica"] = "helvetica";
+  SubFormFieldsPerDocumentFontEnum2["Arial"] = "arial";
+  SubFormFieldsPerDocumentFontEnum2["Courier"] = "courier";
+  SubFormFieldsPerDocumentFontEnum2["Calibri"] = "calibri";
+  SubFormFieldsPerDocumentFontEnum2["Cambria"] = "cambria";
+  SubFormFieldsPerDocumentFontEnum2["Georgia"] = "georgia";
+  SubFormFieldsPerDocumentFontEnum2["Times"] = "times";
+  SubFormFieldsPerDocumentFontEnum2["Trebuchet"] = "trebuchet";
+  SubFormFieldsPerDocumentFontEnum2["Verdana"] = "verdana";
+  SubFormFieldsPerDocumentFontEnum2["Roboto"] = "roboto";
+  SubFormFieldsPerDocumentFontEnum2["RobotoMono"] = "robotoMono";
+  SubFormFieldsPerDocumentFontEnum2["NotoSans"] = "notoSans";
+  SubFormFieldsPerDocumentFontEnum2["NotoSerif"] = "notoSerif";
+  SubFormFieldsPerDocumentFontEnum2["NotoCjkJpRegular"] = "notoCJK-JP-Regular";
+  SubFormFieldsPerDocumentFontEnum2["NotoHebrewRegular"] = "notoHebrew-Regular";
+  SubFormFieldsPerDocumentFontEnum2["NotoSanThaiMerged"] = "notoSanThaiMerged";
+  return SubFormFieldsPerDocumentFontEnum2;
+})(SubFormFieldsPerDocumentFontEnum || {});
 
 // model/subFormFieldsPerDocumentHyperlink.ts
 var _SubFormFieldsPerDocumentHyperlink = class extends SubFormFieldsPerDocumentBase {
@@ -22146,8 +22245,39 @@ SubFormFieldsPerDocumentHyperlink.attributeTypeMap = [
     name: "contentUrl",
     baseName: "content_url",
     type: "string"
+  },
+  {
+    name: "fontFamily",
+    baseName: "font_family",
+    type: "SubFormFieldsPerDocumentHyperlink.FontFamilyEnum"
+  },
+  {
+    name: "fontSize",
+    baseName: "font_size",
+    type: "number"
   }
 ];
+((SubFormFieldsPerDocumentHyperlink2) => {
+  let FontFamilyEnum;
+  ((FontFamilyEnum2) => {
+    FontFamilyEnum2["Helvetica"] = "helvetica";
+    FontFamilyEnum2["Arial"] = "arial";
+    FontFamilyEnum2["Courier"] = "courier";
+    FontFamilyEnum2["Calibri"] = "calibri";
+    FontFamilyEnum2["Cambria"] = "cambria";
+    FontFamilyEnum2["Georgia"] = "georgia";
+    FontFamilyEnum2["Times"] = "times";
+    FontFamilyEnum2["Trebuchet"] = "trebuchet";
+    FontFamilyEnum2["Verdana"] = "verdana";
+    FontFamilyEnum2["Roboto"] = "roboto";
+    FontFamilyEnum2["RobotoMono"] = "robotoMono";
+    FontFamilyEnum2["NotoSans"] = "notoSans";
+    FontFamilyEnum2["NotoSerif"] = "notoSerif";
+    FontFamilyEnum2["NotoCjkJpRegular"] = "notoCJK-JP-Regular";
+    FontFamilyEnum2["NotoHebrewRegular"] = "notoHebrew-Regular";
+    FontFamilyEnum2["NotoSanThaiMerged"] = "notoSanThaiMerged";
+  })(FontFamilyEnum = SubFormFieldsPerDocumentHyperlink2.FontFamilyEnum || (SubFormFieldsPerDocumentHyperlink2.FontFamilyEnum = {}));
+})(SubFormFieldsPerDocumentHyperlink || (SubFormFieldsPerDocumentHyperlink = {}));
 
 // model/subFormFieldsPerDocumentInitials.ts
 var _SubFormFieldsPerDocumentInitials = class extends SubFormFieldsPerDocumentBase {
@@ -22289,6 +22419,21 @@ SubFormFieldsPerDocumentText.attributeTypeMap = [
     name: "validationCustomRegexFormatLabel",
     baseName: "validation_custom_regex_format_label",
     type: "string"
+  },
+  {
+    name: "content",
+    baseName: "content",
+    type: "string"
+  },
+  {
+    name: "fontFamily",
+    baseName: "font_family",
+    type: "SubFormFieldsPerDocumentText.FontFamilyEnum"
+  },
+  {
+    name: "fontSize",
+    baseName: "font_size",
+    type: "number"
   }
 ];
 ((SubFormFieldsPerDocumentText2) => {
@@ -22305,6 +22450,25 @@ SubFormFieldsPerDocumentText.attributeTypeMap = [
     ValidationTypeEnum2["EmployerIdentificationNumber"] = "employer_identification_number";
     ValidationTypeEnum2["CustomRegex"] = "custom_regex";
   })(ValidationTypeEnum = SubFormFieldsPerDocumentText2.ValidationTypeEnum || (SubFormFieldsPerDocumentText2.ValidationTypeEnum = {}));
+  let FontFamilyEnum;
+  ((FontFamilyEnum2) => {
+    FontFamilyEnum2["Helvetica"] = "helvetica";
+    FontFamilyEnum2["Arial"] = "arial";
+    FontFamilyEnum2["Courier"] = "courier";
+    FontFamilyEnum2["Calibri"] = "calibri";
+    FontFamilyEnum2["Cambria"] = "cambria";
+    FontFamilyEnum2["Georgia"] = "georgia";
+    FontFamilyEnum2["Times"] = "times";
+    FontFamilyEnum2["Trebuchet"] = "trebuchet";
+    FontFamilyEnum2["Verdana"] = "verdana";
+    FontFamilyEnum2["Roboto"] = "roboto";
+    FontFamilyEnum2["RobotoMono"] = "robotoMono";
+    FontFamilyEnum2["NotoSans"] = "notoSans";
+    FontFamilyEnum2["NotoSerif"] = "notoSerif";
+    FontFamilyEnum2["NotoCjkJpRegular"] = "notoCJK-JP-Regular";
+    FontFamilyEnum2["NotoHebrewRegular"] = "notoHebrew-Regular";
+    FontFamilyEnum2["NotoSanThaiMerged"] = "notoSanThaiMerged";
+  })(FontFamilyEnum = SubFormFieldsPerDocumentText2.FontFamilyEnum || (SubFormFieldsPerDocumentText2.FontFamilyEnum = {}));
 })(SubFormFieldsPerDocumentText || (SubFormFieldsPerDocumentText = {}));
 
 // model/subFormFieldsPerDocumentTextMerge.ts
@@ -22330,8 +22494,39 @@ SubFormFieldsPerDocumentTextMerge.attributeTypeMap = [
     name: "type",
     baseName: "type",
     type: "string"
+  },
+  {
+    name: "fontFamily",
+    baseName: "font_family",
+    type: "SubFormFieldsPerDocumentTextMerge.FontFamilyEnum"
+  },
+  {
+    name: "fontSize",
+    baseName: "font_size",
+    type: "number"
   }
 ];
+((SubFormFieldsPerDocumentTextMerge2) => {
+  let FontFamilyEnum;
+  ((FontFamilyEnum2) => {
+    FontFamilyEnum2["Helvetica"] = "helvetica";
+    FontFamilyEnum2["Arial"] = "arial";
+    FontFamilyEnum2["Courier"] = "courier";
+    FontFamilyEnum2["Calibri"] = "calibri";
+    FontFamilyEnum2["Cambria"] = "cambria";
+    FontFamilyEnum2["Georgia"] = "georgia";
+    FontFamilyEnum2["Times"] = "times";
+    FontFamilyEnum2["Trebuchet"] = "trebuchet";
+    FontFamilyEnum2["Verdana"] = "verdana";
+    FontFamilyEnum2["Roboto"] = "roboto";
+    FontFamilyEnum2["RobotoMono"] = "robotoMono";
+    FontFamilyEnum2["NotoSans"] = "notoSans";
+    FontFamilyEnum2["NotoSerif"] = "notoSerif";
+    FontFamilyEnum2["NotoCjkJpRegular"] = "notoCJK-JP-Regular";
+    FontFamilyEnum2["NotoHebrewRegular"] = "notoHebrew-Regular";
+    FontFamilyEnum2["NotoSanThaiMerged"] = "notoSanThaiMerged";
+  })(FontFamilyEnum = SubFormFieldsPerDocumentTextMerge2.FontFamilyEnum || (SubFormFieldsPerDocumentTextMerge2.FontFamilyEnum = {}));
+})(SubFormFieldsPerDocumentTextMerge || (SubFormFieldsPerDocumentTextMerge = {}));
 
 // model/subFormFieldsPerDocumentTypeEnum.ts
 var SubFormFieldsPerDocumentTypeEnum = /* @__PURE__ */ ((SubFormFieldsPerDocumentTypeEnum2) => {
@@ -23523,6 +23718,158 @@ TemplateCreateEmbeddedDraftResponseTemplate.attributeTypeMap = [
     name: "warnings",
     baseName: "warnings",
     type: "Array<WarningResponse>"
+  }
+];
+
+// model/templateCreateRequest.ts
+var _TemplateCreateRequest = class {
+  constructor() {
+    this["allowReassign"] = false;
+    this["testMode"] = false;
+    this["usePreexistingFields"] = false;
+  }
+  static getAttributeTypeMap() {
+    return _TemplateCreateRequest.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "TemplateCreateRequest");
+  }
+};
+var TemplateCreateRequest = _TemplateCreateRequest;
+TemplateCreateRequest.discriminator = void 0;
+TemplateCreateRequest.attributeTypeMap = [
+  {
+    name: "formFieldsPerDocument",
+    baseName: "form_fields_per_document",
+    type: "Array<SubFormFieldsPerDocumentBase>"
+  },
+  {
+    name: "signerRoles",
+    baseName: "signer_roles",
+    type: "Array<SubTemplateRole>"
+  },
+  {
+    name: "files",
+    baseName: "files",
+    type: "Array<RequestFile>"
+  },
+  {
+    name: "fileUrls",
+    baseName: "file_urls",
+    type: "Array<string>"
+  },
+  {
+    name: "allowReassign",
+    baseName: "allow_reassign",
+    type: "boolean"
+  },
+  {
+    name: "attachments",
+    baseName: "attachments",
+    type: "Array<SubAttachment>"
+  },
+  {
+    name: "ccRoles",
+    baseName: "cc_roles",
+    type: "Array<string>"
+  },
+  {
+    name: "clientId",
+    baseName: "client_id",
+    type: "string"
+  },
+  {
+    name: "fieldOptions",
+    baseName: "field_options",
+    type: "SubFieldOptions"
+  },
+  {
+    name: "formFieldGroups",
+    baseName: "form_field_groups",
+    type: "Array<SubFormFieldGroup>"
+  },
+  {
+    name: "formFieldRules",
+    baseName: "form_field_rules",
+    type: "Array<SubFormFieldRule>"
+  },
+  {
+    name: "mergeFields",
+    baseName: "merge_fields",
+    type: "Array<SubMergeField>"
+  },
+  {
+    name: "message",
+    baseName: "message",
+    type: "string"
+  },
+  {
+    name: "metadata",
+    baseName: "metadata",
+    type: "{ [key: string]: any; }"
+  },
+  {
+    name: "subject",
+    baseName: "subject",
+    type: "string"
+  },
+  {
+    name: "testMode",
+    baseName: "test_mode",
+    type: "boolean"
+  },
+  {
+    name: "title",
+    baseName: "title",
+    type: "string"
+  },
+  {
+    name: "usePreexistingFields",
+    baseName: "use_preexisting_fields",
+    type: "boolean"
+  }
+];
+
+// model/templateCreateResponse.ts
+var _TemplateCreateResponse = class {
+  static getAttributeTypeMap() {
+    return _TemplateCreateResponse.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "TemplateCreateResponse");
+  }
+};
+var TemplateCreateResponse = _TemplateCreateResponse;
+TemplateCreateResponse.discriminator = void 0;
+TemplateCreateResponse.attributeTypeMap = [
+  {
+    name: "template",
+    baseName: "template",
+    type: "TemplateCreateResponse"
+  },
+  {
+    name: "warnings",
+    baseName: "warnings",
+    type: "Array<WarningResponse>"
+  }
+];
+
+// model/templateCreateResponseTemplate.ts
+var _TemplateCreateResponseTemplate = class {
+  static getAttributeTypeMap() {
+    return _TemplateCreateResponseTemplate.attributeTypeMap;
+  }
+  static init(data) {
+    return ObjectSerializer.deserialize(data, "TemplateCreateResponseTemplate");
+  }
+};
+var TemplateCreateResponseTemplate = _TemplateCreateResponseTemplate;
+TemplateCreateResponseTemplate.discriminator = void 0;
+TemplateCreateResponseTemplate.attributeTypeMap = [
+  {
+    name: "templateId",
+    baseName: "template_id",
+    type: "string"
   }
 ];
 
@@ -25775,7 +26122,13 @@ var enumsMap = {
   "SubFieldOptions.DateFormatEnum": SubFieldOptions.DateFormatEnum,
   "SubFormFieldRuleAction.TypeEnum": SubFormFieldRuleAction.TypeEnum,
   "SubFormFieldRuleTrigger.OperatorEnum": SubFormFieldRuleTrigger.OperatorEnum,
+  "SubFormFieldsPerDocumentDateSigned.FontFamilyEnum": SubFormFieldsPerDocumentDateSigned.FontFamilyEnum,
+  "SubFormFieldsPerDocumentDropdown.FontFamilyEnum": SubFormFieldsPerDocumentDropdown.FontFamilyEnum,
+  SubFormFieldsPerDocumentFontEnum,
+  "SubFormFieldsPerDocumentHyperlink.FontFamilyEnum": SubFormFieldsPerDocumentHyperlink.FontFamilyEnum,
   "SubFormFieldsPerDocumentText.ValidationTypeEnum": SubFormFieldsPerDocumentText.ValidationTypeEnum,
+  "SubFormFieldsPerDocumentText.FontFamilyEnum": SubFormFieldsPerDocumentText.FontFamilyEnum,
+  "SubFormFieldsPerDocumentTextMerge.FontFamilyEnum": SubFormFieldsPerDocumentTextMerge.FontFamilyEnum,
   SubFormFieldsPerDocumentTypeEnum,
   "SubMergeField.TypeEnum": SubMergeField.TypeEnum,
   "SubOAuth.ScopesEnum": SubOAuth.ScopesEnum,
@@ -25910,6 +26263,9 @@ var typeMap = {
   TemplateCreateEmbeddedDraftRequest,
   TemplateCreateEmbeddedDraftResponse,
   TemplateCreateEmbeddedDraftResponseTemplate,
+  TemplateCreateRequest,
+  TemplateCreateResponse,
+  TemplateCreateResponseTemplate,
   TemplateEditResponse,
   TemplateGetResponse,
   TemplateListResponse,
@@ -31221,6 +31577,130 @@ var TemplateApi = class {
       });
     });
   }
+  templateCreate(_0) {
+    return __async(this, arguments, function* (templateCreateRequest, options = { headers: {} }) {
+      if (templateCreateRequest !== null && templateCreateRequest !== void 0 && templateCreateRequest.constructor.name !== "TemplateCreateRequest") {
+        templateCreateRequest = ObjectSerializer.deserialize(
+          templateCreateRequest,
+          "TemplateCreateRequest"
+        );
+      }
+      const localVarPath = this.basePath + "/template/create";
+      let localVarQueryParameters = {};
+      let localVarHeaderParams = Object.assign(
+        {},
+        this._defaultHeaders
+      );
+      const produces = ["application/json"];
+      if (produces.indexOf("application/json") >= 0) {
+        localVarHeaderParams["content-type"] = "application/json";
+      } else {
+        localVarHeaderParams["content-type"] = produces.join(",");
+      }
+      let localVarFormParams = {};
+      let localVarBodyParams = void 0;
+      if (templateCreateRequest === null || templateCreateRequest === void 0) {
+        throw new Error(
+          "Required parameter templateCreateRequest was null or undefined when calling templateCreate."
+        );
+      }
+      Object.assign(localVarHeaderParams, options.headers);
+      let localVarUseFormData = false;
+      const result = generateFormData(
+        templateCreateRequest,
+        TemplateCreateRequest.attributeTypeMap
+      );
+      localVarUseFormData = result.localVarUseFormData;
+      let data = {};
+      if (localVarUseFormData) {
+        const formData2 = toFormData(result.data);
+        data = formData2;
+        localVarHeaderParams = __spreadValues(__spreadValues({}, localVarHeaderParams), formData2.getHeaders());
+      } else {
+        data = ObjectSerializer.serialize(
+          templateCreateRequest,
+          "TemplateCreateRequest"
+        );
+      }
+      let localVarRequestOptions = {
+        method: "POST",
+        params: localVarQueryParameters,
+        headers: localVarHeaderParams,
+        url: localVarPath,
+        paramsSerializer: this._useQuerystring ? queryParamsSerializer : void 0,
+        maxContentLength: Infinity,
+        maxBodyLength: Infinity,
+        responseType: "json",
+        data
+      };
+      let authenticationPromise = Promise.resolve();
+      if (this.authentications.api_key.username) {
+        authenticationPromise = authenticationPromise.then(
+          () => this.authentications.api_key.applyToRequest(localVarRequestOptions)
+        );
+      }
+      if (this.authentications.oauth2.accessToken) {
+        authenticationPromise = authenticationPromise.then(
+          () => this.authentications.oauth2.applyToRequest(localVarRequestOptions)
+        );
+      }
+      authenticationPromise = authenticationPromise.then(
+        () => this.authentications.default.applyToRequest(localVarRequestOptions)
+      );
+      let interceptorPromise = authenticationPromise;
+      for (const interceptor of this.interceptors) {
+        interceptorPromise = interceptorPromise.then(
+          () => interceptor(localVarRequestOptions)
+        );
+      }
+      return interceptorPromise.then(() => {
+        return new Promise(
+          (resolve, reject) => {
+            import_axios9.default.request(localVarRequestOptions).then(
+              (response) => {
+                let body = response.data;
+                if (response.status && response.status >= 200 && response.status <= 299) {
+                  body = ObjectSerializer.deserialize(
+                    body,
+                    "TemplateCreateResponse"
+                  );
+                  resolve({ response, body });
+                } else {
+                  reject(new HttpError(response, body, response.status));
+                }
+              },
+              (error) => {
+                if (error.response == null) {
+                  reject(error);
+                  return;
+                }
+                const response = error.response;
+                let body;
+                if (response.status === 200) {
+                  body = ObjectSerializer.deserialize(
+                    response.data,
+                    "TemplateCreateResponse"
+                  );
+                  reject(new HttpError(response, body, response.status));
+                  return;
+                }
+                let rangeCodeLeft = Number("4XX"[0] + "00");
+                let rangeCodeRight = Number("4XX"[0] + "99");
+                if (response.status >= rangeCodeLeft && response.status <= rangeCodeRight) {
+                  body = ObjectSerializer.deserialize(
+                    response.data,
+                    "ErrorResponse"
+                  );
+                  reject(new HttpError(response, body, response.status));
+                  return;
+                }
+              }
+            );
+          }
+        );
+      });
+    });
+  }
   templateCreateEmbeddedDraft(_0) {
     return __async(this, arguments, function* (templateCreateEmbeddedDraftRequest, options = { headers: {} }) {
       if (templateCreateEmbeddedDraftRequest !== null && templateCreateEmbeddedDraftRequest !== void 0 && templateCreateEmbeddedDraftRequest.constructor.name !== "TemplateCreateEmbeddedDraftRequest") {
@@ -32794,7 +33274,7 @@ var HttpError = class extends Error {
 var queryParamsSerializer = (params) => {
   return import_qs.default.stringify(params, { arrayFormat: "brackets" });
 };
-var USER_AGENT = "OpenAPI-Generator/1.1.3/node";
+var USER_AGENT = "OpenAPI-Generator/1.2.0/node";
 var generateFormData = (obj, typemap) => {
   const data = {};
   let localVarUseFormData = false;
@@ -32968,6 +33448,7 @@ var APIS = [
   SubFormFieldsPerDocumentCheckboxMerge,
   SubFormFieldsPerDocumentDateSigned,
   SubFormFieldsPerDocumentDropdown,
+  SubFormFieldsPerDocumentFontEnum,
   SubFormFieldsPerDocumentHyperlink,
   SubFormFieldsPerDocumentInitials,
   SubFormFieldsPerDocumentRadio,
@@ -33007,6 +33488,9 @@ var APIS = [
   TemplateCreateEmbeddedDraftRequest,
   TemplateCreateEmbeddedDraftResponse,
   TemplateCreateEmbeddedDraftResponseTemplate,
+  TemplateCreateRequest,
+  TemplateCreateResponse,
+  TemplateCreateResponseTemplate,
   TemplateEditResponse,
   TemplateGetResponse,
   TemplateListResponse,
