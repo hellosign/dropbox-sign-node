@@ -1,6 +1,6 @@
 {
     "name": "@dropbox/sign",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "description": "Official Node client for Dropbox Sign",
     "repository": {
         "type": "git",
@@ -20,7 +20,7 @@
     "dependencies": {
         "axios": "^0.24.0",
         "bluebird": "^3.5.0",
-        "crypto-js": "^4.1.1",
+        "crypto-js": "^4.2.0",
         "form-data": "^4.0.0",
         "qs": "^6.10.3"
     },
