@@ -26492,7 +26492,7 @@ TemplateCreateResponse.attributeTypeMap = [
   {
     name: "template",
     baseName: "template",
-    type: "TemplateCreateResponse"
+    type: "TemplateCreateResponseTemplate"
   },
   {
     name: "warnings",
@@ -28086,6 +28086,7 @@ var _UnclaimedDraftCreateEmbeddedWithTemplateRequest = class {
     this["skipMeNow"] = false;
     this["testMode"] = false;
     this["populateAutoFillFields"] = false;
+    this["allowCcs"] = false;
   }
   static getAttributeTypeMap() {
     return _UnclaimedDraftCreateEmbeddedWithTemplateRequest.attributeTypeMap;
@@ -28243,6 +28244,11 @@ UnclaimedDraftCreateEmbeddedWithTemplateRequest.attributeTypeMap = [
   {
     name: "populateAutoFillFields",
     baseName: "populate_auto_fill_fields",
+    type: "boolean"
+  },
+  {
+    name: "allowCcs",
+    baseName: "allow_ccs",
     type: "boolean"
   }
 ];
@@ -31907,8 +31913,8 @@ var SignatureRequestApi = class {
       });
     });
   }
-  signatureRequestFilesAsFileUrl(_0) {
-    return __async(this, arguments, function* (signatureRequestId, options = { headers: {} }) {
+  signatureRequestFilesAsFileUrl(_0, _1) {
+    return __async(this, arguments, function* (signatureRequestId, forceDownload, options = { headers: {} }) {
       const localVarPath = this.basePath + "/signature_request/files_as_file_url/{signature_request_id}".replace(
         "{signature_request_id}",
         encodeURIComponent(String(signatureRequestId))
@@ -31929,6 +31935,12 @@ var SignatureRequestApi = class {
       if (signatureRequestId === null || signatureRequestId === void 0) {
         throw new Error(
           "Required parameter signatureRequestId was null or undefined when calling signatureRequestFilesAsFileUrl."
+        );
+      }
+      if (forceDownload !== void 0) {
+        localVarQueryParameters["force_download"] = ObjectSerializer.serialize(
+          forceDownload,
+          "number"
         );
       }
       Object.assign(localVarHeaderParams, options.headers);
@@ -34800,8 +34812,8 @@ var TemplateApi = class {
       });
     });
   }
-  templateFilesAsFileUrl(_0) {
-    return __async(this, arguments, function* (templateId, options = { headers: {} }) {
+  templateFilesAsFileUrl(_0, _1) {
+    return __async(this, arguments, function* (templateId, forceDownload, options = { headers: {} }) {
       const localVarPath = this.basePath + "/template/files_as_file_url/{template_id}".replace(
         "{template_id}",
         encodeURIComponent(String(templateId))
@@ -34822,6 +34834,12 @@ var TemplateApi = class {
       if (templateId === null || templateId === void 0) {
         throw new Error(
           "Required parameter templateId was null or undefined when calling templateFilesAsFileUrl."
+        );
+      }
+      if (forceDownload !== void 0) {
+        localVarQueryParameters["force_download"] = ObjectSerializer.serialize(
+          forceDownload,
+          "number"
         );
       }
       Object.assign(localVarHeaderParams, options.headers);
@@ -35962,7 +35980,7 @@ var HttpError = class extends Error {
 var queryParamsSerializer = (params) => {
   return import_qs.default.stringify(params, { arrayFormat: "brackets" });
 };
-var USER_AGENT = "OpenAPI-Generator/1.2.3/node";
+var USER_AGENT = "OpenAPI-Generator/1.3.0/node";
 var generateFormData = (obj, typemap) => {
   const data = {};
   let localVarUseFormData = false;
