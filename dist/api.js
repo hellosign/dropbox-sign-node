@@ -25751,7 +25751,7 @@ var EmbeddedApi = class {
 };
 
 // api/oAuthApi.ts
-var defaultBasePath5 = "https://api.hellosign.com/v3";
+var defaultBasePath5 = "https://app.hellosign.com";
 var OAuthApi = class {
   constructor(basePath) {
     this._basePath = defaultBasePath5;
@@ -31657,7 +31657,7 @@ var HttpError = class extends Error {
 var queryParamsSerializer = (params) => {
   return import_qs.default.stringify(params, { arrayFormat: "brackets" });
 };
-var USER_AGENT = "OpenAPI-Generator/1.4.0/node";
+var USER_AGENT = "OpenAPI-Generator/1.4.1/node";
 var generateFormData = (obj, typemap) => {
   const data = {};
   let localVarUseFormData = false;
