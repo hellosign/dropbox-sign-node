@@ -25,75 +25,30 @@
 import { RequestFile, AttributeTypeMap, ObjectSerializer } from "./";
 
 /**
- * Details concerning remaining monthly quotas.
+ * Details concerning monthly usage
  */
-export class AccountResponseQuotas {
+export class AccountResponseUsage {
   /**
-   * API signature requests remaining.
+   * Number of fax pages sent
    */
-  "apiSignatureRequestsLeft"?: number | null;
-  /**
-   * Signature requests remaining.
-   */
-  "documentsLeft"?: number | null;
-  /**
-   * Total API templates allowed.
-   */
-  "templatesTotal"?: number | null;
-  /**
-   * API templates remaining.
-   */
-  "templatesLeft"?: number | null;
-  /**
-   * SMS verifications  remaining.
-   */
-  "smsVerificationsLeft"?: number | null;
-  /**
-   * Number of fax pages left
-   */
-  "numFaxPagesLeft"?: number | null;
+  "faxPagesSent"?: number | null;
 
   static discriminator: string | undefined = undefined;
 
   static attributeTypeMap: AttributeTypeMap = [
     {
-      name: "apiSignatureRequestsLeft",
-      baseName: "api_signature_requests_left",
-      type: "number",
-    },
-    {
-      name: "documentsLeft",
-      baseName: "documents_left",
-      type: "number",
-    },
-    {
-      name: "templatesTotal",
-      baseName: "templates_total",
-      type: "number",
-    },
-    {
-      name: "templatesLeft",
-      baseName: "templates_left",
-      type: "number",
-    },
-    {
-      name: "smsVerificationsLeft",
-      baseName: "sms_verifications_left",
-      type: "number",
-    },
-    {
-      name: "numFaxPagesLeft",
-      baseName: "num_fax_pages_left",
+      name: "faxPagesSent",
+      baseName: "fax_pages_sent",
       type: "number",
     },
   ];
 
   static getAttributeTypeMap(): AttributeTypeMap {
-    return AccountResponseQuotas.attributeTypeMap;
+    return AccountResponseUsage.attributeTypeMap;
   }
 
   /** Attempt to instantiate and hydrate a new instance of this class */
-  static init(data: any): AccountResponseQuotas {
-    return ObjectSerializer.deserialize(data, "AccountResponseQuotas");
+  static init(data: any): AccountResponseUsage {
+    return ObjectSerializer.deserialize(data, "AccountResponseUsage");
   }
 }
