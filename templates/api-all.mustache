@@ -43,7 +43,7 @@ export const APIS = [{{#apis}}{{#operations}}{{ classname }}{{/operations}}{{^-l
 import { AxiosResponse } from "axios";
 import { AttributeTypeMap, ObjectSerializer, RequestDetailedFile } from "../model";
 import formData from "form-data";
-import Qs from "qs";
+import Qs from "neoqs/legacy";
 
 export interface optionsI { headers: { [name: string]: string } }
 export interface returnTypeT<T> { response: AxiosResponse, body: T }
