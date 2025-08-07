@@ -19239,6 +19239,7 @@ var ReportCreateRequest = class _ReportCreateRequest {
   ((ReportTypeEnum2) => {
     ReportTypeEnum2["UserActivity"] = "user_activity";
     ReportTypeEnum2["DocumentStatus"] = "document_status";
+    ReportTypeEnum2["SmsActivity"] = "sms_activity";
   })(ReportTypeEnum = ReportCreateRequest2.ReportTypeEnum || (ReportCreateRequest2.ReportTypeEnum = {}));
 })(ReportCreateRequest || (ReportCreateRequest = {}));
 
@@ -19312,6 +19313,7 @@ var ReportResponse = class _ReportResponse {
   ((ReportTypeEnum2) => {
     ReportTypeEnum2["UserActivity"] = "user_activity";
     ReportTypeEnum2["DocumentStatus"] = "document_status";
+    ReportTypeEnum2["SmsActivity"] = "sms_activity";
   })(ReportTypeEnum = ReportResponse2.ReportTypeEnum || (ReportResponse2.ReportTypeEnum = {}));
 })(ReportResponse || (ReportResponse = {}));
 
@@ -25343,6 +25345,16 @@ var TemplateResponseDocumentFormFieldText = class _TemplateResponseDocumentFormF
         name: "validationType",
         baseName: "validation_type",
         type: "TemplateResponseDocumentFormFieldText.ValidationTypeEnum"
+      },
+      {
+        name: "validationCustomRegex",
+        baseName: "validation_custom_regex",
+        type: "string"
+      },
+      {
+        name: "validationCustomRegexFormatLabel",
+        baseName: "validation_custom_regex_format_label",
+        type: "string"
       },
       {
         name: "group",
@@ -36223,7 +36235,7 @@ var HttpError = class extends Error {
 var queryParamsSerializer = (params) => {
   return import_qs.default.stringify(params, { arrayFormat: "brackets" });
 };
-var USER_AGENT = "OpenAPI-Generator/1.9.0/node";
+var USER_AGENT = "OpenAPI-Generator/10.0.0/node";
 var generateFormData = (obj, typemap) => {
   const data = {};
   let localVarUseFormData = false;
