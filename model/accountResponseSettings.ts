@@ -24,28 +24,49 @@
 
 import { AttributeTypeMap, ObjectSerializer } from "./";
 
-export class TemplateEditResponse {
+/**
+ * Subset of configured settings
+ */
+export class AccountResponseSettings {
   /**
-   * The id of the Template.
+   * Returns `true` if _Custom access codes_ is enabled in Admin Console. [Read more](https://developers.hellosign.com/docs/sms-tools/walkthrough).
    */
-  "templateId": string;
+  "signerAccessCodes"?: boolean;
+  /**
+   * Returns `true` if _Text message_ is enabled in Admin Console. [Read more](https://developers.hellosign.com/docs/sms-tools/walkthrough).
+   */
+  "smsDelivery"?: boolean;
+  /**
+   * Returns `true` if _Signer authentication_ is enabled in Admin Console. [Read more](https://developers.hellosign.com/docs/sms-tools/walkthrough).
+   */
+  "smsAuthentication"?: boolean;
 
   static discriminator: string | undefined = undefined;
 
   static attributeTypeMap: AttributeTypeMap = [
     {
-      name: "templateId",
-      baseName: "template_id",
-      type: "string",
+      name: "signerAccessCodes",
+      baseName: "signer_access_codes",
+      type: "boolean",
+    },
+    {
+      name: "smsDelivery",
+      baseName: "sms_delivery",
+      type: "boolean",
+    },
+    {
+      name: "smsAuthentication",
+      baseName: "sms_authentication",
+      type: "boolean",
     },
   ];
 
   static getAttributeTypeMap(): AttributeTypeMap {
-    return TemplateEditResponse.attributeTypeMap;
+    return AccountResponseSettings.attributeTypeMap;
   }
 
   /** Attempt to instantiate and hydrate a new instance of this class */
-  static init(data: any): TemplateEditResponse {
-    return ObjectSerializer.deserialize(data, "TemplateEditResponse");
+  static init(data: any): AccountResponseSettings {
+    return ObjectSerializer.deserialize(data, "AccountResponseSettings");
   }
 }
