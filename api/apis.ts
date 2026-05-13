@@ -38,7 +38,7 @@ export const queryParamsSerializer = (params) => {
   return Qs.stringify(params, { arrayFormat: "brackets" });
 };
 
-export const USER_AGENT = "OpenAPI-Generator/1.10.0/node";
+export const USER_AGENT = "OpenAPI-Generator/1.11.0/node";
 
 /**
  * Generates an object containing form data.
