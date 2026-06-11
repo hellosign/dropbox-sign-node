@@ -17,6 +17,7 @@
         "prettier": "prettier --write ./api/ ./model/"
     },
     "author": "Dropbox Sign",
+    "license": "MIT",
     "dependencies": {
         "axios": "^1.8.2",
         "bluebird": "^3.7.2",
