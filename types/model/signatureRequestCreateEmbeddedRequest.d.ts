@@ -33,7 +33,6 @@ export declare class SignatureRequestCreateEmbeddedRequest {
     "testMode"?: boolean;
     "title"?: string;
     "useTextTags"?: boolean;
-    "ignoreTextTagsExtractionErrors"?: boolean;
     "populateAutoFillFields"?: boolean;
     "expiresAt"?: number | null;
     static discriminator: string | undefined;

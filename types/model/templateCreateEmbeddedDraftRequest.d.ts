@@ -35,7 +35,6 @@ export declare class TemplateCreateEmbeddedDraftRequest {
     "testMode"?: boolean;
     "title"?: string;
     "usePreexistingFields"?: boolean;
-    "ignoreTextTagsExtractionErrors"?: boolean;
     static discriminator: string | undefined;
     static attributeTypeMap: AttributeTypeMap;
     static getAttributeTypeMap(): AttributeTypeMap;

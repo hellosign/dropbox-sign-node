@@ -33,7 +33,6 @@ export declare class UnclaimedDraftCreateRequest {
     "testMode"?: boolean;
     "usePreexistingFields"?: boolean;
     "useTextTags"?: boolean;
-    "ignoreTextTagsExtractionErrors"?: boolean;
     "expiresAt"?: number | null;
     static discriminator: string | undefined;
     static attributeTypeMap: AttributeTypeMap;
