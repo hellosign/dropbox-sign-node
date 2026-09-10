@@ -25195,6 +25195,11 @@ var TemplateResponseDocumentFormFieldDropdown = class _TemplateResponseDocumentF
         name: "group",
         baseName: "group",
         type: "string"
+      },
+      {
+        name: "options",
+        baseName: "options",
+        type: "Array<string>"
       }
     ];
   }
@@ -36333,7 +36338,7 @@ var HttpError = class extends Error {
 var queryParamsSerializer = (params) => {
   return import_qs.default.stringify(params, { arrayFormat: "brackets" });
 };
-var USER_AGENT = "OpenAPI-Generator/1.12.0/node";
+var USER_AGENT = "OpenAPI-Generator/1.13.0/node";
 var generateFormData = (obj, typemap) => {
   const data = {};
   let localVarUseFormData = false;
