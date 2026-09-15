@@ -47,13 +47,14 @@ jobs:
       - run: npm ci
 
       - run: npm publish --access=public --dry-run
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_API_KEY }}
 
   # This job runs on merging to "main" branch
   # Builds and publishes gem
   publish-prod:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
     if: >-
       github.repository == 'hellosign/dropbox-sign-node'
       && github.ref == 'refs/heads/main'
@@ -63,16 +64,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - uses: actions/setup-node@v3
+      - name: Use Node.js 24 for trusted publishing
+        uses: actions/setup-node@v4
         with:
-          node-version: '16.x'
+          node-version: '24.x'
           registry-url: 'https://registry.npmjs.org'
 
       - run: npm ci
 
-      - run: npm publish --access=public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_API_KEY }}
+      - name: Use npm with trusted publishing support
+        run: npm install --global npm@11.19.1
+
+      - name: Publish package with trusted publishing
+        run: npm publish --access=public
 
   # This job runs on merging to "main" branch
   # Creates a new tag using the value in the VERSION file
