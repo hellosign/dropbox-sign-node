@@ -15,7 +15,7 @@ export { RequestFile } from "../model";
 
 import { AxiosResponse } from "axios";
 import formData from "form-data";
-import Qs from "qs";
+import Qs from "neoqs/legacy";
 import {
   AttributeTypeMap,
   ObjectSerializer,
